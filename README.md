@@ -1,6 +1,5 @@
 # 🌟 VGWebStudio - Portfolio Profesional
 
-![VGWebStudio Logo](https://img.shields.io/badge/VGWebStudio-2025-blue?style=for-the-badge&logo=html5)
 ![Estado](https://img.shields.io/badge/Estado-Activo-success?style=for-the-badge)
 ![Versión](https://img.shields.io/badge/Versión-1.0-orange?style=for-the-badge)
 
@@ -41,18 +40,18 @@
 ## 🛠️ **Tecnologías Utilizadas**
 
 ### **Frontend**
-- ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white) **HTML5** - Estructura semántica
-- ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white) **CSS3** - Estilos avanzados y animaciones
-- ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black) **JavaScript ES6+** - Interactividad y funcionalidad
+- **HTML5** - Estructura semántica
+- **CSS3** - Estilos avanzados y animaciones
+- **JavaScript ES6+** - Interactividad y funcionalidad
 
 ### **Servicios Externos**
-- ![Formspree](https://img.shields.io/badge/Formspree-FF6B6B?style=flat&logo=mail&logoColor=white) **Formspree** - Envío de emails
-- ![CallMeBot](https://img.shields.io/badge/CallMeBot-25D366?style=flat&logo=whatsapp&logoColor=white) **CallMeBot** - Integración WhatsApp
-- ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-181717?style=flat&logo=github&logoColor=white) **GitHub Pages** - Hosting gratuito
+- **Formspree** - Envío de emails
+- **CallMeBot** - Integración WhatsApp
+- **GitHub Pages** - Hosting gratuito
 
 ### **Fuentes y Recursos**
-- ![Google Fonts](https://img.shields.io/badge/Google_Fonts-4285F4?style=flat&logo=google&logoColor=white) **Inter Font Family**
-- ![Font Awesome](https://img.shields.io/badge/Font_Awesome-339AF0?style=flat&logo=fontawesome&logoColor=white) **Font Awesome 6** - Iconografía
+- **Inter Font Family** - Tipografía moderna
+- **Font Awesome 6** - Iconografía completa
 
 ---
 
