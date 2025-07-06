@@ -61,19 +61,6 @@ Portfolio profesional moderno para VGWebStudio - Estudio de diseño y desarrollo
 - **Instagram**: [@vgwebstudio](https://www.instagram.com/vgwebstudio/)
 - **GitHub**: [VGWebStudio2025](https://github.com/VGWebStudio2025?tab=repositories)
 
----
-
-## Estructura del Proyecto
-
-```
-Portfolio VGWebStudio/
-├── index.html           # Página principal
-├── styles.css           # Estilos y animaciones
-├── script.js            # Funcionalidad JavaScript
-└── README.md            # Documentación
-```
-
----
 
 ## Secciones del Portfolio
 
