@@ -29,56 +29,6 @@ Portfolio profesional, moderno y minimalista para VGWebStudio - Estudio de dise�
 - **Font Awesome**: Iconografía
 - **Google Fonts**: Tipografía Inter
 
-## Instalación y Uso
-
-1. **Descarga los archivos** en tu servidor web o abre `index.html` en tu navegador
-2. **Personaliza el contenido** según tus necesidades
-3. **Agrega tus proyectos** en la sección de portfolio
-4. **Actualiza la información de contacto**
-
-## Personalización
-
-### Cambiar Colores
-
-Los colores están definidos como variables CSS en `styles.css`:
-
-```css
-:root {
-    --primary-color: #2563eb;      /* Color principal */
-    --primary-dark: #1d4ed8;       /* Color principal oscuro */
-    --primary-light: #3b82f6;      /* Color principal claro */
-    /* ... más variables */
-}
-```
-
-### Agregar Nuevos Proyectos
-
-Para agregar un nuevo proyecto al portfolio:
-
-1. **Método Manual**: Copia y pega el HTML de un proyecto existente en la sección `.portfolio-grid`
-2. **Método JavaScript**: Usa la función global `addPortfolioItem()`:
-
-```javascript
-addPortfolioItem({
-    title: "Mi Nuevo Proyecto",
-    description: "Descripción del proyecto",
-    category: "web", // web, ecommerce, landing
-    icon: "laptop-code", // Icono de Font Awesome
-    liveUrl: "https://ejemplo.com",
-    detailsUrl: "#"
-});
-```
-
-### Personalizar Información del Estudio
-
-Edita las siguientes secciones en `index.html`:
-
-- **Logo**: Cambia "VGWebStudio" en el header
-- **Título Hero**: Modifica la sección `.hero-title`
-- **Descripción**: Actualiza `.hero-description`
-- **Sobre Nosotros**: Edita el contenido de la sección `#nosotros`
-- **Contacto**: Actualiza email, teléfono y horarios
-
 ### Categorías de Portfolio
 
 Las categorías predefinidas son:
@@ -86,10 +36,6 @@ Las categorías predefinidas son:
 - `web`: Sitios web corporativos
 - `ecommerce`: Tiendas online
 - `landing`: Páginas de aterrizaje
-
-Para agregar nuevas categorías:
-1. Agrega un botón de filtro en `.portfolio-filters`
-2. Asigna la categoría a tus proyectos con `data-category="tu-categoria"`
 
 ## Formulario de Contacto
 
