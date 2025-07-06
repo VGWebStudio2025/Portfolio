@@ -844,6 +844,7 @@ section {
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
     position: relative;
     z-index: 1;
+    transition: var(--transition);
 }
 
 .placeholder-image p {
@@ -853,6 +854,7 @@ section {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 1;
+    transition: var(--transition);
 }
 
 @keyframes portfolioShine {
@@ -892,6 +894,12 @@ section {
 
 .portfolio-item:hover .portfolio-overlay {
     opacity: 1;
+}
+
+.portfolio-item:hover .placeholder-image i,
+.portfolio-item:hover .placeholder-image p {
+    opacity: 0;
+    transform: scale(0.8);
 }
 
 .portfolio-info {
