@@ -113,24 +113,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ============================================
-    // FORMULARIO DE CONTACTO
+    // FORMULARIO DE CONTACTO DUAL (EMAIL + WHATSAPP)
     // ============================================
     const contactForm = document.querySelector('.contact-form');
     
     if (contactForm) {
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+            e.preventDefault(); // Prevenir envío automático
             
             // Obtener datos del formulario
             const formData = new FormData(this);
             const name = formData.get('name');
             const email = formData.get('email');
+            const phone = formData.get('phone');
             const subject = formData.get('subject');
             const message = formData.get('message');
 
             // Validación básica
             if (!name || !email || !subject || !message) {
-                showNotification('Por favor, completa todos los campos', 'error');
+                showNotification('Por favor, completa todos los campos obligatorios', 'error');
                 return;
             }
 
@@ -139,30 +140,141 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // Simular envío del formulario
+            // Validación opcional del teléfono (si se proporciona)
+            if (phone && !isValidPhone(phone)) {
+                showNotification('Por favor, ingresa un número de teléfono válido', 'error');
+                return;
+            }
+
+            // Mostrar estado de envío
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.textContent;
             
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Enviando...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
 
-            // Simular delay de envío
-            setTimeout(() => {
-                showNotification('¡Mensaje enviado correctamente! Te contactaremos pronto.', 'success');
-                contactForm.reset();
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+            // ENVÍO DUAL: Email + WhatsApp
+            Promise.all([
+                sendEmailFormspree(formData, this),
+                sendWhatsAppMessage(name, email, phone, subject, message)
+            ])
+            .then((results) => {
+                console.log('✅ Resultados de envío:', results);
                 
-                // Resetear labels del formulario
-                const labels = contactForm.querySelectorAll('label');
+                // Limpiar formulario
+                this.reset();
+                
+                // Resetear labels
+                const labels = document.querySelectorAll('.contact-form label');
                 labels.forEach(label => {
                     label.style.top = 'var(--spacing-4)';
                     label.style.color = 'var(--gray)';
                     label.style.fontSize = 'var(--font-size-base)';
                 });
-            }, 2000);
+                
+                showNotification('¡Mensaje enviado por Email y WhatsApp! 📧📱', 'success');
+            })
+            .catch((error) => {
+                console.error('❌ Error en envío:', error);
+                showNotification('Error al enviar. Intenta nuevamente.', 'error');
+            })
+            .finally(() => {
+                // Restaurar botón
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+
+        // Manejar la respuesta después del envío (si el usuario regresa)
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('sent') === 'true') {
+            showNotification('¡Mensaje enviado correctamente! Te contactaremos pronto.', 'success');
+            // Limpiar la URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    }
+
+    // ============================================
+    // FUNCIÓN PARA ENVIAR EMAIL VIA FORMSPREE
+    // ============================================
+    function sendEmailFormspree(formData, form) {
+        return new Promise((resolve, reject) => {
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('✅ Email enviado via Formspree');
+                    resolve('email-sent');
+                } else {
+                    throw new Error('Error en Formspree');
+                }
+            })
+            .catch(error => {
+                console.error('❌ Error en email:', error);
+                // No rechazamos para que WhatsApp siga intentando
+                resolve('email-failed');
+            });
         });
     }
+
+    // ============================================
+    // FUNCIÓN PARA ENVIAR WHATSAPP VIA CALLMEBOT
+    // ============================================
+    function sendWhatsAppMessage(name, email, phone, subject, message) {
+        return new Promise((resolve, reject) => {
+            // Crear mensaje para WhatsApp
+            let whatsappMessage = `🌟 NUEVO CONTACTO - VGWebStudio\n\n`;
+            whatsappMessage += `👤 Nombre: ${name}\n`;
+            whatsappMessage += `📧 Email: ${email}\n`;
+            if (phone) {
+                whatsappMessage += `📱 Teléfono: ${phone}\n`;
+            }
+            whatsappMessage += `📝 Asunto: ${subject}\n\n`;
+            whatsappMessage += `💬 Mensaje:\n${message}\n\n`;
+            whatsappMessage += `⏰ ${new Date().toLocaleString('es-AR')}\n`;
+            whatsappMessage += `🔗 Portfolio VGWebStudio`;
+            
+            // Configuración CallMeBot con tu API Key
+            const apiKey = '9876927';
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            
+            // Usar el formato que funciona: +5492916454112
+            const phoneNumber = '+5492916454112'; // ¡Este formato funciona!
+            
+            console.log('📱 Enviando WhatsApp...');
+            console.log('- API Key:', apiKey);
+            console.log('- Número:', phoneNumber);
+            console.log('- Mensaje length:', whatsappMessage.length);
+            
+            // Crear URL de CallMeBot con el formato correcto
+            const callMeBotURL = `https://api.callmebot.com/whatsapp.php?phone=${phoneNumber}&text=${encodedMessage}&apikey=${apiKey}`;
+            
+            console.log('- URL:', callMeBotURL);
+            
+            // Enviar mensaje usando CallMeBot
+            fetch(callMeBotURL, {
+                method: 'GET',
+                mode: 'no-cors'
+            })
+            .then(() => {
+                console.log('✅ WhatsApp enviado correctamente!');
+                resolve('whatsapp-sent');
+            })
+            .catch((error) => {
+                console.error('❌ Error al enviar WhatsApp:', error);
+                resolve('whatsapp-failed');
+            });
+        });
+    }
+
+
 
     // ============================================
     // ANIMACIONES ON SCROLL
@@ -186,8 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
     animatedElements.forEach(el => {
         observer.observe(el);
     });
-
-
 
     // ============================================
     // SISTEMA DE NOTIFICACIONES
@@ -277,6 +387,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
+    }
+
+    function isValidPhone(phone) {
+        // Regex para validar números de teléfono con formato internacional o local
+        // Acepta: +54 9 11 1234-5678, +54 9 11 12345678, 11 1234-5678, 1112345678, etc.
+        const phoneRegex = /^[\+]?[0-9][\d\-\s\(\)]{8,20}$/;
+        return phoneRegex.test(phone.replace(/\s/g, ''));
     }
 
     // ============================================
@@ -434,6 +551,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 });
+
+// Eliminado: código duplicado del botón de test
 
 // ============================================
 // FUNCIONES GLOBALES PARA DESARROLLADORES

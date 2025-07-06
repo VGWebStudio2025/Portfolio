@@ -264,7 +264,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>Email</h4>
-                                <p>contacto@vgwebstudio.com</p>
+                                <p>vgwebstudio1@gmail.com</p>
                             </div>
                         </div>
                         <div class="contact-method">
@@ -273,22 +273,14 @@
                             </div>
                             <div class="contact-details">
                                 <h4>Teléfono</h4>
-                                <p>+1 (555) 123-4567</p>
+                                <p>+54 9 291 645 4112</p>
                             </div>
                         </div>
-                        <div class="contact-method">
-                            <div class="contact-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Horario</h4>
-                                <p>Lun - Vie: 9:00 - 18:00</p>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="contact-form-container">
-                    <form class="contact-form">
+                    <form class="contact-form" action="https://formspree.io/f/mqabowje" method="POST">
                         <div class="form-group">
                             <input type="text" id="name" name="name" required>
                             <label for="name">Nombre completo</label>
@@ -298,6 +290,10 @@
                             <label for="email">Correo electrónico</label>
                         </div>
                         <div class="form-group">
+                            <input type="tel" id="phone" name="phone" placeholder="+54 9 291 645 4112">
+                            <label for="phone">Teléfono / WhatsApp (opcional)</label>
+                        </div>
+                        <div class="form-group">
                             <input type="text" id="subject" name="subject" required>
                             <label for="subject">Asunto</label>
                         </div>
@@ -305,7 +301,12 @@
                             <textarea id="message" name="message" required></textarea>
                             <label for="message">Mensaje</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                        <!-- Campo oculto para Formspree -->
+                        <input type="hidden" name="_subject" value="Nuevo mensaje desde VGWebStudio Portfolio">
+                        <input type="hidden" name="_next" value="https://vgwebstudio2025.github.io/Portfolio/?sent=true">
+                        <div class="form-buttons">
+                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -320,16 +321,13 @@
                     <h3>VGWebStudio</h3>
                     <p>Creando experiencias digitales excepcionales desde 2025</p>
                     <div class="social-links">
-                        <a href="#" class="social-link">
+                        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="#" class="social-link">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                        <a href="#" class="social-link">
+                        <a href="https://www.instagram.com/vgwebstudio/" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://github.com/VGWebStudio2025?tab=repositories" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -346,9 +344,8 @@
                 <div class="footer-section">
                     <h4>Contacto</h4>
                     <ul>
-                        <li>contacto@vgwebstudio.com</li>
-                        <li>+1 (555) 123-4567</li>
-                        <li>Disponible 24/7</li>
+                        <li>vgwebstudio1@gmail.com</li>
+                        <li>+54 9 291 645 4112</li>
                     </ul>
                 </div>
             </div>
