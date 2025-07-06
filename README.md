@@ -29,17 +29,6 @@ Portfolio profesional, moderno y minimalista para VGWebStudio - Estudio de dise�
 - **Font Awesome**: Iconografía
 - **Google Fonts**: Tipografía Inter
 
-## Estructura del Proyecto
-
-```
-Portfolio VGWebStudio/
-│
-├── index.html          # Página principal
-├── styles.css          # Estilos CSS
-├── script.js           # JavaScript funcional
-└── README.md          # Documentación
-```
-
 ## Instalación y Uso
 
 1. **Descarga los archivos** en tu servidor web o abre `index.html` en tu navegador
