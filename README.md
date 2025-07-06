@@ -1,8 +1,8 @@
-# 🚀 Portfolio VGWebStudio
+## Portfolio VGWebStudio
 
 Portfolio profesional, moderno y minimalista para VGWebStudio - Estudio de diseño y desarrollo web.
 
-## ✨ Características
+## Características
 
 - **Diseño Moderno y Minimalista**: Interfaz limpia y profesional
 - **Totalmente Responsivo**: Se adapta perfectamente a todos los dispositivos
@@ -12,7 +12,7 @@ Portfolio profesional, moderno y minimalista para VGWebStudio - Estudio de dise�
 - **Portfolio Filtrable**: Sistema de filtros para organizar proyectos
 - **Formulario de Contacto**: Formulario funcional con validaciones
 
-## 🎨 Secciones Incluidas
+## Secciones Incluidas
 
 1. **Header con Navegación**: Logo y menú de navegación responsivo
 2. **Hero Section**: Presentación principal con llamada a la acción
@@ -21,7 +21,7 @@ Portfolio profesional, moderno y minimalista para VGWebStudio - Estudio de dise�
 5. **Contacto**: Formulario de contacto e información
 6. **Footer**: Enlaces y redes sociales
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **HTML5**: Estructura semántica
 - **CSS3**: Estilos modernos con variables CSS y Grid/Flexbox
@@ -29,7 +29,7 @@ Portfolio profesional, moderno y minimalista para VGWebStudio - Estudio de dise�
 - **Font Awesome**: Iconografía
 - **Google Fonts**: Tipografía Inter
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 Portfolio VGWebStudio/
@@ -40,14 +40,14 @@ Portfolio VGWebStudio/
 └── README.md          # Documentación
 ```
 
-## 🚀 Instalación y Uso
+## Instalación y Uso
 
 1. **Descarga los archivos** en tu servidor web o abre `index.html` en tu navegador
 2. **Personaliza el contenido** según tus necesidades
 3. **Agrega tus proyectos** en la sección de portfolio
 4. **Actualiza la información de contacto**
 
-## 🎯 Personalización
+## Personalización
 
 ### Cambiar Colores
 
@@ -102,7 +102,7 @@ Para agregar nuevas categorías:
 1. Agrega un botón de filtro en `.portfolio-filters`
 2. Asigna la categoría a tus proyectos con `data-category="tu-categoria"`
 
-## 📝 Formulario de Contacto
+## Formulario de Contacto
 
 El formulario incluye:
 - Validación de campos obligatorios
@@ -116,19 +116,19 @@ El formulario incluye:
 - EmailJS
 - Tu propio servidor
 
-## 🎨 Tipografía y Iconos
+## Tipografía y Iconos
 
 - **Fuente**: Inter (Google Fonts) - Moderna y legible
 - **Iconos**: Font Awesome 6.0.0 - Amplia biblioteca de iconos
 
-## 📱 Responsive Design
+## Responsive Design
 
 El portfolio es completamente responsivo con breakpoints:
 - **Desktop**: > 768px
 - **Tablet**: 768px - 480px
 - **Mobile**: < 480px
 
-## 🔧 Funcionalidades JavaScript
+## Funcionalidades JavaScript
 
 - **Navegación móvil**: Menú hamburguesa funcional
 - **Smooth scrolling**: Navegación suave entre secciones
@@ -138,7 +138,7 @@ El portfolio es completamente responsivo con breakpoints:
 - **Formulario interactivo**: Validaciones y feedback
 - **Notificaciones**: Sistema de mensajes para el usuario
 
-## 🚀 Optimizaciones de Performance
+## Optimizaciones de Performance
 
 - CSS optimizado con variables y metodología BEM
 - JavaScript vanilla (sin dependencias)
@@ -146,7 +146,7 @@ El portfolio es completamente responsivo con breakpoints:
 - Throttling en eventos de scroll
 - Animaciones optimizadas con `will-change`
 
-## 🎯 SEO Ready
+## SEO Ready
 
 - Estructura HTML semántica
 - Meta tags configurados
@@ -154,7 +154,7 @@ El portfolio es completamente responsivo con breakpoints:
 - Alt tags preparados para imágenes
 - URLs amigables con scroll suave
 
-## 📞 Soporte y Personalización
+## Soporte y Personalización
 
 Este portfolio está diseñado para ser fácilmente personalizable. Si necesitas ayuda adicional:
 
@@ -162,7 +162,7 @@ Este portfolio está diseñado para ser fácilmente personalizable. Si necesitas
 2. Usa las funciones globales de JavaScript incluidas
 3. Modifica las variables CSS para cambios rápidos
 
-## 🌟 Próximas Mejoras
+## Próximas Mejoras
 
 Características que puedes agregar:
 - [ ] Galería de imágenes con lightbox
@@ -174,7 +174,7 @@ Características que puedes agregar:
 - [ ] Animaciones más complejas
 - [ ] PWA (Progressive Web App)
 
-## 📄 Licencia
+## Licencia
 
 Este proyecto está disponible para uso personal y comercial de VGWebStudio.
 
