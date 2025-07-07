@@ -1,22 +1,162 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VGWebStudio - Diseño y Desarrollo Web Profesional</title>
-    <!-- Deploy forzado -->
-    <link rel="stylesheet" href="styles.css">
+
+    <!-- SEO y Performance Meta Tags -->
+    <meta name="description"
+        content="VGWebStudio - Estudio especializado en diseño y desarrollo web profesional. Creamos sitios web modernos, responsivos y optimizados para tu negocio.">
+    <meta name="keywords"
+        content="diseño web, desarrollo web, sitios web profesionales, responsive design, VGWebStudio">
+    <meta name="author" content="VGWebStudio">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+
+    <!-- Open Graph para redes sociales -->
+    <meta property="og:title" content="VGWebStudio - Diseño y Desarrollo Web Profesional">
+    <meta property="og:description"
+        content="Creamos experiencias digitales excepcionales. Sitios web modernos y funcionales para tu negocio.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vgwebstudio2025.github.io/Portfolio/">
+    <meta property="og:image" content="https://vgwebstudio2025.github.io/Portfolio/assets/logo.png">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VGWebStudio - Diseño y Desarrollo Web Profesional">
+    <meta name="twitter:description" content="Creamos experiencias digitales excepcionales">
+    <meta name="twitter:image" content="https://vgwebstudio2025.github.io/Portfolio/assets/logo.png">
+
+    <!-- Favicons para diferentes navegadores y dispositivos -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/favicon-512x512.png">
+
+    <!-- Apple Touch Icons para dispositivos iOS -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="assets/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="assets/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="assets/apple-touch-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="assets/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="assets/apple-touch-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="assets/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="assets/apple-touch-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="57x57" href="assets/apple-touch-icon-57x57.png">
+
+    <!-- Metadatos adicionales -->
+    <meta name="msapplication-TileColor" content="#667eea">
+    <meta name="msapplication-TileImage" content="assets/mstile-144x144.png">
+    <meta name="theme-color" content="#667eea">
+
+    <!-- Resource Hints para Performance -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//formspree.io">
+
+    <!-- Preconnect para recursos críticos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Critical CSS (inline) - Estilos esenciales para above-the-fold -->
+    <style>
+        /* Critical CSS inline para faster First Paint */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            height: 70px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .nav-logo h2 {
+            color: #6366f1;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+
+    <!-- CSS principal con carga async -->
+    <link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="styles.css">
+    </noscript>
+
+    <!-- Fonts con display=swap para evitar FOIT -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    </noscript>
+
+    <!-- Font Awesome con lazy loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="nav-container">
                 <div class="nav-logo">
+                    <img src="assets/logo.png" alt="VGWebStudio Logo" class="nav-logo-img">
                     <h2>VGWebStudio</h2>
                 </div>
                 <ul class="nav-menu">
@@ -48,11 +188,12 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    Creamos experiencias digitales 
+                    Creamos experiencias digitales
                     <span class="highlight">excepcionales</span>
                 </h1>
                 <p class="hero-description">
-                    Somos VGWebStudio, un estudio de diseño y desarrollo web que transforma ideas en sitios web profesionales, modernos y funcionales.
+                    Somos VGWebStudio, un estudio de diseño y desarrollo web que transforma ideas en sitios web
+                    profesionales, modernos y funcionales.
                 </p>
                 <div class="hero-buttons">
                     <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
@@ -90,10 +231,15 @@
                 <div class="about-text">
                     <h3>VGWebStudio nace de la pasión por el diseño y la tecnología</h3>
                     <p>
-                        Somos un estudio emergente especializado en el diseño y desarrollo de sitios web que combinan estética moderna con funcionalidad excepcional. Nuestro enfoque se centra en entender las necesidades únicas de cada cliente para crear soluciones digitales que realmente marquen la diferencia.
+                        Somos un estudio emergente especializado en el diseño y desarrollo de sitios web que combinan
+                        estética moderna con funcionalidad excepcional. Nuestro enfoque se centra en entender las
+                        necesidades únicas de cada cliente para crear soluciones digitales que realmente marquen la
+                        diferencia.
                     </p>
                     <p>
-                        Aunque somos nuevos en el mercado, nuestro equipo cuenta con la experiencia y creatividad necesarias para llevar tu presencia digital al siguiente nivel. Creemos que cada proyecto es una oportunidad de innovar y superar expectativas.
+                        Aunque somos nuevos en el mercado, nuestro equipo cuenta con la experiencia y creatividad
+                        necesarias para llevar tu presencia digital al siguiente nivel. Creemos que cada proyecto es una
+                        oportunidad de innovar y superar expectativas.
                     </p>
                 </div>
                 <div class="about-features">
@@ -254,8 +400,8 @@
                 <div class="contact-info">
                     <h3>Hablemos de tu proyecto</h3>
                     <p>
-                        Estamos aquí para escuchar tus ideas y convertirlas en una presencia digital excepcional. 
-                        No importa si tienes un concepto claro o solo una idea inicial, trabajaremos contigo para 
+                        Estamos aquí para escuchar tus ideas y convertirlas en una presencia digital excepcional.
+                        No importa si tienes un concepto claro o solo una idea inicial, trabajaremos contigo para
                         desarrollar la solución perfecta.
                     </p>
                     <div class="contact-methods">
@@ -304,7 +450,8 @@
                         </div>
                         <!-- Campo oculto para Formspree -->
                         <input type="hidden" name="_subject" value="Nuevo mensaje desde VGWebStudio Portfolio">
-                        <input type="hidden" name="_next" value="https://vgwebstudio2025.github.io/Portfolio/?sent=true">
+                        <input type="hidden" name="_next"
+                            value="https://vgwebstudio2025.github.io/Portfolio/?sent=true">
                         <div class="form-buttons">
                             <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
                         </div>
@@ -319,16 +466,21 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>VGWebStudio</h3>
+                    <div class="footer-brand">
+                        <img src="assets/logo.png" alt="VGWebStudio Logo" class="footer-logo-img">
+                        <h3>VGWebStudio</h3>
+                    </div>
                     <p>Creando experiencias digitales excepcionales desde 2025</p>
                     <div class="social-links">
                         <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
                         </a>
-                        <a href="https://www.instagram.com/vgwebstudio/" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/vgwebstudio/" class="social-link" target="_blank"
+                            rel="noopener noreferrer">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="https://github.com/VGWebStudio2025?tab=repositories" class="social-link" target="_blank" rel="noopener noreferrer">
+                        <a href="https://github.com/VGWebStudio2025?tab=repositories" class="social-link"
+                            target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-github"></i>
                         </a>
                     </div>
@@ -356,6 +508,61 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript optimizado cargado al final -->
+    <script>
+        // Critical JavaScript inline para performance
+        (function () {
+            // Función para cargar CSS de forma asíncrona (fallback)
+            function loadCSS(href, before, media) {
+                var ss = window.document.createElement("link");
+                var ref = before || window.document.getElementsByTagName("script")[0];
+                var sheets = window.document.styleSheets;
+                ss.rel = "stylesheet";
+                ss.href = href;
+                ss.media = "only x";
+                ref.parentNode.insertBefore(ss, ref);
+                function toggleMedia() {
+                    if (ss.media) {
+                        ss.media = media || "all";
+                    }
+                }
+                if (ss.addEventListener) {
+                    ss.addEventListener("load", toggleMedia);
+                } else if (ss.attachEvent) {
+                    ss.attachEvent("onload", toggleMedia);
+                }
+                setTimeout(function () {
+                    ss.media = media || "all";
+                });
+                return ss;
+            }
+
+            // Precargar script principal
+            var scriptLink = document.createElement("link");
+            scriptLink.rel = "preload";
+            scriptLink.href = "script.js";
+            scriptLink.as = "script";
+            document.head.appendChild(scriptLink);
+        })();
+    </script>
+
+    <!-- Script principal cargado de forma diferida -->
+    <script src="script.js" defer></script>
+
+    <!-- Service Worker para caching (opcional) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('/Portfolio/sw.js')
+                    .then(function (registration) {
+                        console.log('✅ SW registrado correctamente');
+                    })
+                    .catch(function (error) {
+                        console.log('❌ SW falló al registrarse');
+                    });
+            });
+        }
+    </script>
 </body>
-</html> 
+
+</html>
