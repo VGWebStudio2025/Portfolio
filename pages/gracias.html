@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">¡Gracias por contactarnos! - VGWebStudio</title>
+    
+    <!-- CSS básico -->
+    <link rel="stylesheet" href="../styles.css">
+    
+    <!-- Fuentes -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* Estilos específicos para la página de agradecimiento */
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .thanks-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            margin-top: 80px;
+        }
+
+        .thanks-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4CAF50, #45a049);
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: pulse 2s infinite;
+        }
+
+        .success-icon::after {
+            content: '✓';
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .thanks-title {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .thanks-message {
+            color: #666;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .details-box {
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .details-box h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .details-box p {
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .btn-home {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-home:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+        }
+
+        .contact-link {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .contact-link:hover {
+            background: #667eea;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .thanks-card {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            .thanks-title {
+                font-size: 2rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>VGWebStudio</h2>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html#inicio" class="nav-link" data-i18n="nav.home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../index.html#nosotros" class="nav-link" data-i18n="nav.about">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../index.html#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../index.html#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
+                    </li>
+                </ul>
+                <!-- Botón de cambio de idioma -->
+                <div class="language-switcher">
+                    <button class="lang-btn" id="langToggle" title="Cambiar idioma">
+                        <span class="flag-icon">🇪🇸</span>
+                        <span class="lang-text">ES</span>
+                    </button>
+                </div>
+                <div class="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="thanks-container">
+        <div class="thanks-card">
+            <div class="success-icon"></div>
+            
+            <h1 class="thanks-title" data-translate="thanks-title">¡Mensaje Enviado!</h1>
+            
+            <p class="thanks-message" data-translate="thanks-message">
+                Gracias por contactarnos. Tu mensaje ha sido enviado exitosamente y lo hemos recibido correctamente.
+            </p>
+
+            <div class="details-box">
+                <h3 data-translate="thanks-details-title">¿Qué sigue ahora?</h3>
+                <p data-translate="thanks-details-1">📱 Tu mensaje se envió directamente a nuestro WhatsApp</p>
+                <p data-translate="thanks-details-2">⏰ Te responderemos en menos de 24 horas</p>
+                <p data-translate="thanks-details-3">💬 Puedes contactarnos directamente si prefieres</p>
+            </div>
+
+            <div class="action-buttons">
+                <a href="../index.html" class="btn-home">
+                    <span data-translate="thanks-btn-home">🏠 Volver al Inicio</span>
+                </a>
+            </div>
+
+            <div class="contact-links">
+                <a href="https://wa.me/5492916454112" class="contact-link" target="_blank">
+                    <span data-translate="thanks-whatsapp">📱 WhatsApp</span>
+                </a>
+                <a href="mailto:vgwebstudio1@gmail.com" class="contact-link">
+                    <span data-translate="thanks-email">📧 Email</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <h3>VGWebStudio</h3>
+                    </div>
+                    <p data-i18n="footer.tagline">Creando experiencias digitales excepcionales desde 2025</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/vgwebstudio/" class="social-link" target="_blank"
+                            rel="noopener noreferrer">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://github.com/VGWebStudio2025?tab=repositories" class="social-link"
+                            target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.services.title">Servicios</h4>
+                    <ul>
+                        <li><a href="../index.html#proyectos" data-i18n="footer.services.web">Diseño Web</a></li>
+                        <li><a href="../index.html#proyectos" data-i18n="footer.services.dev">Desarrollo Frontend</a></li>
+                        <li><a href="../index.html#proyectos" data-i18n="footer.services.ecommerce">E-commerce</a></li>
+                        <li><a href="../index.html#proyectos" data-i18n="footer.services.seo">Optimización SEO</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 data-i18n="footer.contact.title">Contacto</h4>
+                    <ul>
+                        <li>vgwebstudio1@gmail.com</li>
+                        <li>+54 9 291 645 4112</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-i18n="footer.copyright">&copy; 2025 VGWebStudio. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
+    <script>
+        // Sistema de idiomas
+        let currentLanguage = 'es';
+
+        const translations = {
+            es: {
+                'page-title': '¡Gracias por contactarnos! - VGWebStudio',
+                'nav.home': 'Inicio',
+                'nav.about': 'Nosotros', 
+                'nav.projects': 'Proyectos',
+                'nav.contact': 'Contacto',
+                'thanks-title': '¡Mensaje Enviado!',
+                'thanks-message': 'Gracias por contactarnos. Tu mensaje ha sido enviado exitosamente y lo hemos recibido correctamente.',
+                'thanks-details-title': '¿Qué sigue ahora?',
+                'thanks-details-1': '📱 Tu mensaje se envió directamente a nuestro WhatsApp',
+                'thanks-details-2': '⏰ Te responderemos en menos de 24 horas',
+                'thanks-details-3': '💬 Puedes contactarnos directamente si prefieres',
+                'thanks-btn-home': '🏠 Volver al Inicio',
+                'thanks-whatsapp': '📱 WhatsApp',
+                'thanks-email': '📧 Email',
+                'footer.tagline': 'Creando experiencias digitales excepcionales desde 2025',
+                'footer.services.title': 'Servicios',
+                'footer.services.web': 'Diseño Web',
+                'footer.services.dev': 'Desarrollo Frontend',
+                'footer.services.ecommerce': 'E-commerce',
+                'footer.services.seo': 'Optimización SEO',
+                'footer.contact.title': 'Contacto',
+                'footer.copyright': '© 2025 VGWebStudio. Todos los derechos reservados.'
+            },
+            en: {
+                'page-title': 'Thank you for contacting us! - VGWebStudio',
+                'nav.home': 'Home',
+                'nav.about': 'About',
+                'nav.projects': 'Projects', 
+                'nav.contact': 'Contact',
+                'thanks-title': 'Message Sent!',
+                'thanks-message': 'Thank you for contacting us. Your message has been sent successfully and we have received it correctly.',
+                'thanks-details-title': 'What happens next?',
+                'thanks-details-1': '📱 Your message was sent directly to our WhatsApp',
+                'thanks-details-2': '⏰ We will respond within 24 hours',
+                'thanks-details-3': '💬 You can contact us directly if you prefer',
+                'thanks-btn-home': '🏠 Back to Home',
+                'thanks-whatsapp': '📱 WhatsApp',
+                'thanks-email': '📧 Email',
+                'footer.tagline': 'Creating exceptional digital experiences since 2025',
+                'footer.services.title': 'Services',
+                'footer.services.web': 'Web Design',
+                'footer.services.dev': 'Frontend Development',
+                'footer.services.ecommerce': 'E-commerce',
+                'footer.services.seo': 'SEO Optimization',
+                'footer.contact.title': 'Contact',
+                'footer.copyright': '© 2025 VGWebStudio. All rights reserved.'
+            }
+        };
+
+        // Funciones de idioma
+        function updateTexts(language) {
+            // Actualizar elementos con data-translate (para compatibilidad)
+            const elementsTranslate = document.querySelectorAll('[data-translate]');
+            elementsTranslate.forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[language] && translations[language][key]) {
+                    element.textContent = translations[language][key];
+                }
+            });
+            
+            // Actualizar elementos con data-i18n (nuevo sistema)
+            const elementsI18n = document.querySelectorAll('[data-i18n]');
+            elementsI18n.forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[language] && translations[language][key]) {
+                    element.textContent = translations[language][key];
+                }
+            });
+            
+            // Actualizar título de la página
+            document.title = translations[language]['page-title'];
+        }
+        
+        // Función para obtener parámetros de la URL
+        function getURLParameter(name) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+
+        function updateLanguageButton(language) {
+            const flagIcon = document.querySelector('.flag-icon');
+            const langText = document.querySelector('.lang-text');
+            
+            if (flagIcon && langText) {
+                if (language === 'es') {
+                    flagIcon.textContent = '🇪🇸';
+                    langText.textContent = 'ES';
+                } else {
+                    flagIcon.textContent = '🇺🇸';
+                    langText.textContent = 'EN';
+                }
+            }
+        }
+
+        function switchLanguage() {
+            currentLanguage = currentLanguage === 'es' ? 'en' : 'es';
+            updateTexts(currentLanguage);
+            updateLanguageButton(currentLanguage);
+            localStorage.setItem('preferredLanguage', currentLanguage);
+        }
+
+        function initializeLanguage() {
+            // 1. Prioridad máxima: idioma pasado por URL
+            const urlLanguage = getURLParameter('lang');
+            
+            // 2. Prioridad media: idioma guardado en localStorage
+            const savedLanguage = localStorage.getItem('preferredLanguage');
+            
+            // 3. Prioridad baja: idioma del navegador
+            const browserLanguage = navigator.language.startsWith('es') ? 'es' : 'en';
+            
+            // Decidir qué idioma usar
+            if (urlLanguage && (urlLanguage === 'es' || urlLanguage === 'en')) {
+                currentLanguage = urlLanguage;
+                console.log(`🌍 Idioma configurado desde URL: ${currentLanguage}`);
+                // Guardar en localStorage para futuras visitas
+                localStorage.setItem('preferredLanguage', currentLanguage);
+            } else {
+                currentLanguage = savedLanguage || browserLanguage;
+                console.log(`🌍 Idioma configurado desde ${savedLanguage ? 'localStorage' : 'navegador'}: ${currentLanguage}`);
+            }
+            
+            updateTexts(currentLanguage);
+            updateLanguageButton(currentLanguage);
+        }
+
+        // Toggle de navegación móvil
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }));
+        }
+
+        // Event listener para el botón de idioma
+        const langToggle = document.getElementById('langToggle');
+        if (langToggle) {
+            langToggle.addEventListener('click', switchLanguage);
+        }
+
+        // Inicializar cuando carga la página
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeLanguage();
+        });
+    </script>
+</body>
+
+</html> 

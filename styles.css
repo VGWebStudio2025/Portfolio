@@ -216,6 +216,112 @@ body {
 }
 
 /* =================================================================
+    BOTÓN DE CAMBIO DE IDIOMA
+================================================================= */
+.language-switcher {
+    display: flex;
+    align-items: center;
+    margin-left: var(--spacing-4);
+}
+
+.lang-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: var(--white);
+    border: none;
+    padding: var(--spacing-2) var(--spacing-3);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    min-width: 60px;
+    height: 36px;
+    box-shadow: var(--shadow-sm);
+}
+
+.lang-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.lang-btn:hover::before {
+    left: 100%;
+}
+
+.lang-btn:hover {
+    box-shadow: var(--shadow-md);
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+}
+
+.lang-btn:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
+}
+
+.flag-icon {
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.25s ease;
+}
+
+.lang-text {
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.25s ease;
+}
+
+/* Animación para el cambio de idioma */
+.lang-switching {
+    animation: langSwitchProfessional 0.4s ease-in-out;
+}
+
+@keyframes langSwitchProfessional {
+    0% { 
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+    50% { 
+        opacity: 0.7;
+        transform: translateY(-2px) scale(0.98);
+    }
+    100% { 
+        opacity: 1;
+        transform: translateY(0px) scale(1);
+    }
+}
+
+/* Efecto adicional para el contenido del botón */
+.lang-switching .flag-icon,
+.lang-switching .lang-text {
+    animation: langContentFade 0.4s ease-in-out;
+}
+
+@keyframes langContentFade {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* =================================================================
     HERO SECTION
 ================================================================= */
 .hero {
@@ -306,7 +412,6 @@ body {
     margin-bottom: var(--spacing-6);
     color: var(--white);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out;
 }
 
 .highlight {
@@ -324,14 +429,12 @@ body {
     margin-bottom: var(--spacing-8);
     line-height: 1.7;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    animation: fadeInUp 1s ease-out 0.3s both;
 }
 
 .hero-buttons {
     display: flex;
     gap: var(--spacing-4);
     flex-wrap: wrap;
-    animation: fadeInUp 1s ease-out 0.6s both;
 }
 
 /* Visual del hero (tarjeta animada) */
@@ -506,7 +609,7 @@ body {
 }
 
 .btn-primary:hover {
-    transform: translateY(-2px) scale(1.02);
+    transform: scale(1.02);
     box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
 }
 
@@ -537,17 +640,16 @@ body {
 }
 
 .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--primary-color);
     color: var(--white);
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
-    border-color: rgba(255, 255, 255, 1);
 }
 
 .form-buttons {
     display: flex;
     gap: var(--spacing-4);
+    justify-content: center;
     flex-wrap: wrap;
+    margin-top: var(--spacing-6);
 }
 
 /* =================================================================
@@ -563,9 +665,6 @@ section {
 .section-header {
     text-align: center;
     margin-bottom: var(--spacing-16);
-    opacity: 0;
-    transform: translateY(30px);
-    animation: fadeInUp 0.8s ease forwards;
 }
 
 .section-title {
@@ -628,7 +727,6 @@ section {
 }
 
 .feature:hover {
-    transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
@@ -649,7 +747,7 @@ section {
 }
 
 .feature:hover .feature-icon {
-    transform: translateY(-2px) scale(1.05);
+    transform: scale(1.05);
     background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     box-shadow:
         0 15px 35px rgba(102, 126, 234, 0.4),
@@ -725,7 +823,7 @@ section {
 .filter-btn.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: var(--white);
-    transform: translateY(-1px) scale(1.02);
+    transform: scale(1.02);
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
@@ -746,7 +844,6 @@ section {
 }
 
 .portfolio-item:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
 }
 
@@ -993,15 +1090,75 @@ section {
 }
 
 .form-group input:focus+label,
-.form-group input:valid+label,
 .form-group input:not(:placeholder-shown)+label,
 .form-group textarea:focus+label,
-.form-group textarea:valid+label {
-    top: -8px;
+.form-group textarea:not(:placeholder-shown)+label {
+    top: -10px;
     left: 12px;
+    font-size: var(--font-size-xs);
     color: var(--primary-color);
-    font-size: var(--font-size-sm);
-    font-weight: 500;
+    background: var(--white);
+    padding: 0 var(--spacing-2);
+}
+
+/* =================================================================
+    VALIDACIÓN PERSONALIZADA
+================================================================= */
+.validation-error {
+    color: var(--error);
+    font-size: var(--font-size-xs);
+    margin-top: var(--spacing-1);
+    margin-left: var(--spacing-3);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+    animation: errorSlideIn 0.3s ease;
+}
+
+.validation-error::before {
+    content: '⚠️';
+    font-size: 12px;
+}
+
+.form-group input.error,
+.form-group textarea.error {
+    border-color: var(--error);
+    background-color: rgba(239, 68, 68, 0.05);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-group input.error:focus,
+.form-group textarea.error:focus {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.form-group input.error + label,
+.form-group textarea.error + label {
+    color: var(--error);
+}
+
+/* Animación para errores */
+@keyframes errorSlideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estado de éxito */
+.form-group input:valid:not(.error),
+.form-group textarea:valid:not(.error) {
+    border-color: var(--accent);
+}
+
+.form-group input:valid:not(.error) + label,
+.form-group textarea:valid:not(.error) + label {
+    color: var(--accent);
 }
 
 /* =================================================================
@@ -1108,7 +1265,7 @@ section {
 .social-link:hover {
     background: var(--primary-color);
     color: var(--white);
-    transform: translateY(-1px);
+
 }
 
 .footer-bottom {
@@ -1350,6 +1507,23 @@ section {
         transform: translateY(-8px) rotate(-45deg);
     }
 
+    /* Botón de idioma en móvil */
+    .language-switcher {
+        margin-left: var(--spacing-2);
+    }
+
+    .lang-btn {
+        min-width: 50px;
+        height: 32px;
+        padding: var(--spacing-1) var(--spacing-2);
+    }
+
+    .flag-icon {
+        width: 16px;
+        height: 16px;
+        font-size: 1em;
+    }
+
     /* Hero section responsive */
     .hero-container {
         grid-template-columns: 1fr;
@@ -1458,70 +1632,110 @@ section {
 
     .form-buttons {
         flex-direction: column;
-        align-items: center;
+        gap: var(--spacing-3);
     }
 
+    .btn-whatsapp,
     .form-buttons .btn {
         width: 100%;
-        max-width: 280px;
+        justify-content: center;
     }
 }
 
 /* =================================================================
     ANIMACIONES PARA ELEMENTOS ESPECÍFICOS
 ================================================================= */
-@media (prefers-reduced-motion: no-preference) {
+/* =================================================================
+    ANIMACIONES CONTROLADAS POR INTERSECTION OBSERVER
+================================================================= */
 
+@media (prefers-reduced-motion: no-preference) {
+    /* Estado inicial de elementos que van a animarse */
     .portfolio-item,
     .feature,
-    .contact-method {
+    .contact-method,
+    .hero-title,
+    .hero-description,
+    .hero-buttons,
+    .section-header {
         opacity: 0;
         transform: translateY(30px);
-        animation: fadeInUp 0.6s ease forwards;
+        transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
-    .portfolio-item:nth-child(1) {
-        animation-delay: 0.1s;
+    /* Clase que se agrega cuando el elemento entra al viewport */
+    .portfolio-item.animate-in,
+    .feature.animate-in,
+    .contact-method.animate-in,
+    .hero-title.animate-in,
+    .hero-description.animate-in,
+    .hero-buttons.animate-in,
+    .section-header.animate-in {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    .portfolio-item:nth-child(2) {
-        animation-delay: 0.2s;
+    /* Delays escalonados cuando se activa la animación */
+    .portfolio-item.animate-in:nth-child(1) {
+        transition-delay: 0.1s;
     }
 
-    .portfolio-item:nth-child(3) {
-        animation-delay: 0.3s;
+    .portfolio-item.animate-in:nth-child(2) {
+        transition-delay: 0.2s;
     }
 
-    .portfolio-item:nth-child(4) {
-        animation-delay: 0.4s;
+    .portfolio-item.animate-in:nth-child(3) {
+        transition-delay: 0.3s;
     }
 
-    .feature:nth-child(1) {
-        animation-delay: 0.1s;
+    .portfolio-item.animate-in:nth-child(4) {
+        transition-delay: 0.4s;
     }
 
-    .feature:nth-child(2) {
-        animation-delay: 0.2s;
+    .feature.animate-in:nth-child(1) {
+        transition-delay: 0.1s;
     }
 
-    .feature:nth-child(3) {
-        animation-delay: 0.3s;
+    .feature.animate-in:nth-child(2) {
+        transition-delay: 0.2s;
     }
 
-    .feature:nth-child(4) {
-        animation-delay: 0.4s;
+    .feature.animate-in:nth-child(3) {
+        transition-delay: 0.3s;
     }
 
-    .contact-method:nth-child(1) {
-        animation-delay: 0.1s;
+    .feature.animate-in:nth-child(4) {
+        transition-delay: 0.4s;
     }
 
-    .contact-method:nth-child(2) {
-        animation-delay: 0.2s;
+    .contact-method.animate-in:nth-child(1) {
+        transition-delay: 0.1s;
     }
 
-    .contact-method:nth-child(3) {
-        animation-delay: 0.3s;
+    .contact-method.animate-in:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .contact-method.animate-in:nth-child(3) {
+        transition-delay: 0.3s;
+    }
+
+    /* Delays para elementos del hero - animación secuencial */
+    .hero-title.animate-in {
+        transition-delay: 0.2s;
+    }
+
+    .hero-description.animate-in {
+        transition-delay: 0.4s;
+    }
+
+    .hero-buttons.animate-in {
+        transition-delay: 0.6s;
+    }
+
+    /* Section headers sin delay - aparecen cuando entran al viewport */
+    .section-header.animate-in {
+        transition-delay: 0.1s;
     }
 }
 
@@ -1551,3 +1765,199 @@ button {
     position: relative;
     z-index: 5; /* Encima del fondo fijo */
 }
+
+/* =================================================================
+    PÁGINA DE AGRADECIMIENTO
+================================================================= */
+
+.thank-you-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 0 40px;
+    position: relative;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    overflow: hidden;
+}
+
+.thank-you-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 60px 40px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.thank-you-icon {
+    font-size: 4rem;
+    color: #28a745;
+    margin-bottom: 30px;
+    animation: checkmark 0.8s ease-in-out;
+}
+
+@keyframes checkmark {
+    0% {
+        transform: scale(0) rotate(180deg);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2) rotate(360deg);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+.thank-you-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.thank-you-message {
+    font-size: 1.1rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.thank-you-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+.detail-item i {
+    color: #667eea;
+    font-size: 1.2rem;
+    width: 20px;
+}
+
+.thank-you-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.thank-you-contact {
+    padding-top: 30px;
+    border-top: 1px solid #eee;
+}
+
+.thank-you-contact p {
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.contact-options {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.contact-option:hover {
+
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.contact-option i {
+    font-size: 1.1rem;
+}
+
+/* Responsive para página de agradecimiento */
+@media (max-width: 768px) {
+    .thank-you-content {
+        padding: 40px 30px;
+        margin: 0 20px;
+    }
+    
+    .thank-you-title {
+        font-size: 2rem;
+    }
+    
+    .thank-you-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .thank-you-buttons .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .contact-options {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-option {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .thank-you-page {
+        padding: 100px 0 20px;
+    }
+    
+    .thank-you-content {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    
+    .thank-you-icon {
+        font-size: 3rem;
+    }
+    
+    .thank-you-title {
+        font-size: 1.8rem;
+    }
+    
+    .detail-item {
+        font-size: 0.9rem;
+    }
+}
+

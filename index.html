@@ -26,18 +26,25 @@
                 </div>
                 <ul class="nav-menu">
                     <li class="nav-item">
-                        <a href="#inicio" class="nav-link">Inicio</a>
+                        <a href="#inicio" class="nav-link" data-i18n="nav.home">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#nosotros" class="nav-link">Nosotros</a>
+                        <a href="#nosotros" class="nav-link" data-i18n="nav.about">Nosotros</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#proyectos" class="nav-link">Proyectos</a>
+                        <a href="#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#contacto" class="nav-link">Contacto</a>
+                        <a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
                     </li>
                 </ul>
+                <!-- Botón de cambio de idioma -->
+                <div class="language-switcher">
+                    <button class="lang-btn" id="langToggle" title="Cambiar idioma">
+                        <span class="flag-icon">🇪🇸</span>
+                        <span class="lang-text">ES</span>
+                    </button>
+                </div>
                 <div class="nav-toggle">
                     <span class="bar"></span>
                     <span class="bar"></span>
@@ -53,16 +60,16 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1 class="hero-title">
-                    Creamos experiencias digitales
-                    <span class="highlight">excepcionales</span>
+                    <span data-i18n="hero.title.part1">Creamos experiencias digitales</span>
+                    <span class="highlight" data-i18n="hero.title.highlight">excepcionales</span>
                 </h1>
-                <p class="hero-description">
+                <p class="hero-description" data-i18n="hero.description">
                     Somos VGWebStudio, un estudio de diseño y desarrollo web que transforma ideas en sitios web
                     profesionales, modernos y funcionales.
                 </p>
                 <div class="hero-buttons">
-                    <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
-                    <a href="#contacto" class="btn btn-outline">Contactar</a>
+                    <a href="#proyectos" class="btn btn-primary" data-i18n="hero.buttons.projects">Ver Proyectos</a>
+                    <a href="#contacto" class="btn btn-outline" data-i18n="hero.buttons.contact">Contactar</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -89,19 +96,19 @@
     <section id="nosotros" class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Sobre Nosotros</h2>
-                <p class="section-subtitle">Conoce quiénes somos y qué nos motiva</p>
+                <h2 class="section-title" data-i18n="about.title">Sobre Nosotros</h2>
+                <p class="section-subtitle" data-i18n="about.subtitle">Conoce quiénes somos y qué nos motiva</p>
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>VGWebStudio nace de la pasión por el diseño y la tecnología</h3>
-                    <p>
+                    <h3 data-i18n="about.heading">VGWebStudio nace de la pasión por el diseño y la tecnología</h3>
+                    <p data-i18n="about.text1">
                         Somos un estudio emergente especializado en el diseño y desarrollo de sitios web que combinan
                         estética moderna con funcionalidad excepcional. Nuestro enfoque se centra en entender las
                         necesidades únicas de cada cliente para crear soluciones digitales que realmente marquen la
                         diferencia.
                     </p>
-                    <p>
+                    <p data-i18n="about.text2">
                         Aunque somos nuevos en el mercado, nuestro equipo cuenta con la experiencia y creatividad
                         necesarias para llevar tu presencia digital al siguiente nivel. Creemos que cada proyecto es una
                         oportunidad de innovar y superar expectativas.
@@ -112,29 +119,29 @@
                         <div class="feature-icon">
                             <i class="fas fa-palette"></i>
                         </div>
-                        <h4>Diseño Creativo</h4>
-                        <p>Diseños únicos y modernos que reflejan la identidad de tu marca</p>
+                        <h4 data-i18n="features.design.title">Diseño Creativo</h4>
+                        <p data-i18n="features.design.desc">Diseños únicos y modernos que reflejan la identidad de tu marca</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <h4>Desarrollo Técnico</h4>
-                        <p>Código limpio, optimizado y siguiendo las mejores prácticas</p>
+                        <h4 data-i18n="features.dev.title">Desarrollo Técnico</h4>
+                        <p data-i18n="features.dev.desc">Código limpio, optimizado y siguiendo las mejores prácticas</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">
                             <i class="fas fa-mobile-alt"></i>
                         </div>
-                        <h4>Responsive Design</h4>
-                        <p>Sitios web que se adaptan perfectamente a cualquier dispositivo</p>
+                        <h4 data-i18n="features.responsive.title">Responsive Design</h4>
+                        <p data-i18n="features.responsive.desc">Sitios web que se adaptan perfectamente a cualquier dispositivo</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">
                             <i class="fas fa-rocket"></i>
                         </div>
-                        <h4>Optimización</h4>
-                        <p>Velocidad de carga rápida y optimización para motores de búsqueda</p>
+                        <h4 data-i18n="features.optimization.title">Optimización</h4>
+                        <p data-i18n="features.optimization.desc">Velocidad de carga rápida y optimización para motores de búsqueda</p>
                     </div>
                 </div>
             </div>
@@ -145,14 +152,14 @@
     <section id="proyectos" class="portfolio">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Nuestros Proyectos</h2>
-                <p class="section-subtitle">Algunos de los trabajos que hemos realizado</p>
+                <h2 class="section-title" data-i18n="portfolio.title">Nuestros Proyectos</h2>
+                <p class="section-subtitle" data-i18n="portfolio.subtitle">Algunos de los trabajos que hemos realizado</p>
             </div>
             <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="web">Sitios Web</button>
-                <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
-                <button class="filter-btn" data-filter="landing">Landing Pages</button>
+                <button class="filter-btn active" data-filter="all" data-i18n="portfolio.filter.all">Todos</button>
+                <button class="filter-btn" data-filter="web" data-i18n="portfolio.filter.web">Sitios Web</button>
+                <button class="filter-btn" data-filter="ecommerce" data-i18n="portfolio.filter.ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="landing" data-i18n="portfolio.filter.landing">Landing Pages</button>
             </div>
             <div class="portfolio-grid">
                 <!-- Proyecto Ejemplo 1 -->
@@ -160,12 +167,12 @@
                     <div class="portfolio-image">
                         <div class="placeholder-image">
                             <i class="fas fa-image"></i>
-                            <p>Proyecto Web Corporativo</p>
+                            <p data-i18n="portfolio.project1.placeholder">Proyecto Web Corporativo</p>
                         </div>
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
-                                <h4>Sitio Web Corporativo</h4>
-                                <p>Desarrollo completo para empresa de servicios</p>
+                                <h4 data-i18n="portfolio.project1.title">Sitio Web Corporativo</h4>
+                                <p data-i18n="portfolio.project1.desc">Desarrollo completo para empresa de servicios</p>
                                 <div class="portfolio-links">
                                     <a href="#" class="portfolio-link">
                                         <i class="fas fa-external-link-alt"></i>
@@ -184,12 +191,12 @@
                     <div class="portfolio-image">
                         <div class="placeholder-image">
                             <i class="fas fa-shopping-cart"></i>
-                            <p>Tienda Online</p>
+                            <p data-i18n="portfolio.project2.placeholder">Tienda Online</p>
                         </div>
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
-                                <h4>E-commerce Moderno</h4>
-                                <p>Tienda online con sistema de pagos integrado</p>
+                                <h4 data-i18n="portfolio.project2.title">E-commerce Moderno</h4>
+                                <p data-i18n="portfolio.project2.desc">Tienda online con sistema de pagos integrado</p>
                                 <div class="portfolio-links">
                                     <a href="#" class="portfolio-link">
                                         <i class="fas fa-external-link-alt"></i>
@@ -208,12 +215,12 @@
                     <div class="portfolio-image">
                         <div class="placeholder-image">
                             <i class="fas fa-rocket"></i>
-                            <p>Landing Page</p>
+                            <p data-i18n="portfolio.project3.placeholder">Landing Page</p>
                         </div>
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
-                                <h4>Landing Page Productiva</h4>
-                                <p>Página de aterrizaje optimizada para conversiones</p>
+                                <h4 data-i18n="portfolio.project3.title">Landing Page Productiva</h4>
+                                <p data-i18n="portfolio.project3.desc">Página de aterrizaje optimizada para conversiones</p>
                                 <div class="portfolio-links">
                                     <a href="#" class="portfolio-link">
                                         <i class="fas fa-external-link-alt"></i>
@@ -232,12 +239,12 @@
                     <div class="portfolio-image">
                         <div class="placeholder-image">
                             <i class="fas fa-laptop-code"></i>
-                            <p>Portfolio Personal</p>
+                            <p data-i18n="portfolio.project4.placeholder">Portfolio Personal</p>
                         </div>
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
-                                <h4>Portfolio Profesional</h4>
-                                <p>Sitio web personal para profesional creativo</p>
+                                <h4 data-i18n="portfolio.project4.title">Portfolio Profesional</h4>
+                                <p data-i18n="portfolio.project4.desc">Sitio web personal para profesional creativo</p>
                                 <div class="portfolio-links">
                                     <a href="#" class="portfolio-link">
                                         <i class="fas fa-external-link-alt"></i>
@@ -258,13 +265,13 @@
     <section id="contacto" class="contact">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">¿Listo para tu próximo proyecto?</h2>
-                <p class="section-subtitle">Contáctanos y hagamos realidad tu visión digital</p>
+                <h2 class="section-title" data-i18n="contact.title">¿Listo para tu próximo proyecto?</h2>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Contáctanos y hagamos realidad tu visión digital</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
-                    <h3>Hablemos de tu proyecto</h3>
-                    <p>
+                    <h3 data-i18n="contact.heading">Hablemos de tu proyecto</h3>
+                    <p data-i18n="contact.text">
                         Estamos aquí para escuchar tus ideas y convertirlas en una presencia digital excepcional.
                         No importa si tienes un concepto claro o solo una idea inicial, trabajaremos contigo para
                         desarrollar la solución perfecta.
@@ -275,7 +282,7 @@
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div class="contact-details">
-                                <h4>Email</h4>
+                                <h4 data-i18n="contact.email.label">Email</h4>
                                 <p>vgwebstudio1@gmail.com</p>
                             </div>
                         </div>
@@ -284,7 +291,7 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="contact-details">
-                                <h4>Teléfono</h4>
+                                <h4 data-i18n="contact.phone.label">Teléfono</h4>
                                 <p>+54 9 291 645 4112</p>
                             </div>
                         </div>
@@ -292,31 +299,33 @@
                     </div>
                 </div>
                 <div class="contact-form-container">
-                    <form class="contact-form" action="https://formspree.io/f/mqabowje" method="POST">
+                    <form class="contact-form" action="https://api.callmebot.com/whatsapp.php" method="GET" novalidate>
                         <div class="form-group">
                             <input type="text" id="name" name="name" required>
-                            <label for="name">Nombre completo</label>
+                            <label for="name" data-i18n="contact.form.name">Nombre completo</label>
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" name="email" required>
-                            <label for="email">Correo electrónico</label>
+                            <label for="email" data-i18n="contact.form.email">Correo electrónico</label>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="phone" name="phone" placeholder="+54 9 291 645 4112">
-                            <label for="phone">Teléfono / WhatsApp (opcional)</label>
+                            <input type="tel" id="userPhone" name="userPhone" placeholder="+54 9 291 645 4112">
+                            <label for="userPhone" data-i18n="contact.form.phone">Teléfono / WhatsApp (opcional)</label>
                         </div>
                         <div class="form-group">
                             <input type="text" id="subject" name="subject" required>
-                            <label for="subject">Asunto</label>
+                            <label for="subject" data-i18n="contact.form.subject">Asunto</label>
                         </div>
                         <div class="form-group">
                             <textarea id="message" name="message" required></textarea>
-                            <label for="message">Mensaje</label>
+                            <label for="message" data-i18n="contact.form.message">Mensaje</label>
                         </div>
-                        <input type="hidden" name="_subject" value="Nuevo mensaje desde VGWebStudio Portfolio">
-                        <input type="hidden" name="_next" value="https://vgwebstudio2025.github.io/Portfolio/?sent=true">
+                        <!-- Campos requeridos para Call Me Bot API -->
+                        <input type="hidden" name="phone" value="5492916430305">
+                        <input type="hidden" name="apikey" value="2296460">
+                        <input type="hidden" name="text" id="callmebotMessage" value="">
                         <div class="form-buttons">
-                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                            <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Enviar Mensaje</button>
                         </div>
                     </form>
                 </div>
@@ -332,7 +341,7 @@
                     <div class="footer-brand">
                         <h3>VGWebStudio</h3>
                     </div>
-                    <p>Creando experiencias digitales excepcionales desde 2025</p>
+                    <p data-i18n="footer.tagline">Creando experiencias digitales excepcionales desde 2025</p>
                     <div class="social-links">
                         <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-linkedin"></i>
@@ -348,16 +357,16 @@
                     </div>
                 </div>
                 <div class="footer-section">
-                    <h4>Servicios</h4>
+                    <h4 data-i18n="footer.services.title">Servicios</h4>
                     <ul>
-                        <li><a href="#">Diseño Web</a></li>
-                        <li><a href="#">Desarrollo Frontend</a></li>
-                        <li><a href="#">E-commerce</a></li>
-                        <li><a href="#">Optimización SEO</a></li>
+                        <li><a href="#" data-i18n="footer.services.web">Diseño Web</a></li>
+                        <li><a href="#" data-i18n="footer.services.dev">Desarrollo Frontend</a></li>
+                        <li><a href="#" data-i18n="footer.services.ecommerce">E-commerce</a></li>
+                        <li><a href="#" data-i18n="footer.services.seo">Optimización SEO</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <h4>Contacto</h4>
+                    <h4 data-i18n="footer.contact.title">Contacto</h4>
                     <ul>
                         <li>vgwebstudio1@gmail.com</li>
                         <li>+54 9 291 645 4112</li>
@@ -365,7 +374,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 VGWebStudio. Todos los derechos reservados.</p>
+                <p data-i18n="footer.copyright">&copy; 2025 VGWebStudio. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
