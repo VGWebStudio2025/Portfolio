@@ -159,36 +159,7 @@ body {
     display: none;
 }
 
-/* Placeholder estático para navbar */
-.logo-placeholder {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-    transition: var(--transition);
-    cursor: pointer;
-    flex-shrink: 0;
-}
-
-.logo-placeholder:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
-}
-
-/* Placeholder para footer */
-.logo-placeholder-footer {
-    width: 50px;
-    height: 50px;
-    font-size: 20px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-}
+/* Placeholders eliminados - el usuario agregará logo real más adelante */
 
 .nav-logo h2 {
     font-size: var(--font-size-xl);
@@ -273,7 +244,7 @@ body {
         radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
-    animation: gradientShift 8s ease-in-out infinite;
+    animation: gradientShift 8s ease-in-out infinite, backgroundBounce 12s ease-in-out infinite;
     z-index: -1; /* Detrás de todo el contenido */
 }
 
@@ -287,6 +258,7 @@ body {
     overflow: hidden;
     z-index: 0; /* Detrás del contenido pero encima del ::before */
     pointer-events: none; /* Para que no interfiera con clics */
+    animation: backgroundBounce 12s ease-in-out infinite;
 }
 
 .particles-bg::before,
@@ -1318,6 +1290,25 @@ section {
     }
 }
 
+/* Animación de rebote suave para el fondo */
+@keyframes backgroundBounce {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+    }
+    
+    25% {
+        transform: translateY(-8px) scale(1.005);
+    }
+    
+    50% {
+        transform: translateY(0px) scale(1);
+    }
+    
+    75% {
+        transform: translateY(5px) scale(0.998);
+    }
+}
+
 /* =================================================================
     MEDIA QUERIES - RESPONSIVE DESIGN
 ================================================================= */
@@ -1555,129 +1546,8 @@ button {
     transition: var(--transition);
 }
 
-/* =================================================================
-    OPTIMIZACIONES DE PERFORMANCE 
-================================================================= */
-
-/* GPU Acceleration para elementos animados */
-.hero-card,
-.portfolio-overlay,
-.portfolio-link,
-.filter-btn,
-.feature,
-.portfolio-item {
-    will-change: transform;
-    backface-visibility: hidden;
-    perspective: 1000px;
-}
-
-/* Anti-jittering para elementos con hover */
-.btn,
-.feature,
-.portfolio-item,
-.filter-btn,
-.portfolio-link,
-.social-link {
-    /* Estabiliza el hover en los bordes */
-    transform-origin: center center;
-    position: relative;
-    z-index: 1;
-    /* Estabilización 3D para prevenir jittering */
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-}
-
-/* Solución específica para jittering del borde inferior */
-.feature::after,
-.portfolio-item::after,
-.filter-btn::after {
-    content: '';
-    position: absolute;
-    bottom: -8px; /* Extiende el área de hover hacia abajo */
-    left: 0;
-    width: 100%;
-    height: 8px; /* Área invisible que mantiene el hover activo */
-    background: transparent;
-    pointer-events: auto;
-    z-index: -1;
-}
-
-/* Solución especial para botones que usan ::before */
-.btn-primary,
-.btn-outline {
-    /* Padding invisible inferior para evitar jittering */
-    padding-bottom: calc(var(--spacing-3) + 4px);
-    margin-bottom: -4px;
-}
-
-/* Área extendida más grande para portfolio items */
-.portfolio-item::after {
-    bottom: -12px;
-    height: 12px;
-}
-
-/* Área extendida para social links */
-.social-link::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: 6px;
-    background: transparent;
-    pointer-events: auto;
-    z-index: -1;
-}
-
-/* Área extendida para portfolio links */
-.portfolio-link::after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: -2px;
-    width: calc(100% + 4px);
-    height: 6px;
-    background: transparent;
-    pointer-events: auto;
-    z-index: -1;
-}
-
-/* Optimización de fonts loading */
-@font-face {
-    font-family: 'Inter';
-    font-display: swap;
-}
-
 /* Z-index adicional para footer */
 .footer {
     position: relative;
     z-index: 5; /* Encima del fondo fijo */
-}
-
-/* Reducir repaints en scroll */
-.header {
-    /* contain: layout style paint; - Comentado por compatibilidad */
-    transform: translateZ(0); /* Alternativa más compatible para GPU acceleration */
-}
-
-/* Critical rendering path optimization */
-.hero {
-    /* content-visibility: auto; - Comentado por compatibilidad */
-    /* contain-intrinsic-size: 100vh; - Comentado por compatibilidad */
-    transform: translateZ(0); /* Alternativa más compatible */
-}
-
-/* Optimización de animaciones */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-    }
-    
-    /* Excluir efectos específicos de botones que queremos mantener */
-    *:not(.btn-primary):not(.btn-outline)::before,
-    *:not(.btn-primary):not(.btn-outline)::after {
-        transition-duration: 0.01ms !important;
-    }
 }
