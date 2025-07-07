@@ -152,11 +152,48 @@ body {
     box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
-/* Ocultar imagen si falla la carga */
-.nav-logo-img:not([src]),
-.nav-logo-img[src=""],
+/* Manejo de errores de logo - Mostrar placeholder si falla */
+.nav-logo-img:not([src]), 
+.nav-logo-img[src=""], 
 .nav-logo-img:not([src*="."]) {
     display: none;
+}
+
+/* Optimización automática del logo */
+.nav-logo-img[src*="logo.png"] {
+    max-width: 40px;
+    max-height: 40px;
+    object-fit: contain;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    border-radius: 8px;
+    padding: 2px;
+}
+
+/* Placeholder dinámico creado por JavaScript */
+.logo-placeholder {
+    flex-shrink: 0;
+}
+
+/* Backup styling para cuando el logo no existe */
+.nav-logo::before {
+    content: "";
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    text-content: "VG";
+}
+
+/* Mostrar placeholder si la imagen falla */
+.nav-logo:has(.nav-logo-img[style*="display: none"])::before,
+.nav-logo:not(:has(.nav-logo-img))::before {
+    display: flex;
 }
 
 .nav-logo h2 {
@@ -1018,11 +1055,43 @@ section {
     box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
 }
 
-/* Ocultar imagen si falla la carga */
-.footer-logo-img:not([src]),
-.footer-logo-img[src=""],
+/* Manejo de errores de logo footer - Mostrar placeholder si falla */
+.footer-logo-img:not([src]), 
+.footer-logo-img[src=""], 
 .footer-logo-img:not([src*="."]) {
     display: none;
+}
+
+/* Optimización automática del logo footer */
+.footer-logo-img[src*="logo.png"] {
+    max-width: 50px;
+    max-height: 50px;
+    object-fit: contain;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    border-radius: 8px;
+    padding: 2px;
+}
+
+/* Backup styling para footer cuando el logo no existe */
+.footer-brand::before {
+    content: "VG";
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Mostrar placeholder en footer si la imagen falla */
+.footer-brand:has(.footer-logo-img[style*="display: none"])::before,
+.footer-brand:not(:has(.footer-logo-img))::before {
+    display: flex;
 }
 
 .footer-section h3 {

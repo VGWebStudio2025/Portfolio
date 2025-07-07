@@ -577,22 +577,91 @@
         // MANEJO DE LOGOS
         // ============================================
 
-        // Función para manejar errores de carga de logos
-        function handleLogoError(img) {
-            img.style.display = 'none';
-            console.log('⚠️ Logo no encontrado, ocultando elemento');
+            // Función para manejar errores de carga de logos
+    function handleLogoError(img) {
+        img.style.display = 'none';
+        console.log('⚠️ Logo no encontrado, usando fallback');
+        
+        // Crear placeholder si no existe
+        const parentContainer = img.closest('.nav-logo') || img.closest('.footer-brand');
+        if (parentContainer && !parentContainer.querySelector('.logo-placeholder')) {
+            const placeholder = document.createElement('div');
+            placeholder.className = 'logo-placeholder';
+            placeholder.textContent = 'VG';
+            placeholder.style.cssText = `
+                width: ${img.classList.contains('nav-logo-img') ? '40px' : '50px'};
+                height: ${img.classList.contains('nav-logo-img') ? '40px' : '50px'};
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-weight: bold;
+                font-size: ${img.classList.contains('nav-logo-img') ? '18px' : '20px'};
+                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+                transition: all 0.3s ease;
+                cursor: pointer;
+            `;
+            
+            // Insertar antes de la imagen
+            parentContainer.insertBefore(placeholder, img);
+            
+            // Agregar hover effect
+            placeholder.addEventListener('mouseenter', () => {
+                placeholder.style.transform = 'scale(1.05)';
+                placeholder.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
+            });
+            
+            placeholder.addEventListener('mouseleave', () => {
+                placeholder.style.transform = 'scale(1)';
+                placeholder.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
+            });
         }
+    }
 
-        // Configurar manejo de errores para logos (optimizado)
-        const logoImages = $$('.nav-logo-img, .footer-logo-img');
-        logoImages.forEach(img => {
-            img.addEventListener('error', () => handleLogoError(img));
-
-            // Verificar si la imagen ya falló al cargar
+            // Configurar manejo de errores para logos (optimizado)
+    const logoImages = $$('.nav-logo-img, .footer-logo-img');
+    logoImages.forEach(img => {
+        // Configurar timeout para imágenes que tardan mucho
+        const loadTimeout = setTimeout(() => {
             if (!img.complete || img.naturalHeight === 0) {
+                console.log('⏰ Logo tardó mucho en cargar, usando fallback');
                 handleLogoError(img);
             }
+        }, 3000); // 3 segundos de timeout
+        
+        img.addEventListener('load', () => {
+            clearTimeout(loadTimeout);
+            console.log('✅ Logo cargado correctamente');
         });
+        
+        img.addEventListener('error', () => {
+            clearTimeout(loadTimeout);
+            console.log('❌ Error al cargar logo');
+            handleLogoError(img);
+        });
+        
+        // Verificar inmediatamente si la imagen ya falló
+        if (img.complete && (img.naturalHeight === 0 || img.naturalWidth === 0)) {
+            handleLogoError(img);
+        }
+        
+        // Verificar si el archivo es demasiado grande
+        if (img.src && img.src.includes('logo.png')) {
+            fetch(img.src, { method: 'HEAD' })
+                .then(response => {
+                    const size = response.headers.get('content-length');
+                    if (size && parseInt(size) > 500000) { // Más de 500KB
+                        console.log('⚠️ Logo muy pesado (' + Math.round(size/1024) + 'KB), considera optimizarlo');
+                    }
+                })
+                .catch(() => {
+                    console.log('❌ No se pudo verificar el tamaño del logo');
+                    handleLogoError(img);
+                });
+        }
+    });
 
         // Función para crear favicon dinámico si no existe
         function createFallbackFavicon() {
