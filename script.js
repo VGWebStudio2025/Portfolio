@@ -573,141 +573,66 @@
             animationObserver.observe(el);
         });
 
-        // ============================================
-        // MANEJO DE LOGOS
-        // ============================================
+            // ============================================
+    // LOGO PLACEHOLDERS - Ya implementados en HTML
+    // ============================================
+    
+    // Los logos ahora usan placeholders estáticos "VG" con gradientes
+    // No necesitamos manejo complejo de errores de imágenes
+    console.log('✅ Logos usando placeholders optimizados');
 
-            // Función para manejar errores de carga de logos
-    function handleLogoError(img) {
-        img.style.display = 'none';
-        console.log('⚠️ Logo no encontrado, usando fallback');
-        
-        // Crear placeholder si no existe
-        const parentContainer = img.closest('.nav-logo') || img.closest('.footer-brand');
-        if (parentContainer && !parentContainer.querySelector('.logo-placeholder')) {
-            const placeholder = document.createElement('div');
-            placeholder.className = 'logo-placeholder';
-            placeholder.textContent = 'VG';
-            placeholder.style.cssText = `
-                width: ${img.classList.contains('nav-logo-img') ? '40px' : '50px'};
-                height: ${img.classList.contains('nav-logo-img') ? '40px' : '50px'};
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-weight: bold;
-                font-size: ${img.classList.contains('nav-logo-img') ? '18px' : '20px'};
-                box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-                transition: all 0.3s ease;
-                cursor: pointer;
-            `;
-            
-            // Insertar antes de la imagen
-            parentContainer.insertBefore(placeholder, img);
-            
-            // Agregar hover effect
-            placeholder.addEventListener('mouseenter', () => {
-                placeholder.style.transform = 'scale(1.05)';
-                placeholder.style.boxShadow = '0 6px 20px rgba(102, 126, 234, 0.4)';
-            });
-            
-            placeholder.addEventListener('mouseleave', () => {
-                placeholder.style.transform = 'scale(1)';
-                placeholder.style.boxShadow = '0 4px 15px rgba(102, 126, 234, 0.3)';
-            });
-        }
-    }
-
-            // Configurar manejo de errores para logos (optimizado)
-    const logoImages = $$('.nav-logo-img, .footer-logo-img');
-    logoImages.forEach(img => {
-        // Configurar timeout para imágenes que tardan mucho
-        const loadTimeout = setTimeout(() => {
-            if (!img.complete || img.naturalHeight === 0) {
-                console.log('⏰ Logo tardó mucho en cargar, usando fallback');
-                handleLogoError(img);
-            }
-        }, 3000); // 3 segundos de timeout
-        
-        img.addEventListener('load', () => {
-            clearTimeout(loadTimeout);
-            console.log('✅ Logo cargado correctamente');
-        });
-        
-        img.addEventListener('error', () => {
-            clearTimeout(loadTimeout);
-            console.log('❌ Error al cargar logo');
-            handleLogoError(img);
-        });
-        
-        // Verificar inmediatamente si la imagen ya falló
-        if (img.complete && (img.naturalHeight === 0 || img.naturalWidth === 0)) {
-            handleLogoError(img);
-        }
-        
-        // Verificar si el archivo es demasiado grande
-        if (img.src && img.src.includes('logo.png')) {
-            fetch(img.src, { method: 'HEAD' })
-                .then(response => {
-                    const size = response.headers.get('content-length');
-                    if (size && parseInt(size) > 500000) { // Más de 500KB
-                        console.log('⚠️ Logo muy pesado (' + Math.round(size/1024) + 'KB), considera optimizarlo');
-                    }
-                })
-                .catch(() => {
-                    console.log('❌ No se pudo verificar el tamaño del logo');
-                    handleLogoError(img);
-                });
-        }
-    });
-
-        // Función para crear favicon dinámico si no existe
-        function createFallbackFavicon() {
-            // Crear un canvas para generar un favicon de emergencia
+            // Función para crear favicon dinámico
+    function createFallbackFavicon() {
+        try {
+            // Crear un canvas para generar un favicon
             const canvas = document.createElement('canvas');
             canvas.width = 32;
             canvas.height = 32;
             const ctx = canvas.getContext('2d');
-
+            
             // Crear fondo con gradiente
             const gradient = ctx.createLinearGradient(0, 0, 32, 32);
             gradient.addColorStop(0, '#667eea');
             gradient.addColorStop(1, '#764ba2');
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, 32, 32);
-
+            
             // Agregar texto "VG"
             ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 14px Inter, sans-serif';
+            ctx.font = 'bold 14px sans-serif';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillText('VG', 16, 16);
-
+            
             // Convertir a favicon
             const faviconUrl = canvas.toDataURL('image/png');
-
+            
+            // Eliminar favicons existentes para evitar conflictos
+            const existingFavicons = document.querySelectorAll('link[rel*="icon"]');
+            existingFavicons.forEach(favicon => favicon.remove());
+            
             // Crear elemento link y agregarlo
             const link = document.createElement('link');
             link.rel = 'icon';
             link.type = 'image/png';
             link.href = faviconUrl;
             document.head.appendChild(link);
-
-            console.log('✅ Favicon de emergencia creado');
+            
+            // También crear para apple-touch-icon
+            const appleLink = document.createElement('link');
+            appleLink.rel = 'apple-touch-icon';
+            appleLink.href = faviconUrl;
+            document.head.appendChild(appleLink);
+            
+            console.log('✅ Favicon dinámico VG creado exitosamente');
+        } catch (error) {
+            console.warn('⚠️ No se pudo crear favicon dinámico:', error);
         }
+    }
 
-        // Verificar si el favicon principal se puede cargar
-        const testFavicon = new Image();
-        testFavicon.onload = () => {
-            console.log('✅ Favicon personalizado cargado');
-        };
-        testFavicon.onerror = () => {
-            console.log('⚠️ Favicon personalizado no encontrado, usando fallback');
-            createFallbackFavicon();
-        };
-        testFavicon.src = 'assets/favicon.ico';
+            // Crear favicon dinámico inmediatamente
+    createFallbackFavicon();
+    console.log('✅ Favicon dinámico generado');
 
         // ============================================
         // PERFORMANCE MONITORING Y OPTIMIZACIONES FINALES
@@ -728,20 +653,19 @@
             }, 100);
         }
 
-        // Prefetch de recursos no críticos
-        const prefetchResources = [
-            '/Portfolio/assets/logo.png',
-            '/Portfolio/assets/favicon-192x192.png'
-        ];
-
-        setTimeout(() => {
-            prefetchResources.forEach(resource => {
-                const link = document.createElement('link');
-                link.rel = 'prefetch';
-                link.href = resource;
-                document.head.appendChild(link);
-            });
-        }, 1000);
+            // Prefetch de recursos no críticos (solo recursos que existen)
+    const prefetchResources = [
+        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+    ];
+    
+    setTimeout(() => {
+        prefetchResources.forEach(resource => {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.href = resource;
+            document.head.appendChild(link);
+        });
+    }, 1000);
 
         // Critical Resource Hints ya en HTML
         console.log('🚀 VGWebStudio Portfolio optimizado cargado correctamente');

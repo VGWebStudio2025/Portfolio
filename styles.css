@@ -1,5 +1,5 @@
 /* =================================================================
-   RESET Y CONFIGURACIÓN BASE
+    RESET Y CONFIGURACIÓN BASE
 ================================================================= */
 * {
     margin: 0;
@@ -8,7 +8,7 @@
 }
 
 /* =================================================================
-   VARIABLES CSS (CUSTOM PROPERTIES)
+    VARIABLES CSS (CUSTOM PROPERTIES)
 ================================================================= */
 :root {
     /* Colores principales */
@@ -77,7 +77,7 @@
 }
 
 /* =================================================================
-   ESTILOS BASE
+    ESTILOS BASE
 ================================================================= */
 html {
     scroll-behavior: smooth;
@@ -100,7 +100,7 @@ body {
 }
 
 /* =================================================================
-   HEADER Y NAVEGACIÓN
+    HEADER Y NAVEGACIÓN
 ================================================================= */
 .header {
     position: fixed;
@@ -153,47 +153,41 @@ body {
 }
 
 /* Manejo de errores de logo - Mostrar placeholder si falla */
-.nav-logo-img:not([src]), 
-.nav-logo-img[src=""], 
+.nav-logo-img:not([src]),
+.nav-logo-img[src=""],
 .nav-logo-img:not([src*="."]) {
     display: none;
 }
 
-/* Optimización automática del logo */
-.nav-logo-img[src*="logo.png"] {
-    max-width: 40px;
-    max-height: 40px;
-    object-fit: contain;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    border-radius: 8px;
-    padding: 2px;
-}
-
-/* Placeholder dinámico creado por JavaScript */
+/* Placeholder estático para navbar */
 .logo-placeholder {
-    flex-shrink: 0;
-}
-
-/* Backup styling para cuando el logo no existe */
-.nav-logo::before {
-    content: "";
     width: 40px;
     height: 40px;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     border-radius: 8px;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-weight: bold;
     font-size: 18px;
-    text-content: "VG";
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    transition: var(--transition);
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
-/* Mostrar placeholder si la imagen falla */
-.nav-logo:has(.nav-logo-img[style*="display: none"])::before,
-.nav-logo:not(:has(.nav-logo-img))::before {
-    display: flex;
+.logo-placeholder:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+/* Placeholder para footer */
+.logo-placeholder-footer {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
 }
 
 .nav-logo h2 {
@@ -251,13 +245,16 @@ body {
 }
 
 /* =================================================================
-   HERO SECTION
+    HERO SECTION
 ================================================================= */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    background-attachment: fixed; /* Fondo fijo que no se mueve con scroll */
+    background-size: 100% 100vh;
+    background-repeat: no-repeat;
     padding-top: 70px;
     position: relative;
     overflow: hidden;
@@ -265,27 +262,31 @@ body {
 
 .hero::before {
     content: '';
-    position: absolute;
+    position: fixed; /* Cambio a fixed para que no se mueva */
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    width: 100vw;
+    height: 100vh;
     background:
         radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
         radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
     animation: gradientShift 8s ease-in-out infinite;
+    z-index: -1; /* Detrás de todo el contenido */
 }
 
 /* Partículas de fondo del hero */
 .particles-bg {
-    position: absolute;
+    position: fixed; /* Cambio a fixed para que no se muevan */
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
-    z-index: 1;
+    z-index: 0; /* Detrás del contenido pero encima del ::before */
+    pointer-events: none; /* Para que no interfiera con clics */
 }
 
 .particles-bg::before,
@@ -488,7 +489,7 @@ body {
 }
 
 /* =================================================================
-   BOTONES GLOBALES
+    BOTONES GLOBALES
 ================================================================= */
 .btn {
     display: inline-flex;
@@ -503,6 +504,8 @@ body {
     border: 2px solid transparent;
     cursor: pointer;
     min-width: 140px;
+    /* Área de hover más amplia para prevenir jittering */
+    margin: 4px;
 }
 
 .btn-primary {
@@ -531,7 +534,7 @@ body {
 }
 
 .btn-primary:hover {
-    transform: translateY(-4px) scale(1.05);
+    transform: translateY(-2px) scale(1.02);
     box-shadow: 0 15px 35px rgba(102, 126, 234, 0.6);
 }
 
@@ -564,7 +567,7 @@ body {
 .btn-outline:hover {
     background: rgba(255, 255, 255, 0.2);
     color: var(--white);
-    transform: translateY(-4px) scale(1.05);
+    transform: translateY(-2px) scale(1.02);
     box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
     border-color: rgba(255, 255, 255, 1);
 }
@@ -576,10 +579,13 @@ body {
 }
 
 /* =================================================================
-   SECCIONES GENERALES
+    SECCIONES GENERALES
 ================================================================= */
 section {
     padding: var(--spacing-20) 0;
+    position: relative;
+    z-index: 5; /* Encima del fondo fijo */
+    background: var(--white); /* Fondo sólido por defecto */
 }
 
 .section-header {
@@ -605,10 +611,11 @@ section {
 }
 
 /* =================================================================
-   ABOUT SECTION
+    ABOUT SECTION
 ================================================================= */
 .about {
     background: var(--light);
+    z-index: 5; /* Encima del fondo fijo */
 }
 
 .about-content {
@@ -644,10 +651,12 @@ section {
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow);
     transition: var(--transition);
+    /* Área de hover más amplia para prevenir jittering */
+    margin: 4px;
 }
 
 .feature:hover {
-    transform: translateY(-5px);
+    transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
@@ -668,7 +677,7 @@ section {
 }
 
 .feature:hover .feature-icon {
-    transform: translateY(-5px) scale(1.1);
+    transform: translateY(-2px) scale(1.05);
     background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
     box-shadow:
         0 15px 35px rgba(102, 126, 234, 0.4),
@@ -697,7 +706,7 @@ section {
 }
 
 /* =================================================================
-   PORTFOLIO SECTION
+    PORTFOLIO SECTION
 ================================================================= */
 .portfolio-filters {
     display: flex;
@@ -744,7 +753,7 @@ section {
 .filter-btn.active {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: var(--white);
-    transform: translateY(-2px) scale(1.05);
+    transform: translateY(-1px) scale(1.02);
     box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
 }
 
@@ -760,10 +769,12 @@ section {
     box-shadow: var(--shadow);
     transition: var(--transition);
     background: var(--white);
+    /* Área de hover más amplia para prevenir jittering */
+    margin: 8px;
 }
 
 .portfolio-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-4px);
     box-shadow: var(--shadow-xl);
 }
 
@@ -883,19 +894,23 @@ section {
     text-decoration: none;
     transition: var(--transition);
     backdrop-filter: blur(10px);
+    position: relative;
+    /* Padding invisible para evitar jittering */
+    margin: 4px;
 }
 
 .portfolio-link:hover {
     background: var(--white);
     color: var(--primary-color);
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 /* =================================================================
-   CONTACT SECTION
+    CONTACT SECTION
 ================================================================= */
 .contact {
     background: var(--light);
+    z-index: 5; /* Encima del fondo fijo */
 }
 
 .contact-content {
@@ -1018,7 +1033,7 @@ section {
 }
 
 /* =================================================================
-   FOOTER
+    FOOTER
 ================================================================= */
 .footer {
     background: var(--dark);
@@ -1056,42 +1071,10 @@ section {
 }
 
 /* Manejo de errores de logo footer - Mostrar placeholder si falla */
-.footer-logo-img:not([src]), 
-.footer-logo-img[src=""], 
+.footer-logo-img:not([src]),
+.footer-logo-img[src=""],
 .footer-logo-img:not([src*="."]) {
     display: none;
-}
-
-/* Optimización automática del logo footer */
-.footer-logo-img[src*="logo.png"] {
-    max-width: 50px;
-    max-height: 50px;
-    object-fit: contain;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    border-radius: 8px;
-    padding: 2px;
-}
-
-/* Backup styling para footer cuando el logo no existe */
-.footer-brand::before {
-    content: "VG";
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-radius: 8px;
-    display: none;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-}
-
-/* Mostrar placeholder en footer si la imagen falla */
-.footer-brand:has(.footer-logo-img[style*="display: none"])::before,
-.footer-brand:not(:has(.footer-logo-img))::before {
-    display: flex;
 }
 
 .footer-section h3 {
@@ -1153,7 +1136,7 @@ section {
 .social-link:hover {
     background: var(--primary-color);
     color: var(--white);
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 .footer-bottom {
@@ -1164,7 +1147,7 @@ section {
 }
 
 /* =================================================================
-   ANIMACIONES Y KEYFRAMES
+    ANIMACIONES Y KEYFRAMES
 ================================================================= */
 @keyframes gradientShift {
 
@@ -1238,6 +1221,8 @@ section {
         transform: translateY(-25px) rotateX(5deg);
     }
 }
+
+/* Animación floatFixed eliminada - no necesaria */
 
 @keyframes cardGlow {
     0% {
@@ -1334,7 +1319,7 @@ section {
 }
 
 /* =================================================================
-   MEDIA QUERIES - RESPONSIVE DESIGN
+    MEDIA QUERIES - RESPONSIVE DESIGN
 ================================================================= */
 
 /* Tablets y pantallas medianas */
@@ -1492,7 +1477,7 @@ section {
 }
 
 /* =================================================================
-   ANIMACIONES PARA ELEMENTOS ESPECÍFICOS
+    ANIMACIONES PARA ELEMENTOS ESPECÍFICOS
 ================================================================= */
 @media (prefers-reduced-motion: no-preference) {
 
@@ -1550,7 +1535,7 @@ section {
 }
 
 /* =================================================================
-   UTILIDADES Y ESTADOS GLOBALES
+    UTILIDADES Y ESTADOS GLOBALES
 ================================================================= */
 .text-center {
     text-align: center;
@@ -1571,7 +1556,7 @@ button {
 }
 
 /* =================================================================
-   OPTIMIZACIONES DE PERFORMANCE 
+    OPTIMIZACIONES DE PERFORMANCE 
 ================================================================= */
 
 /* GPU Acceleration para elementos animados */
@@ -1586,21 +1571,100 @@ button {
     perspective: 1000px;
 }
 
+/* Anti-jittering para elementos con hover */
+.btn,
+.feature,
+.portfolio-item,
+.filter-btn,
+.portfolio-link,
+.social-link {
+    /* Estabiliza el hover en los bordes */
+    transform-origin: center center;
+    position: relative;
+    z-index: 1;
+    /* Estabilización 3D para prevenir jittering */
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Solución específica para jittering del borde inferior */
+.feature::after,
+.portfolio-item::after,
+.filter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -8px; /* Extiende el área de hover hacia abajo */
+    left: 0;
+    width: 100%;
+    height: 8px; /* Área invisible que mantiene el hover activo */
+    background: transparent;
+    pointer-events: auto;
+    z-index: -1;
+}
+
+/* Solución especial para botones que usan ::before */
+.btn-primary,
+.btn-outline {
+    /* Padding invisible inferior para evitar jittering */
+    padding-bottom: calc(var(--spacing-3) + 4px);
+    margin-bottom: -4px;
+}
+
+/* Área extendida más grande para portfolio items */
+.portfolio-item::after {
+    bottom: -12px;
+    height: 12px;
+}
+
+/* Área extendida para social links */
+.social-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: 6px;
+    background: transparent;
+    pointer-events: auto;
+    z-index: -1;
+}
+
+/* Área extendida para portfolio links */
+.portfolio-link::after {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: -2px;
+    width: calc(100% + 4px);
+    height: 6px;
+    background: transparent;
+    pointer-events: auto;
+    z-index: -1;
+}
+
 /* Optimización de fonts loading */
 @font-face {
     font-family: 'Inter';
     font-display: swap;
 }
 
+/* Z-index adicional para footer */
+.footer {
+    position: relative;
+    z-index: 5; /* Encima del fondo fijo */
+}
+
 /* Reducir repaints en scroll */
 .header {
-    contain: layout style paint;
+    /* contain: layout style paint; - Comentado por compatibilidad */
+    transform: translateZ(0); /* Alternativa más compatible para GPU acceleration */
 }
 
 /* Critical rendering path optimization */
 .hero {
-    content-visibility: auto;
-    contain-intrinsic-size: 100vh;
+    /* content-visibility: auto; - Comentado por compatibilidad */
+    /* contain-intrinsic-size: 100vh; - Comentado por compatibilidad */
+    transform: translateZ(0); /* Alternativa más compatible */
 }
 
 /* Optimización de animaciones */
@@ -1608,6 +1672,12 @@ button {
     * {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+    }
+    
+    /* Excluir efectos específicos de botones que queremos mantener */
+    *:not(.btn-primary):not(.btn-outline)::before,
+    *:not(.btn-primary):not(.btn-outline)::after {
         transition-duration: 0.01ms !important;
     }
 }
