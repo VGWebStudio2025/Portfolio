@@ -5,15 +5,112 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VGWebStudio - Diseño y Desarrollo Web Profesional</title>
-    
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="VGWebStudio - Estudio de diseño y desarrollo web profesional. Creamos sitios web modernos, funcionales y optimizados. Especialistas en diseño UX/UI, desarrollo frontend y e-commerce.">
+    <meta name="keywords"
+        content="diseño web, desarrollo web, VGWebStudio, sitios web profesionales, UX/UI, frontend, e-commerce, landing pages, diseño responsive, SEO, Argentina">
+    <meta name="author" content="VGWebStudio - Valentin Otero, Gonzalo Rivero">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="General">
+    <link rel="canonical" href="https://vgwebstudio.com/">
+
+    <!-- Open Graph Protocol -->
+    <meta property="og:title" content="VGWebStudio - Diseño y Desarrollo Web Profesional">
+    <meta property="og:description"
+        content="Creamos experiencias digitales excepcionales. Estudio especializado en diseño y desarrollo web moderno, funcional y optimizado para tu negocio.">
+    <meta property="og:image" content="https://vgwebstudio.com/img/Logotipo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="VGWebStudio - Estudio de Diseño y Desarrollo Web">
+    <meta property="og:url" content="https://vgwebstudio.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VGWebStudio">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VGWebStudio - Diseño y Desarrollo Web Profesional">
+    <meta name="twitter:description"
+        content="Creamos experiencias digitales excepcionales. Estudio especializado en diseño y desarrollo web moderno, funcional y optimizado.">
+    <meta name="twitter:image" content="https://vgwebstudio.com/img/og-image.jpg">
+    <meta name="twitter:image:alt" content="VGWebStudio - Estudio de Diseño y Desarrollo Web">
+    <meta name="twitter:site" content="@vgwebstudio">
+    <meta name="twitter:creator" content="@vgwebstudio">
+
+    <!-- Additional Meta Tags -->
+    <meta name="theme-color" content="#6366f1">
+    <meta name="msapplication-navbutton-color" content="#6366f1">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/Logotipo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/Logotipo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/Logotipo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/Logotipo.png">
+    <link rel="shortcut icon" href="img/Logotipo.png">
+    <link rel="manifest" href="manifest.json">
+
     <!-- CSS básico -->
     <link rel="stylesheet" href="styles.css">
-    
+
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "VGWebStudio",
+        "description": "Estudio de diseño y desarrollo web profesional especializado en crear experiencias digitales excepcionales.",
+        "url": "https://vgwebstudio.com",
+        "logo": "https://vgwebstudio.com/img/Logotipo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+54-291-645-4112",
+            "contactType": "customer service",
+            "email": "vgwebstudio1@gmail.com",
+            "availableLanguage": ["Spanish", "English"]
+        },
+        "founder": [
+            {
+                "@type": "Person",
+                "name": "Valentin Otero",
+                "jobTitle": "Co-fundador & Desarrollador Frontend",
+                "sameAs": "https://www.linkedin.com/in/valentin-otero-115163308/"
+            },
+            {
+                "@type": "Person",
+                "name": "Gonzalo Rivero",
+                "jobTitle": "Co-fundador & Diseñador UX/UI"
+            }
+        ],
+        "serviceType": [
+            "Diseño Web",
+            "Desarrollo Frontend",
+            "UX/UI Design",
+            "E-commerce",
+            "Landing Pages",
+            "SEO Optimization"
+        ],
+        "areaServed": "Argentina",
+        "foundingDate": "2025",
+        "sameAs": [
+            "https://www.instagram.com/vgwebstudio/",
+            "https://github.com/VGWebStudio2025"
+        ]
+    }
+    </script>
 </head>
 
 <body>
@@ -44,12 +141,14 @@
                 </ul>
                 <!-- Botón de cambio de idioma -->
                 <div class="language-switcher">
-                    <button class="lang-btn" id="langToggle" title="Cambiar idioma">
-                        <span class="flag-icon" data-flag="es">
-                            <span class="emoji-flag">🇪🇸</span>
-                            <span class="text-flag">ES</span>
+                    <button class="lang-btn" id="langToggle" title="Cambiar idioma" data-lang="es">
+                        <span class="flag-icon flag-spain">
+                            <img src="img/flags/spain-flag-circle.png" alt="Spain" class="flag-image">
                         </span>
-                        <span class="lang-text">ES</span>
+                        <span class="flag-icon flag-usa">
+                            <img src="img/flags/usa-flag-circle.png" alt="United States" class="flag-image">
+                        </span>
+                        <span class="lang-text mobile-only">ES</span>
                     </button>
                 </div>
                 <div class="nav-toggle">
@@ -127,7 +226,8 @@
                             <i class="fas fa-palette"></i>
                         </div>
                         <h4 data-i18n="features.design.title">Diseño Creativo</h4>
-                        <p data-i18n="features.design.desc">Diseños únicos y modernos que reflejan la identidad de tu marca</p>
+                        <p data-i18n="features.design.desc">Diseños únicos y modernos que reflejan la identidad de tu
+                            marca</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">
@@ -141,14 +241,16 @@
                             <i class="fas fa-mobile-alt"></i>
                         </div>
                         <h4 data-i18n="features.responsive.title">Responsive Design</h4>
-                        <p data-i18n="features.responsive.desc">Sitios web que se adaptan perfectamente a cualquier dispositivo</p>
+                        <p data-i18n="features.responsive.desc">Sitios web que se adaptan perfectamente a cualquier
+                            dispositivo</p>
                     </div>
                     <div class="feature">
                         <div class="feature-icon">
                             <i class="fas fa-rocket"></i>
                         </div>
                         <h4 data-i18n="features.optimization.title">Optimización</h4>
-                        <p data-i18n="features.optimization.desc">Velocidad de carga rápida y optimización para motores de búsqueda</p>
+                        <p data-i18n="features.optimization.desc">Velocidad de carga rápida y optimización para motores
+                            de búsqueda</p>
                     </div>
                 </div>
             </div>
@@ -172,7 +274,7 @@
                         <h3 class="member-name" data-i18n="team.founder1.name">Valentin Otero</h3>
                         <h4 class="member-role" data-i18n="team.founder1.role">Co-fundador & Desarrollador Frontend</h4>
                         <p class="member-description" data-i18n="team.founder1.description">
-                            Apasionado por crear experiencias web únicas y funcionales. Especialista en tecnologías 
+                            Apasionado por crear experiencias web únicas y funcionales. Especialista en tecnologías
                             frontend modernas con más de X años de experiencia en el desarrollo web.
                         </p>
                         <div class="member-skills">
@@ -185,11 +287,13 @@
                             <span class="skill-tag">UI/UX</span>
                         </div>
                         <div class="member-actions">
-                            <a href="docs/cv/Valentín Otero_Desarrollo Web.pdf" class="btn btn-primary btn-cv" data-i18n="team.cv.download" download="Valentin_Otero_CV.pdf">
+                            <a href="docs/cv/Valentín Otero_Desarrollo Web.pdf" class="btn btn-primary btn-cv"
+                                data-i18n="team.cv.download" download="Valentin_Otero_CV.pdf">
                                 <i class="fas fa-download"></i>
                                 Descargar CV
                             </a>
-                            <a href="https://www.linkedin.com/in/valentin-otero-115163308/" class="btn btn-primary btn-linkedin" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.linkedin.com/in/valentin-otero-115163308/"
+                                class="btn btn-primary btn-linkedin" target="_blank" rel="noopener noreferrer">
                                 <i class="fab fa-linkedin"></i>
                                 LinkedIn
                             </a>
@@ -201,15 +305,14 @@
                 <div class="team-member">
                     <div class="member-image">
                         <div class="image-placeholder">
-                            <i class="fas fa-user"></i>
+                            <img src="img/team/gonzalo-rivero.jpg" alt="Gonzalo Rivero" class="member-photo">
                         </div>
-                        <!-- <img src="img/team/founder2.jpg" alt="Nombre Fundador 2" class="member-photo"> -->
                     </div>
                     <div class="member-info">
                         <h3 class="member-name" data-i18n="team.founder2.name">Gonzalo Rivero</h3>
                         <h4 class="member-role" data-i18n="team.founder2.role">Co-fundador & Diseñador UX/UI</h4>
                         <p class="member-description" data-i18n="team.founder2.description">
-                            Experto en diseño de experiencias digitales intuitivas y atractivas. Con un enfoque 
+                            Experto en diseño de experiencias digitales intuitivas y atractivas. Con un enfoque
                             centrado en el usuario, transforma ideas complejas en interfaces simples y elegantes.
                         </p>
                         <div class="member-skills">
@@ -221,7 +324,8 @@
                             <span class="skill-tag">Wireframing</span>
                         </div>
                         <div class="member-actions">
-                            <a href="#" class="btn btn-primary btn-cv btn-cv-disabled" data-i18n="team.cv.download" onclick="alert('CV no disponible aún'); return false;">
+                            <a href="#" class="btn btn-primary btn-cv btn-cv-disabled" data-i18n="team.cv.download"
+                                onclick="alert('CV no disponible aún'); return false;">
                                 <i class="fas fa-download"></i>
                                 CV Próximamente
                             </a>
@@ -241,33 +345,44 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="portfolio.title">Nuestros Proyectos</h2>
-                <p class="section-subtitle" data-i18n="portfolio.subtitle">Algunos de los trabajos que hemos realizado</p>
+                <p class="section-subtitle" data-i18n="portfolio.subtitle">Algunos de los trabajos que hemos realizado
+                </p>
             </div>
             <div class="portfolio-filters">
                 <button class="filter-btn active" data-filter="all" data-i18n="portfolio.filter.all">Todos</button>
                 <button class="filter-btn" data-filter="web" data-i18n="portfolio.filter.web">Sitios Web</button>
-                <button class="filter-btn" data-filter="ecommerce" data-i18n="portfolio.filter.ecommerce">E-commerce</button>
-                <button class="filter-btn" data-filter="landing" data-i18n="portfolio.filter.landing">Landing Pages</button>
+                <button class="filter-btn" data-filter="ecommerce"
+                    data-i18n="portfolio.filter.ecommerce">E-commerce</button>
+                <button class="filter-btn" data-filter="landing" data-i18n="portfolio.filter.landing">Landing
+                    Pages</button>
             </div>
             <div class="portfolio-grid">
-                <!-- Proyecto Ejemplo 1 -->
+                <!-- ProyectoDAX Blog -->
                 <div class="portfolio-item" data-category="web">
                     <div class="portfolio-image">
                         <div class="placeholder-image">
-                            <i class="fas fa-image"></i>
-                            <p data-i18n="portfolio.project1.placeholder">Proyecto Web Corporativo</p>
+                            <i class="fas fa-blog"></i>
+                            <p data-i18n="portfolio.project1.placeholder">ProyectoDAX Blog</p>
                         </div>
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
-                                <h4 data-i18n="portfolio.project1.title">Sitio Web Corporativo</h4>
-                                <p data-i18n="portfolio.project1.desc">Desarrollo completo para empresa de servicios</p>
+                                <h4 data-i18n="portfolio.project1.title">ProyectoDAX Blog</h4>
+                                <p data-i18n="portfolio.project1.desc">Blog moderno desarrollado con HTML, CSS y SCSS
+                                </p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                    <span class="tech-tag">SCSS</span>
+                                </div>
                                 <div class="portfolio-links">
-                                    <a href="#" class="portfolio-link">
+                                    <a href="https://proyectodax.netlify.app" class="portfolio-link" target="_blank"
+                                        rel="noopener noreferrer" title="Ver sitio web">
                                         <i class="fas fa-external-link-alt"></i>
                                     </a>
-                                    <a href="#" class="portfolio-link">
+                                    <button class="portfolio-link preview-btn"
+                                        onclick="openProjectPreview('proyectodax')" title="Vista previa">
                                         <i class="fas fa-eye"></i>
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -308,7 +423,8 @@
                         <div class="portfolio-overlay">
                             <div class="portfolio-info">
                                 <h4 data-i18n="portfolio.project3.title">Landing Page Productiva</h4>
-                                <p data-i18n="portfolio.project3.desc">Página de aterrizaje optimizada para conversiones</p>
+                                <p data-i18n="portfolio.project3.desc">Página de aterrizaje optimizada para conversiones
+                                </p>
                                 <div class="portfolio-links">
                                     <a href="#" class="portfolio-link">
                                         <i class="fas fa-external-link-alt"></i>
@@ -354,7 +470,8 @@
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title" data-i18n="contact.title">¿Listo para tu próximo proyecto?</h2>
-                <p class="section-subtitle" data-i18n="contact.subtitle">Contáctanos y hagamos realidad tu visión digital</p>
+                <p class="section-subtitle" data-i18n="contact.subtitle">Contáctanos y hagamos realidad tu visión
+                    digital</p>
             </div>
             <div class="contact-content">
                 <div class="contact-info">
@@ -414,7 +531,8 @@
                         <input type="hidden" name="apikey" value="2296460">
                         <input type="hidden" name="text" id="callmebotMessage" value="">
                         <div class="form-buttons">
-                            <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Enviar Mensaje</button>
+                            <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Enviar
+                                Mensaje</button>
                         </div>
                     </form>
                 </div>
@@ -466,6 +584,39 @@
             </div>
         </div>
     </footer>
+
+    <!-- Modal de Vista Previa de Proyectos -->
+    <div id="projectPreviewModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Vista Previa del Proyecto</h3>
+                <button class="modal-close" onclick="closeProjectPreview()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="modalProjectInfo" class="project-preview-info">
+                    <!-- Información del proyecto se carga dinámicamente -->
+                </div>
+                <div class="project-preview-image">
+                    <img id="modalProjectImage" src="" alt="Vista previa del proyecto" />
+                </div>
+                <div class="project-preview-details">
+                    <p id="modalProjectDescription"></p>
+                    <div id="modalProjectTech" class="tech-tags">
+                        <!-- Tags de tecnología se cargan dinámicamente -->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="closeProjectPreview()">Cerrar</button>
+                <a id="modalProjectLink" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visitar Proyecto
+                </a>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

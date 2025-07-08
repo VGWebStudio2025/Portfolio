@@ -15,6 +15,13 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+    <link rel="canonical" href="https://vgwebstudio.com/pages/gracias.html">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../img/Logotipo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../img/Logotipo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../img/Logotipo.png">
+
     <style>
         /* Estilos específicos para la página de agradecimiento */
         body {
@@ -208,6 +215,9 @@
                         <a href="../index.html#nosotros" class="nav-link" data-i18n="nav.about">Nosotros</a>
                     </li>
                     <li class="nav-item">
+                        <a href="../index.html#equipo" class="nav-link" data-i18n="nav.team">Equipo</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="../index.html#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a>
                     </li>
                     <li class="nav-item">
@@ -216,9 +226,14 @@
                 </ul>
                 <!-- Botón de cambio de idioma -->
                 <div class="language-switcher">
-                    <button class="lang-btn" id="langToggle" title="Cambiar idioma">
-                        <span class="flag-icon">🇪🇸</span>
-                        <span class="lang-text">ES</span>
+                    <button class="lang-btn" id="langToggle" title="Cambiar idioma" data-lang="es">
+                        <span class="flag-icon flag-spain">
+                            <img src="../img/flags/spain-flag-circle.png" alt="Spain" class="flag-image">
+                        </span>
+                        <span class="flag-icon flag-usa">
+                            <img src="../img/flags/usa-flag-circle.png" alt="United States" class="flag-image">
+                        </span>
+                        <span class="lang-text mobile-only">ES</span>
                     </button>
                 </div>
                 <div class="nav-toggle">
@@ -324,6 +339,7 @@
                 'page-title': '¡Gracias por contactarnos! - VGWebStudio',
                 'nav.home': 'Inicio',
                 'nav.about': 'Nosotros', 
+                'nav.team': 'Equipo',
                 'nav.projects': 'Proyectos',
                 'nav.contact': 'Contacto',
                 'thanks-title': '¡Mensaje Enviado!',
@@ -348,6 +364,7 @@
                 'page-title': 'Thank you for contacting us! - VGWebStudio',
                 'nav.home': 'Home',
                 'nav.about': 'About',
+                'nav.team': 'Team',
                 'nav.projects': 'Projects', 
                 'nav.contact': 'Contact',
                 'thanks-title': 'Message Sent!',
@@ -401,17 +418,24 @@
         }
 
         function updateLanguageButton(language) {
-            const flagIcon = document.querySelector('.flag-icon');
-            const langText = document.querySelector('.lang-text');
+            const langToggle = document.getElementById('langToggle');
             
-            if (flagIcon && langText) {
-                if (language === 'es') {
-                    flagIcon.textContent = '🇪🇸';
-                    langText.textContent = 'ES';
-                } else {
-                    flagIcon.textContent = '🇺🇸';
-                    langText.textContent = 'EN';
-                }
+            if (!langToggle) return;
+            
+            // Actualizar el atributo data-lang para mover el slider
+            langToggle.setAttribute('data-lang', language);
+            
+            // Actualizar solo el texto móvil
+            const mobileText = langToggle.querySelector('.mobile-only');
+            if (mobileText) {
+                mobileText.textContent = language === 'es' ? 'ES' : 'EN';
+            }
+            
+            // Actualizar título del botón
+            if (language === 'es') {
+                langToggle.title = 'Cambiar a inglés';
+            } else {
+                langToggle.title = 'Switch to Spanish';
             }
         }
 

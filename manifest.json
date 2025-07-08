@@ -1,0 +1,33 @@
+{
+  "name": "VGWebStudio - Diseño y Desarrollo Web Profesional",
+  "short_name": "VGWebStudio",
+  "description": "Estudio de diseño y desarrollo web profesional. Creamos experiencias digitales excepcionales.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "img/Logotipo.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "img/Logotipo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/Logotipo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity", "utilities"],
+  "lang": "es",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
+} 

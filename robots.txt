@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://vgwebstudio.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1
+
+# Disallow access to admin or private areas (if any in the future)
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.git/
+Disallow: /node_modules/
+
+# Allow important files
+Allow: /img/
+Allow: /css/
+Allow: /js/
+Allow: /docs/
+
+# Host preference (optional, replace with actual domain)
+Host: https://vgwebstudio.com 

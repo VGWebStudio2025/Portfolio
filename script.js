@@ -311,8 +311,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const flagIcon = langToggle ? langToggle.querySelector('.flag-icon') : null;
     const langText = langToggle ? langToggle.querySelector('.lang-text') : null;
 
-
-
     // Función para cambiar textos
     function updateTexts(language) {
         const elements = document.querySelectorAll('[data-i18n]');
@@ -343,20 +341,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para actualizar el botón de idioma
     function updateLanguageButton(language) {
-        if (!langToggle || !flagIcon || !langText) return;
+        if (!langToggle) return;
         
-        const emojiFlag = flagIcon.querySelector('.emoji-flag');
-        const textFlag = flagIcon.querySelector('.text-flag');
+        // Actualizar el atributo data-lang para mover el slider
+        langToggle.setAttribute('data-lang', language);
         
+        // Actualizar solo el texto móvil
+        const mobileText = langToggle.querySelector('.mobile-only');
+        if (mobileText) {
+            mobileText.textContent = language === 'es' ? 'ES' : 'EN';
+        }
+        
+        // Actualizar título del botón
         if (language === 'es') {
-            if (emojiFlag) emojiFlag.textContent = '🇪🇸';
-            if (textFlag) textFlag.textContent = 'ES';
-            langText.textContent = 'ES';
             langToggle.title = 'Cambiar a inglés';
         } else {
-            if (emojiFlag) emojiFlag.textContent = '🇺🇸';
-            if (textFlag) textFlag.textContent = 'EN';
-            langText.textContent = 'EN';
             langToggle.title = 'Switch to Spanish';
         }
     }
@@ -1136,4 +1135,108 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
+});
+
+// ============================================
+// MODAL DE VISTA PREVIA DE PROYECTOS
+// ============================================
+
+// Datos de los proyectos
+const projectsData = {
+    proyectodax: {
+        title: 'ProyectoDAX Blog',
+        description: 'Blog moderno y funcional desarrollado con HTML, CSS y SCSS. Diseño responsive con una interfaz limpia y profesional, optimizado para la experiencia del usuario.',
+        image: 'img/Index(DAX).png',
+        url: 'https://proyectodax.netlify.app',
+        technologies: ['HTML', 'CSS', 'SCSS'],
+        features: [
+            'Diseño responsive moderno',
+            'Optimizado para SEO',
+            'Navegación intuitiva',
+            'Carga rápida'
+        ]
+    }
+    // Aquí se pueden agregar más proyectos en el futuro
+};
+
+// Función para abrir la vista previa del proyecto
+function openProjectPreview(projectKey) {
+    const project = projectsData[projectKey];
+    if (!project) {
+        console.error('Proyecto no encontrado:', projectKey);
+        return;
+    }
+
+    // Obtener elementos del modal
+    const modal = document.getElementById('projectPreviewModal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalProjectImage = document.getElementById('modalProjectImage');
+    const modalProjectDescription = document.getElementById('modalProjectDescription');
+    const modalProjectTech = document.getElementById('modalProjectTech');
+    const modalProjectLink = document.getElementById('modalProjectLink');
+
+    // Llenar el modal con los datos del proyecto
+    modalTitle.textContent = project.title;
+    modalProjectDescription.textContent = project.description;
+    modalProjectLink.href = project.url;
+
+    // Configurar imagen con fallback
+    modalProjectImage.src = project.image;
+    modalProjectImage.alt = `Vista previa de ${project.title}`;
+    
+    // Manejar error de imagen (usar placeholder si no existe)
+    modalProjectImage.onerror = function() {
+        this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjZjNmNGY2Ii8+CjxwYXRoIGQ9Ik0yNTAgMTAwSDM1MFYzMDBIMjUwVjEwMFoiIGZpbGw9IiNkMWQ1ZGIiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIyODAiIHk9IjE4MCI+CjxwYXRoIGQ9Ik0xMiAyQzEzLjEgMiAxNCAyLjkgMTQgNEMxNCA1LjEgMTMuMSA2IDEyIDZDMTAuOSA2IDEwIDUuMSAxMCA0QzEwIDIuOSAxMC45IDIgMTIgMlpNMjEgOVYyMkMyMSAyMi42IDIwLjYgMjMgMjAgMjNIMEM5LjQgMjMgOSAyMi42IDkgMjJWOUM5IDguNCA5LjQgOCAxMCA4SDIwQzIwLjYgOCAyMSA4LjQgMjEgOVpNMTkgMTNIMThWMTBIMTZWMTNINUwxMiAyMEwyMCAxM0gxOVoiIGZpbGw9IiM5Y2EzYWYiLz4KPC9zdmc+Cjx0ZXh0IHg9IjMwMCIgeT0iMjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjc3MTgwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pgo8L3N2Zz4K';
+        this.alt = 'Vista previa no disponible';
+    };
+
+    // Agregar tecnologías
+    modalProjectTech.innerHTML = '';
+    project.technologies.forEach(tech => {
+        const techTag = document.createElement('span');
+        techTag.className = 'tech-tag';
+        techTag.textContent = tech;
+        modalProjectTech.appendChild(techTag);
+    });
+
+    // Mostrar el modal
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+
+    // Agregar clase para animación
+    setTimeout(() => {
+        modal.classList.add('active');
+    }, 10);
+}
+
+// Función para cerrar la vista previa
+function closeProjectPreview() {
+    const modal = document.getElementById('projectPreviewModal');
+    
+    // Remover clase de animación
+    modal.classList.remove('active');
+    
+    // Ocultar modal después de la animación
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = ''; // Restaurar scroll del body
+    }, 300);
+}
+
+// Cerrar modal al hacer click fuera del contenido
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('projectPreviewModal');
+    if (e.target === modal) {
+        closeProjectPreview();
+    }
+});
+
+// Cerrar modal con la tecla Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('projectPreviewModal');
+        if (modal && modal.style.display === 'flex') {
+            closeProjectPreview();
+        }
+    }
 }); 
