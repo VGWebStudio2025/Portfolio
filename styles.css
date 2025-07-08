@@ -335,123 +335,104 @@ body {
     }
 }
 
-/* DISEÑO PARA MÓVILES/TABLETS - Botón Compacto */
+/* DISEÑO PARA MÓVILES/TABLETS - Igual que Desktop pero más compacto */
 @media (max-width: 768px) {
     .lang-btn {
         display: flex;
         align-items: center;
-        justify-content: center;
-        gap: var(--spacing-1);
-        background: rgba(255, 255, 255, 0.9);
+        justify-content: space-between;
+        background: rgba(255, 255, 255, 0.95);
         color: var(--dark);
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        padding: var(--spacing-2) var(--spacing-3);
-        border-radius: var(--border-radius);
+        border: 1px solid rgba(37, 99, 235, 0.15);
+        padding: 3px;
+        border-radius: 20px;
         font-size: var(--font-size-xs);
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-        overflow: hidden;
-        min-width: 52px;
-        height: 32px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(10px);
+        overflow: visible;
+        width: 88px;
+        height: 34px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        backdrop-filter: blur(12px);
     }
 
+    /* Slider interno del toggle para móvil */
     .lang-btn::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.1), transparent);
-        transition: left 0.5s;
+        top: 2px;
+        left: 2px;
+        width: 40px;
+        height: 30px;
+        background: var(--primary-gradient);
+        border-radius: 17px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+        z-index: 1;
     }
 
-    .lang-btn:hover::before {
-        left: 100%;
+    /* Estados del toggle para móvil */
+    .lang-btn[data-lang="es"]::before {
+        left: 2px;
     }
 
-    .lang-btn:hover {
-        background: rgba(37, 99, 235, 0.1);
-        border-color: rgba(37, 99, 235, 0.4);
-        box-shadow: 0 4px 8px rgba(37, 99, 235, 0.15);
+    .lang-btn[data-lang="en"]::before {
+        left: 46px;
     }
 
-    .lang-btn:active {
-        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
-    }
-
-    /* En móvil, mostrar solo la bandera activa */
+    /* Mostrar ambas banderas en móvil */
     .flag-spain, .flag-usa {
-        display: none;
-    }
-
-    .lang-btn[data-lang="es"] .flag-spain {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 22px;
-        height: 22px;
-        border-radius: var(--border-radius);
-        background: rgba(255, 255, 255, 0.9);
+        width: 40px;
+        height: 30px;
         transition: all 0.25s ease;
         flex-shrink: 0;
         position: relative;
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        overflow: hidden;
-    }
-
-    .lang-btn[data-lang="en"] .flag-usa {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 22px;
-        height: 22px;
-        border-radius: var(--border-radius);
-        background: rgba(255, 255, 255, 0.9);
-        transition: all 0.25s ease;
-        flex-shrink: 0;
-        position: relative;
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        overflow: hidden;
+        z-index: 2;
+        border-radius: 17px;
+        padding: 1px;
     }
 
     .flag-image {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
         object-fit: cover;
-        border-radius: 3px;
+        border-radius: 50%;
         display: block;
         transition: all 0.25s ease;
+        filter: brightness(0.9);
     }
 
-    /* .text-flag eliminado */
+    /* Estilo para la bandera activa en móvil */
+    .lang-btn[data-lang="es"] .flag-spain .flag-image,
+    .lang-btn[data-lang="en"] .flag-usa .flag-image {
+        filter: brightness(1);
+        transform: scale(1.05);
+    }
 
     .emoji-flag {
         display: none;
     }
 
     .mobile-only {
-        font-size: var(--font-size-xs);
-        font-weight: 600;
-        letter-spacing: 0.3px;
-        transition: all 0.25s ease;
-        color: var(--dark);
-        display: block;
+        display: none;
     }
 
-    .lang-btn:hover .flag-spain,
-    .lang-btn:hover .flag-usa {
-        transform: scale(1.05);
-        background: rgba(37, 99, 235, 0.1);
-        border-color: rgba(37, 99, 235, 0.3);
+    .lang-btn:hover {
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+        border-color: rgba(37, 99, 235, 0.2);
     }
 
-    .lang-btn:hover .flag-image {
-        transform: scale(1.1);
+    .lang-btn:hover::before {
+        box-shadow: 0 3px 8px rgba(37, 99, 235, 0.4);
+    }
+
+    .lang-btn:active {
+        box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
     }
 }
 
@@ -507,47 +488,35 @@ body {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 22px;
-        height: 22px;
-        border-radius: var(--border-radius);
-        background: rgba(255, 255, 255, 0.9);
+        width: 40px;
+        height: 30px;
         transition: all 0.25s ease;
         flex-shrink: 0;
         position: relative;
-        border: 1px solid rgba(37, 99, 235, 0.2);
-        overflow: hidden;
+        z-index: 2;
+        border-radius: 17px;
+        padding: 1px;
     }
 
     .lang-text {
-        font-size: var(--font-size-xs);
-        font-weight: 600;
-        letter-spacing: 0.3px;
-        transition: all 0.25s ease;
-        color: var(--dark);
+        display: none;
     }
 
     .flag-image {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 22px;
         object-fit: cover;
-        border-radius: 3px;
+        border-radius: 50%;
         display: block;
         transition: all 0.25s ease;
+        filter: brightness(0.9);
     }
 
     .emoji-flag {
         display: none;
     }
 
-    .lang-btn:hover .flag-icon {
-        transform: scale(1.05);
-        background: rgba(37, 99, 235, 0.1);
-        border-color: rgba(37, 99, 235, 0.3);
-    }
-
-    .lang-btn:hover .flag-image {
-        transform: scale(1.1);
-    }
+    /* Efectos hover removidos para evitar duplicación */
 }
 
 /* Sistema de fallback eliminado - solo banderas */
@@ -1432,6 +1401,8 @@ section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--spacing-8);
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* Animación flotante para las cards */
@@ -1449,10 +1420,6 @@ section {
 
 .portfolio-item:nth-child(3) {
     animation-delay: 3s;
-}
-
-.portfolio-item:nth-child(4) {
-    animation-delay: 4.5s;
 }
 
 .portfolio-item {
@@ -1676,6 +1643,169 @@ section {
     background: var(--white);
     color: var(--primary-color);
     transform: scale(1.05);
+}
+
+/* =================================================================
+    ESTILOS PARA CARDS "PRÓXIMAMENTE"
+================================================================= */
+
+/* Card de próximamente */
+.portfolio-item-coming-soon {
+    position: relative;
+    overflow: hidden;
+}
+
+.portfolio-item-coming-soon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(156, 163, 175, 0.1);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.portfolio-item-coming-soon:hover::after {
+    background: rgba(156, 163, 175, 0.05);
+}
+
+/* Fondo especial para próximamente */
+.coming-soon-bg {
+    background: linear-gradient(135deg, #9ca3af 0%, #6b7280 50%, #4b5563 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.coming-soon-bg::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(255, 255, 255, 0.03) 20px,
+        rgba(255, 255, 255, 0.03) 40px
+    );
+    animation: comingSoonPattern 20s linear infinite;
+}
+
+@keyframes comingSoonPattern {
+    0% { transform: translateX(-100px) translateY(-100px); }
+    100% { transform: translateX(100px) translateY(100px); }
+}
+
+/* Icono de próximamente */
+.coming-soon-icon {
+    font-size: 3rem;
+    opacity: 0.7;
+    margin-bottom: var(--spacing-3);
+    animation: comingSoonPulse 3s ease-in-out infinite;
+}
+
+@keyframes comingSoonPulse {
+    0%, 100% { 
+        transform: scale(1);
+        opacity: 0.7;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 0.9;
+    }
+}
+
+/* Texto de próximamente */
+.coming-soon-text {
+    opacity: 0.8;
+    font-weight: 500;
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--spacing-4);
+}
+
+/* Badge de próximamente */
+.coming-soon-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: #1f2937;
+    padding: 4px 12px;
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+    animation: comingSoonBadge 2s ease-in-out infinite;
+    z-index: 2;
+}
+
+@keyframes comingSoonBadge {
+    0%, 100% { 
+        transform: scale(1);
+        box-shadow: 0 2px 8px rgba(251, 191, 36, 0.3);
+    }
+    50% { 
+        transform: scale(1.05);
+        box-shadow: 0 4px 12px rgba(251, 191, 36, 0.5);
+    }
+}
+
+/* Overlay de próximamente */
+.coming-soon-overlay {
+    background: linear-gradient(135deg, rgba(156, 163, 175, 0.95) 0%, rgba(107, 114, 128, 0.95) 50%, rgba(75, 85, 99, 0.9) 100%);
+}
+
+.coming-soon-overlay::before {
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 40%);
+}
+
+/* Mensaje de en desarrollo */
+.coming-soon-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    background: rgba(255, 255, 255, 0.15);
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--border-radius-full);
+    margin-top: var(--spacing-4);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.coming-soon-message i {
+    animation: comingSoonClock 2s ease-in-out infinite;
+}
+
+@keyframes comingSoonClock {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+}
+
+/* Efectos hover especiales para próximamente */
+.portfolio-item-coming-soon:hover .coming-soon-icon {
+    animation-duration: 1s;
+    transform: scale(1.2);
+}
+
+.portfolio-item-coming-soon:hover .coming-soon-badge {
+    animation-duration: 1s;
+}
+
+.portfolio-item-coming-soon:hover .coming-soon-message {
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(1.02);
 }
 
 /* =================================================================
