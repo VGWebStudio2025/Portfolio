@@ -48,9 +48,16 @@
         <priority>0.7</priority>
     </url>
     
-    <!-- CV download -->
+    <!-- CV downloads -->
     <url>
         <loc>https://vgwebstudio.com/docs/cv/Valentín%20Otero_Desarrollo%20Web.pdf</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://vgwebstudio.com/docs/cv/Currículum%20Vitae%20CV%20Gonzalo%20Rivero.pdf</loc>
         <lastmod>2025-01-27</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.5</priority>

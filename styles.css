@@ -323,7 +323,6 @@ body {
 
     .lang-btn:hover {
         box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
-        transform: translateY(-1px);
         border-color: rgba(37, 99, 235, 0.25);
     }
 
@@ -332,7 +331,7 @@ body {
     }
 
     .lang-btn:active {
-        transform: translateY(0);
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
     }
 }
 
@@ -379,11 +378,9 @@ body {
         background: rgba(37, 99, 235, 0.1);
         border-color: rgba(37, 99, 235, 0.4);
         box-shadow: 0 4px 8px rgba(37, 99, 235, 0.15);
-        transform: translateY(-1px);
     }
 
     .lang-btn:active {
-        transform: translateY(0);
         box-shadow: 0 2px 4px rgba(37, 99, 235, 0.2);
     }
 
