@@ -387,7 +387,26 @@ body {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    background: var(--primary-gradient);
+    /* Gradiente actual - tonos púrpura-azul-rosa suaves */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    
+    /* ALTERNATIVAS - Descomenta la que más te guste y comenta la anterior */
+    
+    /* Opción 1: Tonos neutros elegantes - grises con azul sutil */
+    /* background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); */
+    
+    /* Opción 2: Gradiente profesional - azul muy suave */
+    /* background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); */
+    
+    /* Opción 3: Tonos tierra modernos */
+    /* background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); */
+    
+    /* Opción 4: Gradiente minimalista - blancos con toque de color */
+    /* background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); */
+    
+    /* Opción 5: Azul-verde suave (muy profesional) */
+    /* background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%); */
+    
     background-attachment: fixed; /* Fondo fijo que no se mueve con scroll */
     background-size: 100% 100vh;
     background-repeat: no-repeat;
@@ -406,9 +425,9 @@ body {
     width: 100vw;
     height: 100vh;
     background:
-        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+        radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 40% 80%, rgba(240, 147, 251, 0.15) 0%, transparent 60%);
     animation: gradientShift 8s ease-in-out infinite, backgroundBounce 12s ease-in-out infinite;
     z-index: -1; /* Detrás de todo el contenido */
 }
@@ -1022,23 +1041,8 @@ section {
 }
 
 .btn-cv {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    /* Estilos específicos del CV que complementan btn-primary */
     gap: var(--spacing-2);
-    padding: var(--spacing-3) var(--spacing-6);
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: var(--font-size-base);
-    transition: var(--transition);
-    border: none;
-    cursor: pointer;
-    min-width: 140px;
-    margin: 4px;
-    background: var(--primary-gradient);
-    color: var(--white);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
     position: relative;
     overflow: hidden;
 }
@@ -1050,9 +1054,10 @@ section {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #1e40af 0%, #2563eb 100%);
-    transition: left 0.5s ease;
+    background: linear-gradient(135deg, #1e40af 0%, #0891b2 100%);
+    transition: left 0.3s ease;
     z-index: -1;
+    border-radius: var(--border-radius);
 }
 
 .btn-cv:hover::before {
@@ -1060,8 +1065,29 @@ section {
 }
 
 .btn-cv:hover {
-    transform: scale(1.02);
-    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.6);
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+}
+
+/* Botón CV deshabilitado */
+.btn-cv-disabled {
+    opacity: 0.6;
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%) !important;
+    color: #f8fafc !important;
+    cursor: not-allowed !important;
+    pointer-events: auto;
+    filter: grayscale(100%);
+}
+
+.btn-cv-disabled:hover {
+    transform: none !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%) !important;
+    color: #f8fafc !important;
+}
+
+.btn-cv-disabled::before {
+    display: none !important;
 }
 
 .btn-linkedin {
@@ -1106,10 +1132,6 @@ section {
     .btn-linkedin {
         width: 100%;
         max-width: 250px;
-    }
-    
-    .btn-cv {
-        border: none;
     }
     
     .btn-linkedin {
@@ -1208,6 +1230,27 @@ section {
     gap: var(--spacing-8);
 }
 
+/* Animación flotante para las cards */
+.portfolio-item {
+    animation: portfolioFloat 6s ease-in-out infinite;
+}
+
+.portfolio-item:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.portfolio-item:nth-child(2) {
+    animation-delay: 1.5s;
+}
+
+.portfolio-item:nth-child(3) {
+    animation-delay: 3s;
+}
+
+.portfolio-item:nth-child(4) {
+    animation-delay: 4.5s;
+}
+
 .portfolio-item {
     border-radius: var(--border-radius-lg);
     overflow: hidden;
@@ -1216,11 +1259,44 @@ section {
     background: var(--white);
     /* Área de hover más amplia para prevenir jittering */
     margin: 8px;
+    position: relative;
+    /* Efectos similares al hero */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Efectos de partículas para las cards */
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent,
+            rgba(102, 126, 234, 0.05),
+            transparent,
+            rgba(118, 75, 162, 0.05),
+            transparent,
+            rgba(240, 147, 251, 0.05),
+            transparent);
+    animation: rotate 15s linear infinite;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.portfolio-item:hover::before {
+    opacity: 1;
 }
 
 .portfolio-item:hover {
-    box-shadow: var(--shadow-xl);
-    transform: translateY(-4px);
+    box-shadow: 
+        var(--shadow-xl),
+        0 0 30px rgba(102, 126, 234, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transform: translateY(-8px) scale(1.02);
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.9) 100%);
 }
 
 .portfolio-image {
@@ -1232,7 +1308,8 @@ section {
 .placeholder-image {
     width: 100%;
     height: 100%;
-    background: var(--primary-gradient);
+    /* Gradiente más suave que coincida con el nuevo estilo del hero */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1240,6 +1317,7 @@ section {
     color: var(--white);
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .placeholder-image::before {
@@ -1251,12 +1329,28 @@ section {
     height: 200%;
     background: linear-gradient(45deg,
             transparent,
-            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.15),
             transparent,
             rgba(255, 255, 255, 0.1),
+            transparent,
+            rgba(240, 147, 251, 0.1),
             transparent);
-    animation: portfolioShine 4s ease-in-out infinite;
+    animation: portfolioShine 6s ease-in-out infinite;
     animation-delay: 0.5s;
+}
+
+.placeholder-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 70% 70%, rgba(240, 147, 251, 0.15) 0%, transparent 50%);
+    animation: gradientShift 8s ease-in-out infinite;
+    z-index: -1;
 }
 
 .placeholder-image i {
@@ -1264,20 +1358,25 @@ section {
     margin-bottom: var(--spacing-3);
     opacity: 0.9;
     animation: iconFloat 4s ease-in-out infinite;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
     position: relative;
-    z-index: 1;
+    z-index: 2;
     transition: all 0.3s ease;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .placeholder-image p {
     font-weight: 600;
     margin: 0;
     font-size: var(--font-size-lg);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
     position: relative;
-    z-index: 1;
+    z-index: 2;
     transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 8px;
+    backdrop-filter: blur(10px);
 }
 
 .portfolio-overlay {
@@ -1286,13 +1385,29 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(37, 99, 235, 0.95);
+    /* Gradiente similar al del hero pero más intenso para el overlay */
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 50%, rgba(240, 147, 251, 0.9) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    z-index: 3;
+}
+
+.portfolio-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 40%);
+    animation: gradientShift 4s ease-in-out infinite;
+    z-index: -1;
 }
 
 .portfolio-item:hover .portfolio-overlay {
@@ -1310,6 +1425,12 @@ section {
     text-align: center;
     color: var(--white);
     padding: var(--spacing-4);
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--border-radius);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .portfolio-info h4 {
@@ -1841,6 +1962,21 @@ section {
 
     75% {
         transform: translateY(-4px) scale(1.01);
+    }
+}
+
+@keyframes portfolioFloat {
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+
+    33% {
+        transform: translateY(-8px) scale(1.005);
+    }
+
+    66% {
+        transform: translateY(4px) scale(0.998);
     }
 }
 

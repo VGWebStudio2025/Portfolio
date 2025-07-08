@@ -411,6 +411,92 @@ document.addEventListener('DOMContentLoaded', function () {
     // Ejecutar inicialización
     initializeLanguage();
 
+    // ============================================
+    // MANEJO DE DESCARGA DE CV
+    // ============================================
+    function initializeCVDownload() {
+        const cvButtons = document.querySelectorAll('.btn-cv:not(.btn-cv-disabled)');
+        
+        cvButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Agregar efecto visual temporal
+                const originalText = button.innerHTML;
+                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Descargando...';
+                button.style.opacity = '0.7';
+                
+                // Restaurar botón después de 2 segundos
+                setTimeout(() => {
+                    button.innerHTML = originalText;
+                    button.style.opacity = '1';
+                }, 2000);
+            });
+        });
+        
+        // Manejar botones deshabilitados con mensaje más amigable
+        const disabledButtons = document.querySelectorAll('.btn-cv-disabled');
+        disabledButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Mensaje más profesional según el idioma
+                const message = currentLanguage === 'es' 
+                    ? 'CV no disponible aún. ¡Próximamente!'
+                    : 'CV not available yet. Coming soon!';
+                    
+                // Crear notificación temporal en lugar de alert
+                showTempNotification(message, 'info');
+                return false;
+            });
+        });
+    }
+    
+    // Función para mostrar notificaciones temporales
+    function showTempNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `temp-notification temp-notification--${type}`;
+        notification.innerHTML = `
+            <i class="fas fa-info-circle"></i>
+            <span>${message}</span>
+        `;
+        
+        // Estilos inline para la notificación
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: ${type === 'info' ? '#3b82f6' : '#10b981'};
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Animar entrada
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 100);
+        
+        // Remover después de 3 segundos
+        setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 3000);
+    }
+
+    // Ejecutar inicialización de CV
+    initializeCVDownload();
+
     // Función para detectar cambios en el sistema de idioma del navegador
     function detectBrowserLanguage() {
         const browserLang = navigator.language || navigator.languages[0];
