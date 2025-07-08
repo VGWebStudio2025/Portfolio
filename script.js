@@ -101,6 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Navegación
             'nav.home': 'Inicio',
             'nav.about': 'Nosotros',
+            'nav.team': 'Equipo',
             'nav.projects': 'Proyectos',
             'nav.contact': 'Contacto',
 
@@ -185,12 +186,24 @@ document.addEventListener('DOMContentLoaded', function () {
             'thanks.response': 'Tiempo de respuesta: menos de 24 horas',
             'thanks.back': 'Volver al Inicio',
             'thanks.projects': 'Ver Proyectos',
-            'thanks.contact.title': '¿Necesitas contactarnos directamente?'
+            'thanks.contact.title': '¿Necesitas contactarnos directamente?',
+
+            // Sección del Equipo
+            'team.title': 'Conoce a Nuestro Equipo',
+            'team.subtitle': 'Los creadores detrás de VGWebStudio',
+            'team.founder1.name': 'Valentin Otero',
+            'team.founder1.role': 'Co-fundador & Desarrollador Frontend',
+            'team.founder1.description': 'Apasionado por crear experiencias web únicas y funcionales. Especialista en tecnologías frontend modernas con experiencia en el desarrollo de soluciones digitales innovadoras.',
+            'team.founder2.name': 'Gonzalo Rivero',
+            'team.founder2.role': 'Co-fundador & Diseñador UX/UI',
+            'team.founder2.description': 'Experto en diseño de experiencias digitales intuitivas y atractivas. Con un enfoque centrado en el usuario, transforma ideas complejas en interfaces simples y elegantes que conectan con las emociones de los usuarios.',
+            'team.cv.download': 'Descargar CV'
         },
         en: {
             // Navigation
             'nav.home': 'Home',
             'nav.about': 'About',
+            'nav.team': 'Team',
             'nav.projects': 'Projects',
             'nav.contact': 'Contact',
 
@@ -275,7 +288,18 @@ document.addEventListener('DOMContentLoaded', function () {
             'thanks.response': 'Response time: less than 24 hours',
             'thanks.back': 'Back to Home',
             'thanks.projects': 'View Projects',
-            'thanks.contact.title': 'Need to contact us directly?'
+            'thanks.contact.title': 'Need to contact us directly?',
+
+            // Team Section
+            'team.title': 'Meet Our Team',
+            'team.subtitle': 'The creators behind VGWebStudio',
+            'team.founder1.name': 'Valentin Otero',
+            'team.founder1.role': 'Co-founder & Frontend Developer',
+            'team.founder1.description': 'Passionate about creating unique and functional web experiences. Specialist in modern frontend technologies with experience in developing innovative digital solutions.',
+            'team.founder2.name': 'Gonzalo Rivero',
+            'team.founder2.role': 'Co-founder & UX/UI Designer',
+            'team.founder2.description': 'Expert in designing intuitive and attractive digital experiences. With a user-centered approach, transforms complex ideas into simple and elegant interfaces that connect with user emotions.',
+            'team.cv.download': 'Download CV'
         }
     };
 
@@ -321,12 +345,17 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateLanguageButton(language) {
         if (!langToggle || !flagIcon || !langText) return;
         
+        const emojiFlag = flagIcon.querySelector('.emoji-flag');
+        const textFlag = flagIcon.querySelector('.text-flag');
+        
         if (language === 'es') {
-            flagIcon.textContent = '🇪🇸';
+            if (emojiFlag) emojiFlag.textContent = '🇪🇸';
+            if (textFlag) textFlag.textContent = 'ES';
             langText.textContent = 'ES';
             langToggle.title = 'Cambiar a inglés';
         } else {
-            flagIcon.textContent = '🇺🇸';
+            if (emojiFlag) emojiFlag.textContent = '🇺🇸';
+            if (textFlag) textFlag.textContent = 'EN';
             langText.textContent = 'EN';
             langToggle.title = 'Switch to Spanish';
         }
@@ -432,7 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Observar elementos que deben animarse al entrar al viewport
-    const animatedElements = document.querySelectorAll('.portfolio-item, .feature, .contact-method, .hero-title, .hero-description, .hero-buttons, .section-header');
+    const animatedElements = document.querySelectorAll('.portfolio-item, .feature, .contact-method, .team-member, .hero-title, .hero-description, .hero-buttons, .section-header');
     
     animatedElements.forEach(element => {
         // Solo procesar animaciones si el usuario las permite

@@ -22,6 +22,7 @@
         <nav class="nav">
             <div class="nav-container">
                 <div class="nav-logo">
+                    <img src="img/Logotipo.png" alt="VGWebStudio Logo" class="nav-logo-img">
                     <h2>VGWebStudio</h2>
                 </div>
                 <ul class="nav-menu">
@@ -30,6 +31,9 @@
                     </li>
                     <li class="nav-item">
                         <a href="#nosotros" class="nav-link" data-i18n="nav.about">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#equipo" class="nav-link" data-i18n="nav.team">Equipo</a>
                     </li>
                     <li class="nav-item">
                         <a href="#proyectos" class="nav-link" data-i18n="nav.projects">Proyectos</a>
@@ -41,7 +45,10 @@
                 <!-- Botón de cambio de idioma -->
                 <div class="language-switcher">
                     <button class="lang-btn" id="langToggle" title="Cambiar idioma">
-                        <span class="flag-icon">🇪🇸</span>
+                        <span class="flag-icon" data-flag="es">
+                            <span class="emoji-flag">🇪🇸</span>
+                            <span class="text-flag">ES</span>
+                        </span>
                         <span class="lang-text">ES</span>
                     </button>
                 </div>
@@ -142,6 +149,87 @@
                         </div>
                         <h4 data-i18n="features.optimization.title">Optimización</h4>
                         <p data-i18n="features.optimization.desc">Velocidad de carga rápida y optimización para motores de búsqueda</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuestro Equipo -->
+    <section id="equipo" class="team">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" data-i18n="team.title">Conoce a Nuestro Equipo</h2>
+                <p class="section-subtitle" data-i18n="team.subtitle">Los creadores detrás de VGWebStudio</p>
+            </div>
+            <div class="team-grid">
+                <!-- Fundador 1 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="img/team/valentin-otero.jpg" alt="Valentin Otero" class="member-photo">
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name" data-i18n="team.founder1.name">Valentin Otero</h3>
+                        <h4 class="member-role" data-i18n="team.founder1.role">Co-fundador & Desarrollador Frontend</h4>
+                        <p class="member-description" data-i18n="team.founder1.description">
+                            Apasionado por crear experiencias web únicas y funcionales. Especialista en tecnologías 
+                            frontend modernas con más de X años de experiencia en el desarrollo web.
+                        </p>
+                        <div class="member-skills">
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">CSS</span>
+                            <span class="skill-tag">HTML</span>
+                            <span class="skill-tag">Wireframing</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">UI/UX</span>
+                        </div>
+                        <div class="member-actions">
+                            <a href="docs/cv/Valentín Otero_Desarrollo Web.pdf" class="btn btn-outline btn-cv" data-i18n="team.cv.download" target="_blank" download="Valentin_Otero_CV.pdf">
+                                <i class="fas fa-download"></i>
+                                Descargar CV
+                            </a>
+                            <a href="https://www.linkedin.com/in/valentin-otero-115163308/" class="btn btn-primary btn-linkedin" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fundador 2 -->
+                <div class="team-member">
+                    <div class="member-image">
+                        <div class="image-placeholder">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <!-- <img src="img/team/founder2.jpg" alt="Nombre Fundador 2" class="member-photo"> -->
+                    </div>
+                    <div class="member-info">
+                        <h3 class="member-name" data-i18n="team.founder2.name">Gonzalo Rivero</h3>
+                        <h4 class="member-role" data-i18n="team.founder2.role">Co-fundador & Diseñador UX/UI</h4>
+                        <p class="member-description" data-i18n="team.founder2.description">
+                            Experto en diseño de experiencias digitales intuitivas y atractivas. Con un enfoque 
+                            centrado en el usuario, transforma ideas complejas en interfaces simples y elegantes.
+                        </p>
+                        <div class="member-skills">
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Adobe XD</span>
+                            <span class="skill-tag">Photoshop</span>
+                            <span class="skill-tag">Branding</span>
+                            <span class="skill-tag">UX Research</span>
+                            <span class="skill-tag">Wireframing</span>
+                        </div>
+                        <div class="member-actions">
+                            <a href="#" class="btn btn-outline btn-cv" data-i18n="team.cv.download">
+                                <i class="fas fa-download"></i>
+                                Descargar CV
+                            </a>
+                            <a href="#" class="btn btn-primary btn-linkedin" target="_blank" rel="noopener noreferrer">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -293,6 +381,7 @@
                             <div class="contact-details">
                                 <h4 data-i18n="contact.phone.label">Teléfono</h4>
                                 <p>+54 9 291 645 4112</p>
+                                <p>+54 9 291 643 0305</p>
                             </div>
                         </div>
 
@@ -339,6 +428,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">
+                        <img src="img/Logotipo.png" alt="VGWebStudio Logo" class="footer-logo-img">
                         <h3>VGWebStudio</h3>
                     </div>
                     <p data-i18n="footer.tagline">Creando experiencias digitales excepcionales desde 2025</p>
@@ -370,6 +460,7 @@
                     <ul>
                         <li>vgwebstudio1@gmail.com</li>
                         <li>+54 9 291 645 4112</li>
+                        <li>+54 9 291 643 0305</li>
                     </ul>
                 </div>
             </div>
@@ -379,7 +470,6 @@
         </div>
     </footer>
 
-    <!-- JavaScript básico -->
     <script src="script.js"></script>
 </body>
 
