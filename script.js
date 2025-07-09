@@ -242,6 +242,99 @@ const translations = {
 // INICIALIZACIÓN CUANDO EL DOM ESTÁ LISTO
 // ============================================
 document.addEventListener('DOMContentLoaded', function () {
+    
+    // ============================================
+    // NAVEGACIÓN MÓVIL
+    // ============================================
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    // Toggle del menú móvil
+    if (navToggle) {
+        navToggle.addEventListener('click', function () {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    }
+
+    // Cerrar menú al hacer click en un enlace
+    navLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        });
+    });
+
+    // Cerrar menú al hacer click fuera
+    document.addEventListener('click', function (e) {
+        if (navToggle && navMenu && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+        }
+    });
+
+    // ============================================
+    // SMOOTH SCROLLING PARA NAVEGACIÓN
+    // ============================================
+    navLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+
+            if (targetSection) {
+                targetSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // ============================================
+    // HEADER SCROLL EFFECT
+    // ============================================
+    const header = document.querySelector('.header');
+
+    window.addEventListener('scroll', function () {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // ============================================
+    // FILTROS DEL PORTFOLIO
+    // ============================================
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            // Remover clase active de todos los botones
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            // Agregar clase active al botón clickeado
+            this.classList.add('active');
+
+            const filterValue = this.getAttribute('data-filter');
+
+            // Filtrar elementos
+            portfolioItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // ============================================
+    // SISTEMA DE IDIOMAS
+    // ============================================
+    
     // Variable para el idioma actual
     let currentLanguage = localStorage.getItem('language') || 'es';
 
@@ -437,6 +530,66 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ejecutar inicialización de CV
     initializeCVDownload();
+
+    // ============================================
+    // INTERACCIONES TÁCTILES PARA MÓVIL - PORTFOLIO
+    // ============================================
+    function initializeMobilePortfolio() {
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+        portfolioItems.forEach((item, index) => {
+            const overlay = item.querySelector('.portfolio-overlay');
+            
+            if (overlay) {
+                // Agregar evento touch para mostrar overlay en móvil
+                item.addEventListener('touchstart', function(e) {
+                    // Remover active de todas las otras cards
+                    portfolioItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('mobile-active');
+                        }
+                    });
+                    
+                    // Toggle active en la card actual
+                    item.classList.toggle('mobile-active');
+                    
+                    // Prevenir scroll accidental
+                    if (item.classList.contains('mobile-active')) {
+                        e.preventDefault();
+                    }
+                });
+
+                // También agregar evento click como fallback
+                item.addEventListener('click', function(e) {
+                    // Solo activar si no hay overlay visible
+                    if (!item.classList.contains('mobile-active')) {
+                        // Remover active de todas las otras cards
+                        portfolioItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('mobile-active');
+                            }
+                        });
+                        
+                        item.classList.add('mobile-active');
+                        e.preventDefault();
+                    }
+                });
+            }
+        });
+
+        // Cerrar overlays al tocar fuera
+        document.addEventListener('touchstart', function(e) {
+            const isPortfolioItem = e.target.closest('.portfolio-item');
+            if (!isPortfolioItem) {
+                portfolioItems.forEach(item => {
+                    item.classList.remove('mobile-active');
+                });
+            }
+        });
+    }
+
+    // Ejecutar inicialización móvil
+    initializeMobilePortfolio();
 
     // Función para detectar cambios en el sistema de idioma del navegador
     function detectBrowserLanguage() {

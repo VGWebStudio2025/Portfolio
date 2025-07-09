@@ -3240,5 +3240,94 @@ button {
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 
+/* =================================================================
+    INTERACCIONES MÓVILES PARA PORTFOLIO
+================================================================= */
 
+/* Estilos para cards activadas en móvil */
+@media (max-width: 768px) {
+    /* Hacer que las cards sean más táctiles en móvil */
+    .portfolio-item {
+        cursor: pointer;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
 
+    /* Cuando una card está activa en móvil, mostrar el overlay */
+    .portfolio-item.mobile-active .portfolio-overlay {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Mejorar la visibilidad del overlay en móvil */
+    .portfolio-item.mobile-active .portfolio-overlay::before {
+        opacity: 0.95;
+    }
+
+    /* Hacer que los iconos de las cards activas sean más visibles */
+    .portfolio-item.mobile-active .placeholder-image i,
+    .portfolio-item.mobile-active .placeholder-image p {
+        color: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Agregar feedback visual para el toque */
+    .portfolio-item:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+
+    /* Transición suave para el overlay móvil */
+    .portfolio-overlay {
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    /* Hacer que los botones del overlay sean más grandes para tocar */
+    .portfolio-link {
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Indicador visual de que la card es interactiva */
+    .portfolio-item::after {
+        content: '';
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        width: 6px;
+        height: 6px;
+        background: var(--color-primary);
+        border-radius: 50%;
+        opacity: 0.6;
+        z-index: 2;
+    }
+
+    /* Ocultar el indicador cuando la card está activa */
+    .portfolio-item.mobile-active::after {
+        opacity: 0;
+    }
+}
+
+/* Estilos específicos para móviles pequeños */
+@media (max-width: 480px) {
+    .portfolio-item.mobile-active .portfolio-info {
+        padding: var(--spacing-4);
+    }
+
+    .portfolio-item.mobile-active .portfolio-info h4 {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-2);
+    }
+
+    .portfolio-item.mobile-active .portfolio-info p {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-3);
+    }
+
+    .portfolio-links {
+        gap: var(--spacing-3);
+    }
+}
