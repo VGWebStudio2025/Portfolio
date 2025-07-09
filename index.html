@@ -435,24 +435,64 @@
                     </div>
                 </div>
 
-                <!-- Próximamente - Landing Page -->
-                <div class="portfolio-item portfolio-item-coming-soon" data-category="landing">
+                <!-- Dentisan - Consultorio Odontológico -->
+                <div class="portfolio-item" data-category="landing">
                     <div class="portfolio-image">
-                        <div class="placeholder-image coming-soon-bg">
-                            <i class="fas fa-rocket coming-soon-icon"></i>
-                            <p class="coming-soon-text" data-i18n="portfolio.coming-soon.landing.placeholder">Landing Page</p>
-                            <div class="coming-soon-badge">
-                                <span data-i18n="portfolio.coming-soon.badge">Próximamente</span>
+                        <div class="placeholder-image">
+                            <i class="fas fa-tooth"></i>
+                            <p data-i18n="portfolio.project2.placeholder">Dentisan</p>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <div class="portfolio-info">
+                                <h4 data-i18n="portfolio.project2.title">Dentisan - Consultorio Odontológico</h4>
+                                <p data-i18n="portfolio.project2.desc">Landing page de demostración para consultorio odontológico con diseño moderno y profesional
+                                </p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://dentisan.netlify.app" class="portfolio-link" target="_blank"
+                                        rel="noopener noreferrer" title="Ver sitio web">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <button class="portfolio-link preview-btn"
+                                        onclick="openProjectPreview('dentisan')" title="Vista previa">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="portfolio-overlay coming-soon-overlay">
+                    </div>
+                </div>
+
+                <!-- Club El Nacional Rugby -->
+                <div class="portfolio-item" data-category="web">
+                    <div class="portfolio-image">
+                        <div class="placeholder-image">
+                            <i class="fas fa-trophy"></i>
+                            <p data-i18n="portfolio.project3.placeholder">El Nacional Rugby</p>
+                        </div>
+                        <div class="portfolio-overlay">
                             <div class="portfolio-info">
-                                <h4 data-i18n="portfolio.coming-soon.landing.title">Landing Page Premium</h4>
-                                <p data-i18n="portfolio.coming-soon.landing.desc">Una landing page altamente optimizada para conversiones y resultados excepcionales
+                                <h4 data-i18n="portfolio.project3.title">Club El Nacional Rugby</h4>
+                                <p data-i18n="portfolio.project3.desc">Sitio web institucional del histórico club de rugby fundado en 1919 en Bahía Blanca
                                 </p>
-                                <div class="coming-soon-message">
-                                    <i class="fas fa-clock"></i>
-                                    <span data-i18n="portfolio.coming-soon.message">En desarrollo</span>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">HTML</span>
+                                    <span class="tech-tag">CSS</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                </div>
+                                <div class="portfolio-links">
+                                    <a href="https://clubelnacionalrugby.netlify.app" class="portfolio-link" target="_blank"
+                                        rel="noopener noreferrer" title="Ver sitio web">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                    <button class="portfolio-link preview-btn"
+                                        onclick="openProjectPreview('elnacional')" title="Vista previa">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -608,7 +648,6 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeProjectPreview()">Cerrar</button>
                 <a id="modalProjectLink" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i>
                     Visitar Proyecto

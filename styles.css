@@ -2900,10 +2900,10 @@ button {
 }
 
 .modal-close {
-    background: none;
+    background: rgba(0, 0, 0, 0.05);
     border: none;
     font-size: var(--font-size-xl);
-    color: var(--gray);
+    color: #374151;
     cursor: pointer;
     padding: var(--spacing-2);
     border-radius: var(--border-radius);
@@ -2911,14 +2911,16 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
+    font-weight: 600;
 }
 
 .modal-close:hover {
     background: rgba(220, 38, 38, 0.1);
-    color: var(--error);
+    color: #dc2626;
     transform: scale(1.1);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.2);
 }
 
 /* Body del modal */
@@ -3046,17 +3048,15 @@ button {
 /* Footer del modal */
 .modal-footer {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: var(--spacing-6);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-    gap: var(--spacing-4);
 }
 
 .modal-footer .btn {
-    flex: 1;
-    max-width: 200px;
+    max-width: 250px;
     text-align: center;
     justify-content: center;
 }
@@ -3096,8 +3096,6 @@ button {
     
     .modal-footer {
         padding: var(--spacing-4);
-        flex-direction: column;
-        gap: var(--spacing-3);
     }
     
     .modal-footer .btn {
@@ -3132,9 +3130,12 @@ button {
     }
     
     .modal-close {
-        width: 36px;
-        height: 36px;
+        width: 40px;
+        height: 40px;
         font-size: var(--font-size-lg);
+        background: rgba(0, 0, 0, 0.08);
+        color: #1f2937;
+        font-weight: 700;
     }
     
     .modal-body {
@@ -3143,6 +3144,7 @@ button {
     
     .modal-footer {
         padding: var(--spacing-3);
+        justify-content: center;
     }
     
     .project-preview-image img {
@@ -3182,5 +3184,11 @@ button {
 .preview-btn:focus {
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.modal-close:focus {
+    color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
 }
 

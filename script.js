@@ -146,9 +146,12 @@ document.addEventListener('DOMContentLoaded', function () {
             'portfolio.coming-soon.ecommerce.title': 'Tienda Online Moderna',
             'portfolio.coming-soon.ecommerce.desc': 'Estamos trabajando en una increíble tienda online con las últimas tecnologías',
             'portfolio.coming-soon.ecommerce.placeholder': 'E-commerce',
-            'portfolio.coming-soon.landing.title': 'Landing Page Premium',
-            'portfolio.coming-soon.landing.desc': 'Una landing page altamente optimizada para conversiones y resultados excepcionales',
-            'portfolio.coming-soon.landing.placeholder': 'Landing Page',
+            'portfolio.project2.title': 'Dentisan - Consultorio Odontológico',
+            'portfolio.project2.desc': 'Landing page de demostración para consultorio odontológico con diseño moderno y profesional',
+            'portfolio.project2.placeholder': 'Dentisan',
+            'portfolio.project3.title': 'Club El Nacional Rugby',
+            'portfolio.project3.desc': 'Sitio web institucional del histórico club de rugby fundado en 1919 en Bahía Blanca',
+            'portfolio.project3.placeholder': 'El Nacional Rugby',
 
             // Contacto
             'contact.title': '¿Listo para tu próximo proyecto?',
@@ -249,9 +252,12 @@ document.addEventListener('DOMContentLoaded', function () {
             'portfolio.coming-soon.ecommerce.title': 'Modern Online Store',
             'portfolio.coming-soon.ecommerce.desc': 'We are working on an amazing online store with the latest technologies',
             'portfolio.coming-soon.ecommerce.placeholder': 'E-commerce',
-            'portfolio.coming-soon.landing.title': 'Premium Landing Page',
-            'portfolio.coming-soon.landing.desc': 'A highly optimized landing page for conversions and exceptional results',
-            'portfolio.coming-soon.landing.placeholder': 'Landing Page',
+            'portfolio.project2.title': 'Dentisan - Dental Clinic',
+            'portfolio.project2.desc': 'Demo landing page for dental clinic with modern and professional design',
+            'portfolio.project2.placeholder': 'Dentisan',
+            'portfolio.project3.title': 'Club El Nacional Rugby',
+            'portfolio.project3.desc': 'Institutional website of the historic rugby club founded in 1919 in Bahía Blanca',
+            'portfolio.project3.placeholder': 'El Nacional Rugby',
 
             // Contact
             'contact.title': 'Ready for your next project?',
@@ -1148,7 +1154,7 @@ const projectsData = {
     proyectodax: {
         title: 'ProyectoDAX Blog',
         description: 'Blog moderno y funcional desarrollado con HTML, CSS y SCSS. Diseño responsive con una interfaz limpia y profesional, optimizado para la experiencia del usuario.',
-        image: 'img/Index(DAX).png',
+        image: 'img/vistaprevia/Index(DAX).png',
         url: 'https://proyectodax.netlify.app',
         technologies: ['HTML', 'CSS', 'SCSS'],
         features: [
@@ -1156,6 +1162,35 @@ const projectsData = {
             'Optimizado para SEO',
             'Navegación intuitiva',
             'Carga rápida'
+        ]
+    },
+    dentisan: {
+        title: 'Dentisan - Consultorio Odontológico',
+        description: 'Landing page de demostración para consultorio odontológico. Página completamente funcional con información ficticia, diseñada como template/plantilla personalizable para cualquier consultorio dental real. Incluye secciones de servicios, equipo médico, testimonios y contacto.',
+        image: 'img/vistaprevia/index(DENTISAN).png',
+        url: 'https://dentisan.netlify.app',
+        technologies: ['HTML', 'CSS', 'JavaScript'],
+        features: [
+            'Diseño responsive profesional',
+            'Formulario de contacto funcional',
+            'Secciones completas de servicios',
+            'Template personalizable',
+            'Información de demostración'
+        ]
+    },
+    elnacional: {
+        title: 'Club El Nacional Rugby',
+        description: 'Sitio web institucional completo del Club El Nacional, histórico club de rugby fundado en 1919 en Bahía Blanca, Argentina. Incluye información sobre la Copa Patagonia, historia del club, galería de fotos, equipos, staff técnico y sección de contacto. Diseño moderno y funcional que refleja la tradición y prestigio del club.',
+        image: 'img/vistaprevia/index(CEN).png',
+        url: 'https://clubelnacionalrugby.netlify.app',
+        technologies: ['HTML', 'CSS', 'JavaScript'],
+        features: [
+            'Sitio web institucional completo',
+            'Historia y tradición del club',
+            'Información Copa Patagonia',
+            'Galería de fotos interactiva',
+            'Secciones de equipos y staff',
+            'Diseño responsive moderno'
         ]
     }
     // Aquí se pueden agregar más proyectos en el futuro
