@@ -638,7 +638,11 @@
                     <!-- Información del proyecto se carga dinámicamente -->
                 </div>
                 <div class="project-preview-image">
-                    <img id="modalProjectImage" src="" alt="Vista previa del proyecto" />
+                    <div id="imageLoadingSpinner" class="image-loading-spinner">
+                        <div class="spinner"></div>
+                        <p data-i18n="modal.loading">Cargando imagen...</p>
+                    </div>
+                    <img id="modalProjectImage" src="" alt="Vista previa del proyecto" style="display: none;" />
                 </div>
                 <div class="project-preview-details">
                     <p id="modalProjectDescription"></p>
@@ -650,7 +654,7 @@
             <div class="modal-footer">
                 <a id="modalProjectLink" href="#" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-external-link-alt"></i>
-                    Visitar Proyecto
+                    <span data-i18n="modal.visit">Visitar Proyecto</span>
                 </a>
             </div>
         </div>

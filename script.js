@@ -1,102 +1,11 @@
 // VGWebStudio Portfolio - JavaScript Básico
-document.addEventListener('DOMContentLoaded', function () {
 
-    // ============================================
-    // NAVEGACIÓN MÓVIL
-    // ============================================
-    const navToggle = document.querySelector('.nav-toggle');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
+// ============================================
+// SISTEMA DE INTERNACIONALIZACIÓN (i18n) - GLOBAL
+// ============================================
 
-    // Toggle del menú móvil
-    if (navToggle) {
-        navToggle.addEventListener('click', function () {
-            navMenu.classList.toggle('active');
-            navToggle.classList.toggle('active');
-        });
-    }
-
-    // Cerrar menú al hacer click en un enlace
-    navLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        });
-    });
-
-    // Cerrar menú al hacer click fuera
-    document.addEventListener('click', function (e) {
-        if (navToggle && navMenu && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
-        }
-    });
-
-    // ============================================
-    // SMOOTH SCROLLING PARA NAVEGACIÓN
-    // ============================================
-    navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-
-            if (targetSection) {
-                targetSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // ============================================
-    // HEADER SCROLL EFFECT
-    // ============================================
-    const header = document.querySelector('.header');
-
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 100) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-    });
-
-    // ============================================
-    // FILTROS DEL PORTFOLIO
-    // ============================================
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', function () {
-            // Remover clase active de todos los botones
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Agregar clase active al botón clickeado
-            this.classList.add('active');
-
-            const filterValue = this.getAttribute('data-filter');
-
-            // Filtrar elementos
-            portfolioItems.forEach(item => {
-                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    console.log('🚀 VGWebStudio Portfolio cargado correctamente');
-
-    // ============================================
-    // SISTEMA DE INTERNACIONALIZACIÓN (i18n)
-    // ============================================
-
-    // Objeto con todas las traducciones
-    const translations = {
+// Objeto con todas las traducciones (disponible globalmente)
+const translations = {
         es: {
             // Navegación
             'nav.home': 'Inicio',
@@ -152,6 +61,15 @@ document.addEventListener('DOMContentLoaded', function () {
             'portfolio.project3.title': 'Club El Nacional Rugby',
             'portfolio.project3.desc': 'Sitio web institucional del histórico club de rugby fundado en 1919 en Bahía Blanca',
             'portfolio.project3.placeholder': 'El Nacional Rugby',
+            
+            // Descripciones detalladas para el modal
+            'portfolio.project1.description': 'Blog moderno y funcional desarrollado con HTML, CSS y SCSS. Diseño responsive con una interfaz limpia y profesional, optimizado para la experiencia del usuario.',
+            'portfolio.project2.description': 'Landing page de demostración para consultorio odontológico. Página completamente funcional con información ficticia, diseñada como template/plantilla personalizable para cualquier consultorio dental real. Incluye secciones de servicios, equipo médico, testimonios y contacto.',
+            'portfolio.project3.description': 'Sitio web institucional completo del Club El Nacional, histórico club de rugby fundado en 1919 en Bahía Blanca, Argentina. Incluye información sobre la Copa Patagonia, historia del club, galería de fotos, equipos, staff técnico y sección de contacto. Diseño moderno y funcional que refleja la tradición y prestigio del club.',
+            
+            // Modal de proyectos
+            'modal.loading': 'Cargando imagen...',
+            'modal.visit': 'Visitar Proyecto',
 
             // Contacto
             'contact.title': '¿Listo para tu próximo proyecto?',
@@ -258,6 +176,15 @@ document.addEventListener('DOMContentLoaded', function () {
             'portfolio.project3.title': 'Club El Nacional Rugby',
             'portfolio.project3.desc': 'Institutional website of the historic rugby club founded in 1919 in Bahía Blanca',
             'portfolio.project3.placeholder': 'El Nacional Rugby',
+            
+            // Detailed descriptions for modal
+            'portfolio.project1.description': 'Modern and functional blog developed with HTML, CSS and SCSS. Responsive design with a clean and professional interface, optimized for user experience.',
+            'portfolio.project2.description': 'Demo landing page for dental clinic. Fully functional page with fictional information, designed as a customizable template/layout for any real dental clinic. Includes sections for services, medical team, testimonials and contact.',
+            'portfolio.project3.description': 'Complete institutional website for Club El Nacional, historic rugby club founded in 1919 in Bahía Blanca, Argentina. Includes information about Copa Patagonia, club history, photo gallery, teams, technical staff and contact section. Modern and functional design that reflects the tradition and prestige of the club.',
+            
+            // Project modal
+            'modal.loading': 'Loading image...',
+            'modal.visit': 'Visit Project',
 
             // Contact
             'contact.title': 'Ready for your next project?',
@@ -311,6 +238,10 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     };
 
+// ============================================
+// INICIALIZACIÓN CUANDO EL DOM ESTÁ LISTO
+// ============================================
+document.addEventListener('DOMContentLoaded', function () {
     // Variable para el idioma actual
     let currentLanguage = localStorage.getItem('language') || 'es';
 
@@ -382,6 +313,9 @@ document.addEventListener('DOMContentLoaded', function () {
             // Actualizar textos y botón
             updateTexts(currentLanguage);
             updateLanguageButton(currentLanguage);
+            
+            // Actualizar modal si está abierto
+            updateModalLanguage();
 
             // Reiniciar el efecto de escritura del título con el nuevo idioma
             if (typeof startTypewriterEffect === 'function') {
@@ -391,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Guardar en localStorage
             localStorage.setItem('language', currentLanguage);
 
-            console.log(`🌐 Idioma cambiado a: ${currentLanguage.toUpperCase()}`);
+    
         }, 200);
 
         // Quitar animación después de que termine
@@ -412,7 +346,7 @@ document.addEventListener('DOMContentLoaded', function () {
         updateTexts(currentLanguage);
         updateLanguageButton(currentLanguage);
 
-        console.log(`🌐 Idioma inicializado: ${currentLanguage.toUpperCase()}`);
+
     }
 
     // Ejecutar inicialización
@@ -582,7 +516,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    console.log(`✨ Intersection Observer configurado para ${animatedElements.length} elementos`);
+    
 
     // ============================================
     // EFECTO DE ESCRITURA AUTOMÁTICA (TYPEWRITER)
@@ -821,7 +755,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             // Prevenir múltiples envíos
             if (formSubmissionInProgress) {
-                console.log('⚠️ Envío ya en progreso, ignorando clic adicional');
+
                 return;
             }
 
@@ -862,7 +796,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const callmebotField = document.getElementById('callmebotMessage');
                 const finalMessage = callmebotField ? callmebotField.value : '';
 
-                console.log('📝 Mensaje a enviar:', finalMessage);
+    
 
                 // Configuración para múltiples números de WhatsApp
                 // ⚠️ IMPORTANTE: Para agregar un segundo número real:
@@ -877,7 +811,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // URL encode del mensaje para evitar problemas con caracteres especiales
                 const encodedMessage = encodeURIComponent(finalMessage);
 
-                console.log('📤 Enviando mensaje a múltiples números de WhatsApp...');
+
                 
                 // Función para enviar a un número específico
                 const sendToWhatsApp = async (numberConfig, delay = 0) => {
@@ -885,44 +819,33 @@ document.addEventListener('DOMContentLoaded', function () {
                         setTimeout(() => {
                             const callMeBotUrl = `https://api.callmebot.com/whatsapp.php?phone=${numberConfig.phone}&apikey=${numberConfig.apikey}&text=${encodedMessage}`;
                             
-                            console.log(`📱 Enviando a ${numberConfig.name} (${numberConfig.phone})...`);
-                            console.log(`🔗 URL generada:`, callMeBotUrl);
-                            console.log(`🔑 API Key utilizada: ${numberConfig.apikey}`);
-                            
                             try {
                                 // Método 1: Intentar con fetch normal primero
                                 fetch(callMeBotUrl, {
                                     method: 'GET'
                                 })
                                 .then(response => {
-                                    console.log(`📡 Respuesta de ${numberConfig.name}:`, response.status, response.statusText);
                                     if (response.ok) {
-                                        console.log(`✅ Mensaje enviado exitosamente a ${numberConfig.name}`);
                                         resolve({ success: true, number: numberConfig.name, method: 'fetch' });
                                     } else {
-                                        console.warn(`⚠️ Respuesta no exitosa de ${numberConfig.name}: ${response.status}`);
                                         // Intentar con método fallback
                                         return useFallbackMethod();
                                     }
                                 })
                                 .catch((fetchError) => {
-                                    console.log(`ℹ️ Fetch falló para ${numberConfig.name}, intentando fallback:`, fetchError.message);
                                     return useFallbackMethod();
                                 });
                                 
                                 // Función de fallback usando imagen
                                 function useFallbackMethod() {
-                                    console.log(`🔄 Usando método fallback para ${numberConfig.name}...`);
                                     try {
                                         const img = new Image();
                                         
                                         img.onload = () => {
-                                            console.log(`✅ Fallback exitoso para ${numberConfig.name} (imagen cargada)`);
                                             resolve({ success: true, number: numberConfig.name, method: 'image' });
                                         };
                                         
                                         img.onerror = (imgError) => {
-                                            console.log(`⚠️ Imagen falló para ${numberConfig.name}, pero mensaje probablemente enviado`);
                                             // Aún así consideramos como exitoso porque CallMeBot puede enviar el mensaje
                                             // aunque la respuesta de imagen falle
                                             resolve({ success: true, number: numberConfig.name, method: 'image-error' });
@@ -930,20 +853,17 @@ document.addEventListener('DOMContentLoaded', function () {
                                         
                                         // Agregar timeout a la imagen para evitar cuelgues
                                         setTimeout(() => {
-                                            console.log(`⏰ Timeout para ${numberConfig.name}, considerando como enviado`);
                                             resolve({ success: true, number: numberConfig.name, method: 'timeout' });
                                         }, 10000); // 10 segundos timeout
                                         
                                         img.src = callMeBotUrl;
                                         
                                     } catch (fallbackError) {
-                                        console.error(`❌ Error crítico en fallback para ${numberConfig.name}:`, fallbackError);
                                         resolve({ success: false, number: numberConfig.name, error: fallbackError.message });
                                     }
                                 }
                                 
                             } catch (error) {
-                                console.error(`❌ Error general enviando a ${numberConfig.name}:`, error);
                                 resolve({ success: false, number: numberConfig.name, error: error.message });
                             }
                         }, delay);
@@ -962,24 +882,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 const successful = results.filter(r => r.success);
                 const failed = results.filter(r => !r.success);
                 
-                console.log(`📊 RESUMEN DETALLADO DE ENVÍOS:`);
-                console.log(`✅ Exitosos: ${successful.length}/${whatsappNumbers.length}`);
-                
-                // Mostrar detalles de envíos exitosos
-                successful.forEach(s => {
-                    console.log(`  ✅ ${s.number}: Enviado via ${s.method || 'desconocido'}`);
-                });
-                
-                // Mostrar detalles de envíos fallidos
-                if (failed.length > 0) {
-                    console.log(`❌ Fallidos: ${failed.length}`);
-                    failed.forEach(f => {
-                        console.log(`  ❌ ${f.number}: ${f.error || 'Error desconocido'}`);
-                    });
-                } else {
-                    console.log(`🎉 ¡Todos los envíos fueron exitosos!`);
-                }
-                
                 // Si al menos uno fue exitoso, considerar como éxito
                 if (successful.length === 0) {
                     throw new Error('No se pudo enviar a ningún número de WhatsApp');
@@ -987,14 +889,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Redirigir a la página de agradecimiento - proceso invisible instantáneo
                 setTimeout(() => {
-                    console.log('🔄 Redirigiendo a página de agradecimiento...');
                     // Pasar el idioma actual como parámetro en la URL
                     window.location.href = `./pages/gracias.html?lang=${currentLanguage}`;
                 }, 1500); // Optimizado a 1500ms - sin ventanas = proceso instantáneo
 
             } catch (error) {
-                console.error('❌ Error al enviar mensaje:', error);
-
                 // Resetear botón en caso de error
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
@@ -1019,14 +918,12 @@ document.addEventListener('DOMContentLoaded', function () {
         function formatCallMeBotMessage() {
             // Evitar ejecuciones múltiples
             if (messageFormattingInProgress) {
-                console.log('⚠️ Formateo ya en progreso, evitando duplicación');
                 return;
             }
 
             messageFormattingInProgress = true;
 
             try {
-                console.log('🔄 Iniciando formateo de mensaje...');
 
                 // Obtener valores de forma más controlada
                 const nameInput = document.getElementById('name');
@@ -1092,29 +989,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     finalMessage = finalMessage.substring(0, 797) + '...';
                 }
 
-                console.log('📤 Mensaje construido:', finalMessage);
-                console.log('📏 Longitud total:', finalMessage.length);
+
 
                 // Actualizar campo hidden con máxima precaución
                 const callmebotField = document.getElementById('callmebotMessage');
                 if (callmebotField) {
                     // Verificar valor actual
                     const currentValue = callmebotField.value;
-                    console.log('🔍 Valor actual del campo:', currentValue);
 
                     // Solo actualizar si es diferente y no está vacío el nuevo mensaje
                     if (finalMessage && finalMessage !== currentValue) {
                         callmebotField.value = finalMessage;
-                        console.log('✅ Campo actualizado exitosamente');
-                    } else {
-                        console.log('⚠️ No se actualiza el campo (mismo valor o mensaje vacío)');
                     }
-                } else {
-                    console.error('❌ Campo callmebotMessage no encontrado');
                 }
 
             } catch (error) {
-                console.error('❌ Error al formatear mensaje:', error);
                 const callmebotField = document.getElementById('callmebotMessage');
                 if (callmebotField && !callmebotField.value) {
                     callmebotField.value = '🌟 Nuevo contacto desde VGWebStudio';
@@ -1123,7 +1012,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Liberar el flag después de un pequeño delay
                 setTimeout(() => {
                     messageFormattingInProgress = false;
-                    console.log('🔓 Formateo completado, flag liberado');
                 }, 100);
             }
         }
@@ -1143,64 +1031,194 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     }
 
-});
+}); // Fin DOMContentLoaded
 
 // ============================================
 // MODAL DE VISTA PREVIA DE PROYECTOS
 // ============================================
 
-// Datos de los proyectos
+// Cache de imágenes cargadas
+const imageCache = new Map();
+
+// Estado de preloading
+const preloadingImages = new Set();
+
+// Mapeo de proyectos a claves de traducción
+const projectTranslationKeys = {
+    proyectodax: 'project1',
+    dentisan: 'project2',
+    elnacional: 'project3'
+};
+
+// Datos de los proyectos (con claves de traducción)
 const projectsData = {
     proyectodax: {
-        title: 'ProyectoDAX Blog',
-        description: 'Blog moderno y funcional desarrollado con HTML, CSS y SCSS. Diseño responsive con una interfaz limpia y profesional, optimizado para la experiencia del usuario.',
+        titleKey: 'portfolio.project1.title',
+        descriptionKey: 'portfolio.project1.description',
         image: 'img/vistaprevia/Index(DAX).png',
         url: 'https://proyectodax.netlify.app',
         technologies: ['HTML', 'CSS', 'SCSS'],
-        features: [
-            'Diseño responsive moderno',
-            'Optimizado para SEO',
-            'Navegación intuitiva',
-            'Carga rápida'
-        ]
+        features: {
+            es: [
+                'Diseño responsive moderno',
+                'Optimizado para SEO',
+                'Navegación intuitiva',
+                'Carga rápida'
+            ],
+            en: [
+                'Modern responsive design',
+                'SEO optimized',
+                'Intuitive navigation',
+                'Fast loading'
+            ]
+        }
     },
     dentisan: {
-        title: 'Dentisan - Consultorio Odontológico',
-        description: 'Landing page de demostración para consultorio odontológico. Página completamente funcional con información ficticia, diseñada como template/plantilla personalizable para cualquier consultorio dental real. Incluye secciones de servicios, equipo médico, testimonios y contacto.',
+        titleKey: 'portfolio.project2.title',
+        descriptionKey: 'portfolio.project2.description',
         image: 'img/vistaprevia/index(DENTISAN).png',
         url: 'https://dentisan.netlify.app',
         technologies: ['HTML', 'CSS', 'JavaScript'],
-        features: [
-            'Diseño responsive profesional',
-            'Formulario de contacto funcional',
-            'Secciones completas de servicios',
-            'Template personalizable',
-            'Información de demostración'
-        ]
+        features: {
+            es: [
+                'Diseño responsive profesional',
+                'Formulario de contacto funcional',
+                'Secciones completas de servicios',
+                'Template personalizable',
+                'Información de demostración'
+            ],
+            en: [
+                'Professional responsive design',
+                'Functional contact form',
+                'Complete service sections',
+                'Customizable template',
+                'Demo information'
+            ]
+        }
     },
     elnacional: {
-        title: 'Club El Nacional Rugby',
-        description: 'Sitio web institucional completo del Club El Nacional, histórico club de rugby fundado en 1919 en Bahía Blanca, Argentina. Incluye información sobre la Copa Patagonia, historia del club, galería de fotos, equipos, staff técnico y sección de contacto. Diseño moderno y funcional que refleja la tradición y prestigio del club.',
+        titleKey: 'portfolio.project3.title',
+        descriptionKey: 'portfolio.project3.description',
         image: 'img/vistaprevia/index(CEN).png',
         url: 'https://clubelnacionalrugby.netlify.app',
         technologies: ['HTML', 'CSS', 'JavaScript'],
-        features: [
-            'Sitio web institucional completo',
-            'Historia y tradición del club',
-            'Información Copa Patagonia',
-            'Galería de fotos interactiva',
-            'Secciones de equipos y staff',
-            'Diseño responsive moderno'
-        ]
+        features: {
+            es: [
+                'Sitio web institucional completo',
+                'Historia y tradición del club',
+                'Información Copa Patagonia',
+                'Galería de fotos interactiva',
+                'Secciones de equipos y staff',
+                'Diseño responsive moderno'
+            ],
+            en: [
+                'Complete institutional website',
+                'Club history and tradition',
+                'Copa Patagonia information',
+                'Interactive photo gallery',
+                'Teams and staff sections',
+                'Modern responsive design'
+            ]
+        }
     }
     // Aquí se pueden agregar más proyectos en el futuro
 };
 
-// Función para abrir la vista previa del proyecto
+// Función para precargar imagen
+function preloadImage(imageSrc) {
+    return new Promise((resolve, reject) => {
+        // Si ya está en cache, resolver inmediatamente
+        if (imageCache.has(imageSrc)) {
+            resolve(imageCache.get(imageSrc));
+            return;
+        }
+
+        // Si ya se está precargando, no hacer nada
+        if (preloadingImages.has(imageSrc)) {
+            return;
+        }
+
+        preloadingImages.add(imageSrc);
+
+        const img = new Image();
+        
+        img.onload = () => {
+            imageCache.set(imageSrc, img);
+            preloadingImages.delete(imageSrc);
+            resolve(img);
+        };
+        
+        img.onerror = () => {
+            preloadingImages.delete(imageSrc);
+            reject(new Error(`Failed to load image: ${imageSrc}`));
+        };
+        
+        img.src = imageSrc;
+    });
+}
+
+// Función para cargar imagen con loading state
+function loadImageWithSpinner(imageSrc, targetImg, loadingSpinner) {
+    // Mostrar spinner y ocultar imagen
+    if (loadingSpinner) {
+        loadingSpinner.style.display = 'flex';
+    }
+    if (targetImg) {
+        targetImg.style.display = 'none';
+    }
+    
+    // Crear nueva imagen para probar carga
+    const testImg = new Image();
+    
+    testImg.onload = function() {
+        if (targetImg) {
+            targetImg.src = imageSrc;
+            targetImg.alt = `Vista previa de proyecto`;
+        }
+        
+        // Ocultar spinner y mostrar imagen
+        if (loadingSpinner) {
+            loadingSpinner.style.display = 'none';
+        }
+        if (targetImg) {
+            targetImg.style.display = 'block';
+        }
+    };
+    
+    testImg.onerror = function() {
+        // Mostrar imagen placeholder
+        if (targetImg) {
+            targetImg.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"%3E%3Crect width="600" height="400" fill="%23f3f4f6"/%3E%3Ctext x="300" y="200" text-anchor="middle" fill="%23666" font-family="Arial" font-size="18"%3EImagen no disponible%3C/text%3E%3C/svg%3E';
+            targetImg.alt = 'Vista previa no disponible';
+        }
+        
+        if (loadingSpinner) {
+            loadingSpinner.style.display = 'none';
+        }
+        if (targetImg) {
+            targetImg.style.display = 'block';
+        }
+    };
+    
+    // Iniciar carga
+    testImg.src = imageSrc;
+}
+
+// Función auxiliar para obtener traducciones
+function getTranslation(key) {
+    // Obtener idioma actual de forma más robusta
+    const language = (typeof currentLanguage !== 'undefined' ? currentLanguage : null) || 
+                     localStorage.getItem('language') || 
+                     'es';
+    
+    const translationData = translations[language] || translations['es'];
+    return translationData[key] || key;
+}
+
+// Función para abrir la vista previa del proyecto (mejorada)
 function openProjectPreview(projectKey) {
     const project = projectsData[projectKey];
     if (!project) {
-        console.error('Proyecto no encontrado:', projectKey);
         return;
     }
 
@@ -1211,21 +1229,30 @@ function openProjectPreview(projectKey) {
     const modalProjectDescription = document.getElementById('modalProjectDescription');
     const modalProjectTech = document.getElementById('modalProjectTech');
     const modalProjectLink = document.getElementById('modalProjectLink');
-
-    // Llenar el modal con los datos del proyecto
-    modalTitle.textContent = project.title;
-    modalProjectDescription.textContent = project.description;
-    modalProjectLink.href = project.url;
-
-    // Configurar imagen con fallback
-    modalProjectImage.src = project.image;
-    modalProjectImage.alt = `Vista previa de ${project.title}`;
+    const loadingSpinner = document.getElementById('imageLoadingSpinner');
     
-    // Manejar error de imagen (usar placeholder si no existe)
-    modalProjectImage.onerror = function() {
-        this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjZjNmNGY2Ii8+CjxwYXRoIGQ9Ik0yNTAgMTAwSDM1MFYzMDBIMjUwVjEwMFoiIGZpbGw9IiNkMWQ1ZGIiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIyODAiIHk9IjE4MCI+CjxwYXRoIGQ9Ik0xMiAyQzEzLjEgMiAxNCAyLjkgMTQgNEMxNCA1LjEgMTMuMSA2IDEyIDZDMTAuOSA2IDEwIDUuMSAxMCA0QzEwIDIuOSAxMC45IDIgMTIgMlpNMjEgOVYyMkMyMSAyMi42IDIwLjYgMjMgMjAgMjNIMEM5LjQgMjMgOSAyMi42IDkgMjJWOUM5IDguNCA5LjQgOCAxMCA4SDIwQzIwLjYgOCAyMSA4LjQgMjEgOVpNMTkgMTNIMThWMTBIMTZWMTNINUwxMiAyMEwyMCAxM0gxOVoiIGZpbGw9IiM5Y2EzYWYiLz4KPC9zdmc+Cjx0ZXh0IHg9IjMwMCIgeT0iMjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjc3MTgwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pgo8L3N2Zz4K';
-        this.alt = 'Vista previa no disponible';
-    };
+
+
+    // Llenar el modal con los datos del proyecto usando traducciones
+    modalTitle.textContent = getTranslation(project.titleKey);
+    modalProjectDescription.textContent = getTranslation(project.descriptionKey);
+    
+    // Configurar enlace del proyecto
+    if (modalProjectLink && project.url) {
+        modalProjectLink.href = project.url;
+        modalProjectLink.onclick = null; // Limpiar cualquier onclick previo
+    }
+
+    // Cargar imagen con sistema de loading mejorado
+    if (project.image) {
+        loadImageWithSpinner(project.image, modalProjectImage, loadingSpinner);
+    } else {
+        // Si no hay imagen, ocultar spinner y mostrar placeholder
+        loadingSpinner.style.display = 'none';
+        modalProjectImage.style.display = 'block';
+        modalProjectImage.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDYwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI2MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjZjNmNGY2Ii8+CjxwYXRoIGQ9Ik0yNTAgMTAwSDM1MFYzMDBIMjUwVjEwMFoiIGZpbGw9IiNkMWQ1ZGIiLz4KPHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4PSIyODAiIHk9IjE4MCI+CjxwYXRoIGQ9Ik0xMiAyQzEzLjEgMiAxNCAyLjkgMTQgNEMxNCA1LjEgMTMuMSA2IDEyIDZDMTAuOSA2IDEwIDUuMSAxMCA0QzEwIDIuOSAxMC45IDIgMTIgMlpNMjEgOVYyMkMyMSAyMi42IDIwLjYgMjMgMjAgMjNIMEM5LjQgMjMgOSAyMi42IDkgMjJWOUM5IDguNCA5LjQgOCAxMCA4SDIwQzIwLjYgOCAyMSA4LjQgMjEgOVpNMTkgMTNIMThWMTBIMTZWMTNINUwxMiAyMEwyMCAxM0gxOVoiIGZpbGw9IiM5Y2EzYWYiLz4KPC9zdmc+Cjx0ZXh0IHg9IjMwMCIgeT0iMjUwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjc3MTgwIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTYiPkltYWdlbiBubyBkaXNwb25pYmxlPC90ZXh0Pgo8L3N2Zz4K';
+        modalProjectImage.alt = 'Vista previa no disponible';
+    }
 
     // Agregar tecnologías
     modalProjectTech.innerHTML = '';
@@ -1244,7 +1271,60 @@ function openProjectPreview(projectKey) {
     setTimeout(() => {
         modal.classList.add('active');
     }, 10);
+    
+    // Guardar referencia del proyecto actual para actualizaciones de idioma
+    modal.currentProjectKey = projectKey;
 }
+
+// Función para actualizar el modal cuando cambia el idioma
+function updateModalLanguage() {
+    const modal = document.getElementById('projectPreviewModal');
+    if (modal && modal.style.display === 'flex' && modal.currentProjectKey) {
+        const project = projectsData[modal.currentProjectKey];
+        if (project) {
+            const modalTitle = document.getElementById('modalTitle');
+            const modalProjectDescription = document.getElementById('modalProjectDescription');
+            
+            if (modalTitle) {
+                modalTitle.textContent = getTranslation(project.titleKey);
+            }
+            if (modalProjectDescription) {
+                modalProjectDescription.textContent = getTranslation(project.descriptionKey);
+            }
+        }
+        
+        // Actualizar también los textos estáticos del modal
+        const loadingText = modal.querySelector('[data-i18n="modal.loading"]');
+        const visitButton = modal.querySelector('[data-i18n="modal.visit"]');
+        
+        if (loadingText) {
+            loadingText.textContent = getTranslation('modal.loading');
+        }
+        if (visitButton) {
+            visitButton.textContent = getTranslation('modal.visit');
+        }
+    }
+}
+
+// Preloading inteligente al hacer hover
+document.addEventListener('DOMContentLoaded', function() {
+    const previewButtons = document.querySelectorAll('.preview-btn');
+    
+    previewButtons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            // Obtener el proyecto del onclick
+            const onclickAttr = this.getAttribute('onclick');
+            const projectKey = onclickAttr.match(/openProjectPreview\('(.+?)'\)/)?.[1];
+            
+            if (projectKey && projectsData[projectKey] && projectsData[projectKey].image) {
+                // Precargar imagen en hover para carga instantánea
+                preloadImage(projectsData[projectKey].image).catch(err => {
+                    // Preload falló, pero no es crítico
+                });
+            }
+        });
+    });
+});
 
 // Función para cerrar la vista previa
 function closeProjectPreview() {
@@ -1252,6 +1332,9 @@ function closeProjectPreview() {
     
     // Remover clase de animación
     modal.classList.remove('active');
+    
+    // Limpiar referencia del proyecto
+    modal.currentProjectKey = null;
     
     // Ocultar modal después de la animación
     setTimeout(() => {
@@ -1276,4 +1359,8 @@ document.addEventListener('keydown', function(e) {
             closeProjectPreview();
         }
     }
-}); 
+});
+
+// Hacer funciones globalmente accesibles
+window.openProjectPreview = openProjectPreview;
+window.closeProjectPreview = closeProjectPreview; 

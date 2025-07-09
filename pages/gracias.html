@@ -487,12 +487,12 @@
             // Decidir qué idioma usar
             if (urlLanguage && (urlLanguage === 'es' || urlLanguage === 'en')) {
                 currentLanguage = urlLanguage;
-                console.log(`🌍 Idioma configurado desde URL: ${currentLanguage}`);
+    
                 // Guardar en localStorage para futuras visitas
                 localStorage.setItem('preferredLanguage', currentLanguage);
             } else {
                 currentLanguage = savedLanguage || browserLanguage;
-                console.log(`🌍 Idioma configurado desde ${savedLanguage ? 'localStorage' : 'navegador'}: ${currentLanguage}`);
+    
             }
             
             updateTexts(currentLanguage);
