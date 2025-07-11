@@ -119,7 +119,16 @@ const translations = {
             'team.founder2.name': 'Gonzalo Rivero',
             'team.founder2.role': 'Co-fundador & Diseñador UX/UI',
             'team.founder2.description': 'Experto en diseño de experiencias digitales intuitivas y atractivas. Con un enfoque centrado en el usuario, transforma ideas complejas en interfaces simples y elegantes que conectan con las emociones de los usuarios.',
-            'team.cv.download': 'Descargar CV'
+            'team.cv.download': 'Descargar CV',
+            
+            // Modal de selección de idioma para CV
+            'cv.modal.title': 'Seleccionar Idioma',
+            'cv.modal.description': 'Elige en qué idioma deseas ver el CV:',
+            'cv.modal.spanish': 'Ver en Español',
+            'cv.modal.english': 'Ver en Inglés',
+            'cv.modal.cancel': 'Cancelar',
+            'cv.modal.english.unavailable': 'CV en inglés no disponible aún',
+            'cv.modal.spanish.unavailable': 'CV en español no disponible aún'
         },
         en: {
             // Navigation
@@ -234,7 +243,16 @@ const translations = {
             'team.founder2.name': 'Gonzalo Rivero',
             'team.founder2.role': 'Co-founder & UX/UI Designer',
             'team.founder2.description': 'Expert in designing intuitive and attractive digital experiences. With a user-centered approach, transforms complex ideas into simple and elegant interfaces that connect with user emotions.',
-            'team.cv.download': 'Download CV'
+            'team.cv.download': 'Download CV',
+            
+            // CV Language Selection Modal
+            'cv.modal.title': 'Select Language',
+            'cv.modal.description': 'Choose the language to view the CV:',
+            'cv.modal.spanish': 'View in Spanish',
+            'cv.modal.english': 'View in English',
+            'cv.modal.cancel': 'Cancel',
+            'cv.modal.english.unavailable': 'English CV not available yet',
+            'cv.modal.spanish.unavailable': 'Spanish CV not available yet'
         }
     };
 
@@ -335,7 +353,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // SISTEMA DE IDIOMAS
     // ============================================
     
-    // Variable para el idioma actual
+    // Variable para el idioma actual - SIEMPRE ESPAÑOL POR DEFECTO
     let currentLanguage = localStorage.getItem('language') || 'es';
 
     // Referencias a elementos del DOM (con verificación de existencia)
@@ -407,8 +425,9 @@ document.addEventListener('DOMContentLoaded', function () {
             updateTexts(currentLanguage);
             updateLanguageButton(currentLanguage);
             
-            // Actualizar modal si está abierto
-            updateModalLanguage();
+            // Actualizar modales si están abiertos
+            updateModalLanguage(); // Modal de proyectos
+            updateCVModalIfOpen(); // Modal de CV
 
             // Reiniciar el efecto de escritura del título con el nuevo idioma
             if (typeof startTypewriterEffect === 'function') {
@@ -444,6 +463,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ejecutar inicialización
     initializeLanguage();
+    
+    // ==============================================
+    // CONFIGURACIÓN: IDIOMA PREDETERMINADO ESPAÑOL
+    // ==============================================
+    // ESTAS LÍNEAS FUERZAN QUE LA PÁGINA SIEMPRE INICIE EN ESPAÑOL
+    // Para volver al comportamiento normal (respetar elección del usuario), 
+    // comentar las siguientes 4 líneas:
+    localStorage.removeItem('language'); // Limpiar configuración previa
+    currentLanguage = 'es'; // Forzar español
+    localStorage.setItem('language', 'es'); // Guardar español como preferencia
+    updateTexts('es');
+    updateLanguageButton('es');
+    // ==============================================
 
     // ============================================
     // MANEJO DE DESCARGA DE CV
@@ -453,16 +485,13 @@ document.addEventListener('DOMContentLoaded', function () {
         
         cvButtons.forEach(button => {
             button.addEventListener('click', function(e) {
-                // Agregar efecto visual temporal
-                const originalText = button.innerHTML;
-                button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Descargando...';
-                button.style.opacity = '0.7';
+                e.preventDefault();
                 
-                // Restaurar botón después de 2 segundos
-                setTimeout(() => {
-                    button.innerHTML = originalText;
-                    button.style.opacity = '1';
-                }, 2000);
+                // Obtener el tipo de persona desde el atributo data-person
+                const personType = button.getAttribute('data-person');
+                
+                // Mostrar modal de selección de idioma
+                showCVLanguageModal(personType, button);
             });
         });
         
@@ -488,17 +517,47 @@ document.addEventListener('DOMContentLoaded', function () {
     function showTempNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `temp-notification temp-notification--${type}`;
+        
+        // Seleccionar icono según el tipo
+        let icon;
+        switch(type) {
+            case 'success':
+                icon = 'fas fa-check-circle';
+                break;
+            case 'error':
+                icon = 'fas fa-exclamation-circle';
+                break;
+            case 'info':
+            default:
+                icon = 'fas fa-info-circle';
+                break;
+        }
+        
         notification.innerHTML = `
-            <i class="fas fa-info-circle"></i>
+            <i class="${icon}"></i>
             <span>${message}</span>
         `;
         
         // Estilos inline para la notificación
+        let backgroundColor;
+        switch(type) {
+            case 'success':
+                backgroundColor = '#10b981';
+                break;
+            case 'error':
+                backgroundColor = '#ef4444';
+                break;
+            case 'info':
+            default:
+                backgroundColor = '#3b82f6';
+                break;
+        }
+        
         notification.style.cssText = `
             position: fixed;
             top: 100px;
             right: 20px;
-            background: ${type === 'info' ? '#3b82f6' : '#10b981'};
+            background: ${backgroundColor};
             color: white;
             padding: 15px 20px;
             border-radius: 8px;
@@ -527,6 +586,473 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 300);
         }, 3000);
     }
+
+    // ============================================
+    // MODAL DE SELECCIÓN DE IDIOMA PARA CV
+    // ============================================
+    
+    // Configuración de archivos CV
+    const cvFiles = {
+        valentin: {
+            es: 'docs/cv/Valentín Otero_Desarrollo Web.pdf',
+            en: 'docs/cv/Curriculum Vitae de Valentín Otero_Desarrollo Web (En ingles).pdf' // ✅ Versión en inglés disponible
+        },
+        gonzalo: {
+            es: 'docs/cv/Currículum Vitae CV Gonzalo Rivero.pdf',
+            en: 'docs/cv/Gonzalo Rivero_CV Resume.pdf' // Versión en inglés (temporal)
+        }
+    };
+    
+    // Función para mostrar el modal de selección de idioma
+    function showCVLanguageModal(personType, button) {
+        // Crear modal si no existe O recrearlo para actualizar traducciones
+        let modal = document.getElementById('cvLanguageModal');
+        if (modal) {
+            // Remover modal existente para recrearlo con traducciones actualizadas
+            modal.remove();
+        }
+        
+        // Crear nuevo modal con traducciones actuales
+        modal = createCVLanguageModal();
+        
+        // Almacenar información del botón y persona
+        modal.dataset.personType = personType;
+        modal.dataset.buttonRef = button.id || 'cv-button';
+        
+        // Mostrar modal con animación suave
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        
+        // Agregar evento para cerrar al hacer clic fuera del modal
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                hideCVLanguageModal();
+            }
+        });
+        
+        // Forzar reflow para que la animación funcione
+        modal.offsetHeight;
+        
+        // Activar animación de entrada
+        requestAnimationFrame(() => {
+            modal.style.opacity = '1';
+            const content = modal.querySelector('.cv-modal-content');
+            if (content) {
+                content.style.transform = 'scale(1)';
+            }
+        });
+    }
+    
+    // Función para crear el modal de selección de idioma (con traducciones)
+    function createCVLanguageModal() {
+        const modal = document.createElement('div');
+        modal.id = 'cvLanguageModal';
+        modal.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 144, 226, 0.15), rgba(80, 102, 144, 0.15));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        `;
+        
+        modal.innerHTML = `
+            <div class="cv-modal-content" style="
+                background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+                padding: 40px;
+                border-radius: 24px;
+                text-align: center;
+                max-width: 460px;
+                width: 90%;
+                max-height: 90vh;
+                box-shadow: 
+                    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                    0 0 0 1px rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                transform: scale(0.8);
+                transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                position: relative;
+                overflow: hidden;
+            ">
+                <!-- Decorative elements -->
+                <div style="
+                    position: absolute;
+                    top: -50px;
+                    right: -50px;
+                    width: 100px;
+                    height: 100px;
+                    background: linear-gradient(45deg, rgba(74, 144, 226, 0.1), rgba(80, 102, 144, 0.1));
+                    border-radius: 50%;
+                    z-index: 1;
+                "></div>
+                <div style="
+                    position: absolute;
+                    bottom: -30px;
+                    left: -30px;
+                    width: 60px;
+                    height: 60px;
+                    background: linear-gradient(45deg, rgba(74, 144, 226, 0.08), rgba(80, 102, 144, 0.08));
+                    border-radius: 50%;
+                    z-index: 1;
+                "></div>
+                
+                <!-- Icon -->
+                <div style="
+                    width: 80px;
+                    height: 80px;
+                    background: linear-gradient(135deg, #4a90e2 0%, #5066a0 100%);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 25px;
+                    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+                    position: relative;
+                    z-index: 2;
+                ">
+                    <span style="font-size: 2.2rem; color: white;">📄</span>
+                </div>
+                
+                <!-- Title -->
+                <h3 class="cv-modal-title" style="
+                    margin: 0 0 15px 0;
+                    color: #2d3748;
+                    font-size: 1.8rem;
+                    font-weight: 700;
+                    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    position: relative;
+                    z-index: 2;
+                ">
+                    ${getTranslation('cv.modal.title')}
+                </h3>
+                
+                <!-- Description -->
+                <p class="cv-modal-description" style="
+                    margin: 0 0 35px 0;
+                    color: #718096;
+                    line-height: 1.6;
+                    font-size: 1.1rem;
+                    font-weight: 400;
+                    position: relative;
+                    z-index: 2;
+                ">
+                    ${getTranslation('cv.modal.description')}
+                </p>
+                
+                <!-- Language Buttons -->
+                <div style="display: flex; gap: 16px; justify-content: center; margin: 35px 0; flex-wrap: wrap; position: relative; z-index: 2;">
+                    <button onclick="downloadCVInLanguage('es')" 
+                        class="cv-btn-spanish"
+                        style="
+                            padding: 18px 30px;
+                            background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+                            color: white;
+                            border: none;
+                            border-radius: 16px;
+                            cursor: pointer;
+                            font-weight: 600;
+                            font-size: 1.05rem;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            min-width: 160px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 12px;
+                            box-shadow: 0 4px 15px rgba(229, 62, 62, 0.3);
+                            position: relative;
+                            overflow: hidden;
+                        ">
+                        <span style="font-size: 1.4rem; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));">🇪🇸</span>
+                        <span class="cv-btn-spanish-text">${getTranslation('cv.modal.spanish')}</span>
+                    </button>
+                    <button onclick="downloadCVInLanguage('en')" 
+                        class="cv-btn-english"
+                        style="
+                            padding: 18px 30px;
+                            background: linear-gradient(135deg, #3182ce 0%, #2b77cb 100%);
+                            color: white;
+                            border: none;
+                            border-radius: 16px;
+                            cursor: pointer;
+                            font-weight: 600;
+                            font-size: 1.05rem;
+                            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                            min-width: 160px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 12px;
+                            box-shadow: 0 4px 15px rgba(49, 130, 206, 0.3);
+                            position: relative;
+                            overflow: hidden;
+                        ">
+                        <span style="font-size: 1.4rem; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));">🇺🇸</span>
+                        <span class="cv-btn-english-text">${getTranslation('cv.modal.english')}</span>
+                    </button>
+                </div>
+                
+                <!-- Cancel Button -->
+                <button onclick="hideCVLanguageModal()" 
+                    class="cv-btn-cancel"
+                    style="
+                        padding: 14px 28px;
+                        background: linear-gradient(135deg, #718096 0%, #4a5568 100%);
+                        color: white;
+                        border: none;
+                        border-radius: 12px;
+                        cursor: pointer;
+                        font-weight: 500;
+                        font-size: 1rem;
+                        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                        box-shadow: 0 2px 8px rgba(113, 128, 150, 0.3);
+                        position: relative;
+                        z-index: 2;
+                    ">
+                    ${getTranslation('cv.modal.cancel')}
+                </button>
+            </div>
+        `;
+        
+        // Agregar estilos de hover y animaciones (solo una vez)
+        if (!document.getElementById('cv-modal-dynamic-styles')) {
+            const style = document.createElement('style');
+            style.id = 'cv-modal-dynamic-styles';
+            style.textContent = `
+                .cv-btn-spanish:hover {
+                    background: linear-gradient(135deg, #c53030 0%, #9c2222 100%) !important;
+                    transform: translateY(-3px) scale(1.02);
+                    box-shadow: 0 8px 25px rgba(229, 62, 62, 0.4) !important;
+                }
+                
+                .cv-btn-english:hover {
+                    background: linear-gradient(135deg, #2b77cb 0%, #2a69ac 100%) !important;
+                    transform: translateY(-3px) scale(1.02);
+                    box-shadow: 0 8px 25px rgba(49, 130, 206, 0.4) !important;
+                }
+                
+                .cv-btn-cancel:hover {
+                    background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%) !important;
+                    transform: translateY(-2px) scale(1.02);
+                    box-shadow: 0 6px 20px rgba(113, 128, 150, 0.4) !important;
+                }
+                
+                .cv-btn-spanish:active, .cv-btn-english:active {
+                    transform: translateY(-1px) scale(0.98);
+                    transition: all 0.1s ease;
+                }
+                
+                .cv-btn-cancel:active {
+                    transform: translateY(-1px) scale(0.98);
+                    transition: all 0.1s ease;
+                }
+                
+                /* Efecto de brillo en hover */
+                .cv-btn-spanish:before, .cv-btn-english:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: -100%;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+                    transition: left 0.5s ease;
+                }
+                
+                .cv-btn-spanish:hover:before, .cv-btn-english:hover:before {
+                    left: 100%;
+                }
+                
+                /* Animaciones para móvil */
+                @media (max-width: 480px) {
+                    .cv-btn-spanish, .cv-btn-english {
+                        min-width: 100% !important;
+                        margin: 8px 0 !important;
+                    }
+                    
+                    .cv-modal-content {
+                        padding: 30px 20px !important;
+                        margin: 20px !important;
+                    }
+                }
+                
+                /* Animación de entrada */
+                @keyframes cvModalShow {
+                    from {
+                        opacity: 0;
+                        transform: scale(0.8);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: scale(1);
+                    }
+                }
+                
+                .cv-modal-show {
+                    animation: cvModalShow 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+                }
+            `;
+            document.head.appendChild(style);
+        }
+        
+        document.body.appendChild(modal);
+        return modal;
+    }
+    
+    // Función para actualizar textos del modal según el idioma actual
+    function updateCVModalTexts(modal) {
+        if (!modal) return;
+        
+        const title = modal.querySelector('.cv-modal-title');
+        const description = modal.querySelector('.cv-modal-description');
+        const spanishBtnText = modal.querySelector('.cv-btn-spanish-text');
+        const englishBtnText = modal.querySelector('.cv-btn-english-text');
+        const cancelBtn = modal.querySelector('.cv-btn-cancel');
+        
+        if (title) title.textContent = getTranslation('cv.modal.title');
+        if (description) description.textContent = getTranslation('cv.modal.description');
+        if (spanishBtnText) spanishBtnText.textContent = getTranslation('cv.modal.spanish');
+        if (englishBtnText) englishBtnText.textContent = getTranslation('cv.modal.english');
+        if (cancelBtn) cancelBtn.textContent = getTranslation('cv.modal.cancel');
+    }
+    
+    // Función para actualizar el modal de CV si está abierto cuando cambia el idioma
+    function updateCVModalIfOpen() {
+        const modal = document.getElementById('cvLanguageModal');
+        if (modal && modal.style.display === 'flex') {
+            // El modal está abierto, recrearlo con las nuevas traducciones
+            const personType = modal.dataset.personType;
+            const buttonRef = modal.dataset.buttonRef;
+            
+            // Remover modal actual
+            modal.remove();
+            
+            // Crear nuevo modal con traducciones actualizadas
+            const newModal = createCVLanguageModal();
+            newModal.dataset.personType = personType;
+            newModal.dataset.buttonRef = buttonRef;
+            
+            // Mostrar el nuevo modal inmediatamente
+            newModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+    }
+    
+    // Función para ocultar el modal
+    function hideCVLanguageModal() {
+        const modal = document.getElementById('cvLanguageModal');
+        if (modal && modal.style.display === 'flex') {
+            const content = modal.querySelector('.cv-modal-content');
+            
+            // Iniciar animación de salida
+            modal.style.opacity = '0';
+            if (content) {
+                content.style.transform = 'scale(0.8)';
+            }
+            
+            // Ocultar modal después de la animación
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }, 300); // Tiempo de la animación
+        }
+    }
+    
+    // Función para descargar CV en el idioma seleccionado
+    function downloadCVInLanguage(language) {
+        const modal = document.getElementById('cvLanguageModal');
+        const personType = modal.dataset.personType;
+        
+        // Verificar si existe el archivo para la persona y idioma
+        const cvFile = cvFiles[personType] && cvFiles[personType][language];
+        
+        if (!cvFile) {
+            const message = language === 'es' 
+                ? getTranslation('cv.modal.spanish.unavailable')
+                : getTranslation('cv.modal.english.unavailable');
+            showTempNotification(message, 'info');
+            hideCVLanguageModal();
+            return;
+        }
+        
+        // Proceder con la descarga directamente
+        // La verificación de archivos se hará en el momento de descarga
+        
+        // Ocultar modal
+        hideCVLanguageModal();
+        
+        // Mostrar efecto de descarga
+        const button = document.querySelector(`[data-person="${personType}"]`);
+        if (button) {
+            const originalText = button.innerHTML;
+            const downloadingText = currentLanguage === 'es' ? 'Descargando...' : 'Downloading...';
+            
+            button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${downloadingText}`;
+            button.style.opacity = '0.7';
+            
+                    // Abrir CV en nueva pestaña
+        setTimeout(() => {
+            try {
+                // Abrir el CV en una nueva pestaña
+                const newWindow = window.open(cvFile, '_blank', 'noopener,noreferrer');
+                
+                // Restaurar botón
+                button.innerHTML = originalText;
+                button.style.opacity = '1';
+                
+                // Verificar si se pudo abrir la ventana (algunos navegadores bloquean pop-ups)
+                if (!newWindow || newWindow.closed) {
+                    // Si no se puede abrir nueva ventana, mostrar mensaje informativo
+                    const blockedMessage = currentLanguage === 'es' 
+                        ? 'Por favor, permite ventanas emergentes para ver el CV en nueva pestaña'
+                        : 'Please allow pop-ups to view CV in new tab';
+                    showTempNotification(blockedMessage, 'info');
+                } else {
+                    // Mostrar notificación de éxito
+                    const successMessage = currentLanguage === 'es' 
+                        ? '¡CV abierto en nueva pestaña!'
+                        : 'CV opened in new tab!';
+                    showTempNotification(successMessage, 'success');
+                }
+                
+            } catch (error) {
+                // Manejar errores
+                button.innerHTML = originalText;
+                button.style.opacity = '1';
+                
+                const errorMessage = currentLanguage === 'es' 
+                    ? 'Error al abrir el CV. Intenta de nuevo.'
+                    : 'Error opening CV. Please try again.';
+                showTempNotification(errorMessage, 'error');
+            }
+        }, 800); // Reducido el tiempo de espera
+        }
+    }
+    
+    // Hacer funciones globalmente accesibles
+    window.showCVLanguageModal = showCVLanguageModal;
+    window.hideCVLanguageModal = hideCVLanguageModal;
+    window.downloadCVInLanguage = downloadCVInLanguage;
+
+    // Manejar cierre del modal con ESC
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const modal = document.getElementById('cvLanguageModal');
+            if (modal && modal.style.display === 'flex') {
+                hideCVLanguageModal();
+            }
+        }
+    });
 
     // Ejecutar inicialización de CV
     initializeCVDownload();
@@ -593,12 +1119,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Función para detectar cambios en el sistema de idioma del navegador
     function detectBrowserLanguage() {
-        const browserLang = navigator.language || navigator.languages[0];
-        const isSpanish = browserLang.startsWith('es');
+        // FUNCIÓN DESACTIVADA - Siempre iniciamos en español
+        // const browserLang = navigator.language || navigator.languages[0];
+        // const isSpanish = browserLang.startsWith('es');
 
-        // Solo cambiar si no hay preferencia guardada
+        // Forzar español como idioma por defecto en la primera visita
         if (!localStorage.getItem('language')) {
-            currentLanguage = isSpanish ? 'es' : 'en';
+            currentLanguage = 'es'; // SIEMPRE ESPAÑOL
             localStorage.setItem('language', currentLanguage);
             initializeLanguage();
         }
@@ -771,9 +1298,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Inicializar el efecto al cargar la página
+    // Inicializar el efecto al cargar la página - SIEMPRE EN ESPAÑOL
     if (heroTitle) {
-        startTypewriterEffect(currentLanguage);
+        startTypewriterEffect('es'); // Forzar español para el efecto de escritura
     }
 
     // ============================================
