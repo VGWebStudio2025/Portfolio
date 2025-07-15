@@ -773,7 +773,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             position: relative;
                             overflow: hidden;
                         ">
-                        <span style="font-size: 1.4rem; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));">🇪🇸</span>
+                        <img src="img/flags/spain-flag-circle.png" alt="Bandera España" style="width: 24px; height: 24px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));" />
                         <span class="cv-btn-spanish-text">${getTranslation('cv.modal.spanish')}</span>
                     </button>
                     <button onclick="downloadCVInLanguage('en')" 
@@ -797,7 +797,7 @@ document.addEventListener('DOMContentLoaded', function () {
                             position: relative;
                             overflow: hidden;
                         ">
-                        <span style="font-size: 1.4rem; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));">🇺🇸</span>
+                        <img src="img/flags/usa-flag-circle.png" alt="Bandera USA" style="width: 24px; height: 24px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.1));" />
                         <span class="cv-btn-english-text">${getTranslation('cv.modal.english')}</span>
                     </button>
                 </div>
