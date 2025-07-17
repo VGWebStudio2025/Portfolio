@@ -599,7 +599,7 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         gonzalo: {
             es: 'docs/cv/Currículum Vitae CV Gonzalo Rivero.pdf',
-            en: 'docs/cv/Gonzalo Rivero_CV Resume.pdf' // Versión en inglés (temporal)
+            en: 'docs/cv/Currículum Vitae CV Gonzalo Rivero (ingles).pdf' // ✅ Versión en inglés disponible
         }
     };
     
