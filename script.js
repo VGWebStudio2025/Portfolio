@@ -119,7 +119,7 @@ const translations = {
             'team.founder2.name': 'Gonzalo Rivero',
             'team.founder2.role': 'Co-fundador & Diseñador UX/UI',
             'team.founder2.description': 'Experto en diseño de experiencias digitales intuitivas y atractivas. Con un enfoque centrado en el usuario, transforma ideas complejas en interfaces simples y elegantes que conectan con las emociones de los usuarios.',
-            'team.cv.download': 'Descargar CV',
+            'team.cv.download': 'Ver CV',
             
             // Modal de selección de idioma para CV
             'cv.modal.title': 'Seleccionar Idioma',
@@ -243,7 +243,7 @@ const translations = {
             'team.founder2.name': 'Gonzalo Rivero',
             'team.founder2.role': 'Co-founder & UX/UI Designer',
             'team.founder2.description': 'Expert in designing intuitive and attractive digital experiences. With a user-centered approach, transforms complex ideas into simple and elegant interfaces that connect with user emotions.',
-            'team.cv.download': 'Download CV',
+            'team.cv.download': 'View CV',
             
             // CV Language Selection Modal
             'cv.modal.title': 'Select Language',
