@@ -39,7 +39,6 @@ Portfolio profesional moderno para VGWebStudio - Estudio de diseño y desarrollo
 - **JavaScript ES6+** - Interactividad y funcionalidad
 
 ### Servicios Externos
-- **Formspree** - Envío de emails
 - **CallMeBot** - Integración WhatsApp
 - **GitHub Pages** - Hosting gratuito
 
