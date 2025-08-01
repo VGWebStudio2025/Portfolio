@@ -6,261 +6,274 @@
 
 // Objeto con todas las traducciones (disponible globalmente)
 const translations = {
-        es: {
-            // Navegación
-            'nav.home': 'Inicio',
-            'nav.about': 'Nosotros',
-            'nav.team': 'Equipo',
-            'nav.projects': 'Proyectos',
-            'nav.contact': 'Contacto',
+    es: {
+        // Navegación
+        'nav.home': 'Inicio',
+        'nav.about': 'Nosotros',
+        'nav.team': 'Equipo',
+        'nav.projects': 'Proyectos',
+        'nav.contact': 'Contacto',
 
-            // Hero Section
-            'hero.title.part1': 'Creamos experiencias digitales',
-            'hero.title.highlight': 'excepcionales',
-            'hero.description': 'Somos VGWebStudio, un estudio de diseño y desarrollo web que transforma ideas en sitios web profesionales, modernos y funcionales.',
-            'hero.buttons.projects': 'Ver Proyectos',
-            'hero.buttons.contact': 'Contactar',
+        // Hero Section
+        'hero.title.part1': 'Creamos experiencias digitales',
+        'hero.title.highlight': 'excepcionales',
+        'hero.description': 'Somos VGWebStudio, un estudio de diseño y desarrollo web que transforma ideas en sitios web profesionales, modernos y funcionales.',
+        'hero.buttons.projects': 'Ver Proyectos',
+        'hero.buttons.contact': 'Contactar',
 
-            // Sobre Nosotros
-            'about.title': 'Sobre Nosotros',
-            'about.subtitle': 'Conoce quiénes somos y qué nos motiva',
-            'about.heading': 'VGWebStudio nace de la pasión por el diseño y la tecnología',
-            'about.text1': 'Somos un estudio emergente especializado en el diseño y desarrollo de sitios web que combinan estética moderna con funcionalidad excepcional. Nuestro enfoque se centra en entender las necesidades únicas de cada cliente para crear soluciones digitales que realmente marquen la diferencia.',
-            'about.text2': 'Aunque somos nuevos en el mercado, nuestro equipo cuenta con la experiencia y creatividad necesarias para llevar tu presencia digital al siguiente nivel. Creemos que cada proyecto es una oportunidad de innovar y superar expectativas.',
+        // Sobre Nosotros
+        'about.title': 'Sobre Nosotros',
+        'about.subtitle': 'Conoce quiénes somos y qué nos motiva',
+        'about.heading': 'VGWebStudio nace de la pasión por el diseño y la tecnología',
+        'about.text1': 'Somos un estudio emergente especializado en el diseño y desarrollo de sitios web que combinan estética moderna con funcionalidad excepcional. Nuestro enfoque se centra en entender las necesidades únicas de cada cliente para crear soluciones digitales que realmente marquen la diferencia.',
+        'about.text2': 'Aunque somos nuevos en el mercado, nuestro equipo cuenta con la experiencia y creatividad necesarias para llevar tu presencia digital al siguiente nivel. Creemos que cada proyecto es una oportunidad de innovar y superar expectativas.',
 
-            // Características
-            'features.design.title': 'Diseño Creativo',
-            'features.design.desc': 'Diseños únicos y modernos que reflejan la identidad de tu marca',
-            'features.dev.title': 'Desarrollo Técnico',
-            'features.dev.desc': 'Código limpio, optimizado y siguiendo las mejores prácticas',
-            'features.responsive.title': 'Responsive Design',
-            'features.responsive.desc': 'Sitios web que se adaptan perfectamente a cualquier dispositivo',
-            'features.optimization.title': 'Optimización',
-            'features.optimization.desc': 'Velocidad de carga rápida y optimización para motores de búsqueda',
+        // Características
+        'features.design.title': 'Diseño Creativo',
+        'features.design.desc': 'Diseños únicos y modernos que reflejan la identidad de tu marca',
+        'features.dev.title': 'Desarrollo Técnico',
+        'features.dev.desc': 'Código limpio, optimizado y siguiendo las mejores prácticas',
+        'features.responsive.title': 'Responsive Design',
+        'features.responsive.desc': 'Sitios web que se adaptan perfectamente a cualquier dispositivo',
+        'features.optimization.title': 'Optimización',
+        'features.optimization.desc': 'Velocidad de carga rápida y optimización para motores de búsqueda',
 
-            // Portfolio
-            'portfolio.title': 'Nuestros Proyectos',
-            'portfolio.subtitle': 'Algunos de los trabajos que hemos realizado',
-            'portfolio.filter.all': 'Todos',
-            'portfolio.filter.web': 'Sitios Web',
-            'portfolio.filter.ecommerce': 'E-commerce',
-            'portfolio.filter.landing': 'Landing Pages',
-            'portfolio.project1.title': 'ProyectoDAX Blog',
-            'portfolio.project1.desc': 'Blog moderno desarrollado con HTML, CSS y SCSS',
-            'portfolio.project1.placeholder': 'ProyectoDAX Blog',
-            
-            // Próximamente
-            'portfolio.coming-soon.badge': 'Próximamente',
-            'portfolio.coming-soon.message': 'En desarrollo',
-            'portfolio.coming-soon.ecommerce.title': 'Tienda Online Moderna',
-            'portfolio.coming-soon.ecommerce.desc': 'Estamos trabajando en una increíble tienda online con las últimas tecnologías',
-            'portfolio.coming-soon.ecommerce.placeholder': 'E-commerce',
-            'portfolio.project2.title': 'Dentisan - Consultorio Odontológico',
-            'portfolio.project2.desc': 'Landing page de demostración para consultorio odontológico con diseño moderno y profesional',
-            'portfolio.project2.placeholder': 'Dentisan',
-            'portfolio.project3.title': 'Club El Nacional Rugby',
-            'portfolio.project3.desc': 'Sitio web institucional del histórico club de rugby fundado en 1919 en Bahía Blanca',
-            'portfolio.project3.placeholder': 'El Nacional Rugby',
-            
-            // Descripciones detalladas para el modal
-            'portfolio.project1.description': 'Blog moderno y funcional desarrollado con HTML, CSS y SCSS. Diseño responsive con una interfaz limpia y profesional, optimizado para la experiencia del usuario.',
-            'portfolio.project2.description': 'Landing page de demostración para consultorio odontológico. Página completamente funcional con información ficticia, diseñada como template/plantilla personalizable para cualquier consultorio dental real. Incluye secciones de servicios, equipo médico, testimonios y contacto.',
-            'portfolio.project3.description': 'Sitio web institucional completo del Club El Nacional, histórico club de rugby fundado en 1919 en Bahía Blanca, Argentina. Incluye información sobre la Copa Patagonia, historia del club, galería de fotos, equipos, staff técnico y sección de contacto. Diseño moderno y funcional que refleja la tradición y prestigio del club.',
-            
-            // Modal de proyectos
-            'modal.loading': 'Cargando imagen...',
-            'modal.visit': 'Visitar Proyecto',
+        // Portfolio
+        'portfolio.title': 'Nuestros Proyectos',
+        'portfolio.subtitle': 'Algunos de los trabajos que hemos realizado',
+        'portfolio.filter.all': 'Todos',
+        'portfolio.filter.web': 'Sitios Web',
+        'portfolio.filter.ecommerce': 'E-commerce',
+        'portfolio.filter.landing': 'Landing Pages',
+        'portfolio.project1.title': 'ProyectoDAX Blog',
+        'portfolio.project1.desc': 'Blog moderno desarrollado con HTML, CSS y SCSS',
+        'portfolio.project1.placeholder': 'ProyectoDAX Blog',
+        'portfolio.project2.title': 'Dentisan - Consultorio Odontológico',
+        'portfolio.project2.desc': 'Landing page de demostración para consultorio odontológico con diseño moderno y profesional',
+        'portfolio.project2.placeholder': 'Dentisan',
+        'portfolio.project3.title': 'Club El Nacional Rugby',
+        'portfolio.project3.desc': 'Sitio web institucional del histórico club de rugby fundado en 1919 en Bahía Blanca',
+        'portfolio.project3.placeholder': 'El Nacional Rugby',
+        'portfolio.project4.title': 'Control de Presupuesto',
+        'portfolio.project4.desc': 'Aplicación web para gestionar tus ingresos y egresos de forma simple.',
+        'portfolio.project4.placeholder': 'Control de Presupuesto',
 
-            // Contacto
-            'contact.title': '¿Listo para tu próximo proyecto?',
-            'contact.subtitle': 'Contáctanos y hagamos realidad tu visión digital',
-            'contact.heading': 'Hablemos de tu proyecto',
-            'contact.text': 'Estamos aquí para escuchar tus ideas y convertirlas en una presencia digital excepcional. No importa si tienes un concepto claro o solo una idea inicial, trabajaremos contigo para desarrollar la solución perfecta.',
-            'contact.email.label': 'Email',
-            'contact.phone.label': 'Teléfono',
-            'contact.form.name': 'Nombre completo',
-            'contact.form.email': 'Correo electrónico',
-            'contact.form.phone': 'Teléfono / WhatsApp (opcional)',
-            'contact.form.subject': 'Asunto',
-            'contact.form.message': 'Mensaje',
-            'contact.form.submit': 'Enviar Mensaje',
+        // Próximamente
+        'portfolio.coming-soon.badge': 'Próximamente',
+        'portfolio.coming-soon.message': 'En desarrollo',
+        'portfolio.coming-soon.ecommerce.title': 'Tienda Online Moderna',
+        'portfolio.coming-soon.ecommerce.desc': 'Estamos trabajando en una increíble tienda online con las últimas tecnologías',
+        'portfolio.coming-soon.ecommerce.placeholder': 'E-commerce',
 
-            // Footer
-            'footer.tagline': 'Creando experiencias digitales excepcionales desde 2025',
-            'footer.services.title': 'Servicios',
-            'footer.services.web': 'Diseño Web',
-            'footer.services.dev': 'Desarrollo Frontend',
-            'footer.services.ecommerce': 'E-commerce',
-            'footer.services.seo': 'Optimización SEO',
-            'footer.contact.title': 'Contacto',
-            'footer.copyright': '© 2025 VGWebStudio. Todos los derechos reservados.',
 
-            // Validación de formulario
-            'validation.required': 'Por favor, completa este campo',
-            'validation.email': 'Por favor, ingresa un email válido',
-            'validation.minLength': 'Este campo debe tener al menos {min} caracteres',
-            'validation.maxLength': 'Este campo no puede tener más de {max} caracteres',
+        // Descripciones detalladas para el modal
+        'portfolio.project1.description': 'Blog moderno y funcional desarrollado con HTML, CSS y SCSS. Diseño responsive con una interfaz limpia y profesional, optimizado para la experiencia del usuario.',
+        'portfolio.project2.description': 'Landing page de demostración para consultorio odontológico. Página completamente funcional con información ficticia, diseñada como template/plantilla personalizable para cualquier consultorio dental real. Incluye secciones de servicios, equipo médico, testimonios y contacto.',
+        'portfolio.project3.description': 'Sitio web institucional completo del Club El Nacional, histórico club de rugby fundado en 1919 en Bahía Blanca, Argentina. Incluye información sobre la Copa Patagonia, historia del club, galería de fotos, equipos, staff técnico y sección de contacto. Diseño moderno y funcional que refleja la tradición y prestigio del club.',
+        'portfolio.project4.description': 'Aplicación web que te permite llevar un control detallado de tus ingresos egresos, visualizar estadísticas en gráficos interactivos y operar en diferentes monedas e idiomas. Ideal parfreelancers, familias y pequeñas empresas.',
 
-            // Página de agradecimiento
-            'thanks.title': '¡Mensaje Enviado con Éxito!',
-            'thanks.message': 'Gracias por contactarnos. Hemos recibido tu mensaje y nos pondremos en contacto contigo muy pronto.',
-            'thanks.whatsapp': 'Tu mensaje ha sido enviado directamente a nuestro WhatsApp',
-            'thanks.response': 'Tiempo de respuesta: menos de 24 horas',
-            'thanks.back': 'Volver al Inicio',
-            'thanks.projects': 'Ver Proyectos',
-            'thanks.contact.title': '¿Necesitas contactarnos directamente?',
+        // Modal de proyectos
+        'modal.loading': 'Cargando imagen...',
+        'modal.visit': 'Visitar Proyecto',
 
-            // Sección del Equipo
-            'team.title': 'Conoce a Nuestro Equipo',
-            'team.subtitle': 'Los creadores detrás de VGWebStudio',
-            'team.founder1.name': 'Valentin Otero',
-            'team.founder1.role': 'Co-fundador & Desarrollador Frontend',
-            'team.founder1.description': 'Apasionado por crear experiencias web únicas y funcionales. Especialista en tecnologías frontend modernas con experiencia en el desarrollo de soluciones digitales innovadoras.',
-            'team.founder2.name': 'Gonzalo Rivero',
-            'team.founder2.role': 'Co-fundador & Diseñador UX/UI',
-            'team.founder2.description': 'Experto en diseño de experiencias digitales intuitivas y atractivas. Con un enfoque centrado en el usuario, transforma ideas complejas en interfaces simples y elegantes que conectan con las emociones de los usuarios.',
-            'team.cv.download': 'Ver CV',
-            
-            // Modal de selección de idioma para CV
-            'cv.modal.title': 'Seleccionar Idioma',
-            'cv.modal.description': 'Elige en qué idioma deseas ver el CV:',
-            'cv.modal.spanish': 'Ver en Español',
-            'cv.modal.english': 'Ver en Inglés',
-            'cv.modal.cancel': 'Cancelar',
-            'cv.modal.english.unavailable': 'CV en inglés no disponible aún',
-            'cv.modal.spanish.unavailable': 'CV en español no disponible aún'
-        },
-        en: {
-            // Navigation
-            'nav.home': 'Home',
-            'nav.about': 'About',
-            'nav.team': 'Team',
-            'nav.projects': 'Projects',
-            'nav.contact': 'Contact',
+        // Contacto
+        'contact.title': '¿Listo para tu próximo proyecto?',
+        'contact.subtitle': 'Contáctanos y hagamos realidad tu visión digital',
+        'contact.heading': 'Hablemos de tu proyecto',
+        'contact.text': 'Estamos aquí para escuchar tus ideas y convertirlas en una presencia digital excepcional. No importa si tienes un concepto claro o solo una idea inicial, trabajaremos contigo para desarrollar la solución perfecta.',
+        'contact.email.label': 'Email',
+        'contact.phone.label': 'Teléfono',
+        'contact.form.name': 'Nombre completo',
+        'contact.form.email': 'Correo electrónico',
+        'contact.form.phone': 'Teléfono / WhatsApp (opcional)',
+        'contact.form.subject': 'Asunto',
+        'contact.form.message': 'Mensaje',
+        'contact.form.submit': 'Enviar Mensaje',
 
-            // Hero Section
-            'hero.title.part1': 'We create',
-            'hero.title.highlight': 'exceptional digital experiences',
-            'hero.description': 'We are VGWebStudio, a design and web development studio that transforms ideas into professional, modern and functional websites.',
-            'hero.buttons.projects': 'View Projects',
-            'hero.buttons.contact': 'Contact',
+        // Footer
+        'footer.tagline': 'Creando experiencias digitales excepcionales desde 2025',
+        'footer.services.title': 'Servicios',
+        'footer.services.web': 'Diseño Web',
+        'footer.services.dev': 'Desarrollo Frontend',
+        'footer.services.ecommerce': 'E-commerce',
+        'footer.services.seo': 'Optimización SEO',
+        'footer.contact.title': 'Contacto',
+        'footer.copyright': '© 2025 VGWebStudio. Todos los derechos reservados.',
 
-            // About Us
-            'about.title': 'About Us',
-            'about.subtitle': 'Get to know who we are and what motivates us',
-            'about.heading': 'VGWebStudio is born from the passion for design and technology',
-            'about.text1': 'We are an emerging studio specialized in the design and development of websites that combine modern aesthetics with exceptional functionality. Our approach focuses on understanding the unique needs of each client to create digital solutions that really make a difference.',
-            'about.text2': 'Although we are new to the market, our team has the experience and creativity necessary to take your digital presence to the next level. We believe that each project is an opportunity to innovate and exceed expectations.',
+        // Validación de formulario
+        'validation.required': 'Por favor, completa este campo',
+        'validation.email': 'Por favor, ingresa un email válido',
+        'validation.minLength': 'Este campo debe tener al menos {min} caracteres',
+        'validation.maxLength': 'Este campo no puede tener más de {max} caracteres',
 
-            // Features
-            'features.design.title': 'Creative Design',
-            'features.design.desc': 'Unique and modern designs that reflect your brand identity',
-            'features.dev.title': 'Technical Development',
-            'features.dev.desc': 'Clean, optimized code following best practices',
-            'features.responsive.title': 'Responsive Design',
-            'features.responsive.desc': 'Websites that adapt perfectly to any device',
-            'features.optimization.title': 'Optimization',
-            'features.optimization.desc': 'Fast loading speed and search engine optimization',
+        // Página de agradecimiento
+        'thanks.title': '¡Mensaje Enviado con Éxito!',
+        'thanks.message': 'Gracias por contactarnos. Hemos recibido tu mensaje y nos pondremos en contacto contigo muy pronto.',
+        'thanks.whatsapp': 'Tu mensaje ha sido enviado directamente a nuestro WhatsApp',
+        'thanks.response': 'Tiempo de respuesta: menos de 24 horas',
+        'thanks.back': 'Volver al Inicio',
+        'thanks.projects': 'Ver Proyectos',
+        'thanks.contact.title': '¿Necesitas contactarnos directamente?',
 
-            // Portfolio
-            'portfolio.title': 'Our Projects',
-            'portfolio.subtitle': 'Some of the work we have done',
-            'portfolio.filter.all': 'All',
-            'portfolio.filter.web': 'Websites',
-            'portfolio.filter.ecommerce': 'E-commerce',
-            'portfolio.filter.landing': 'Landing Pages',
-            'portfolio.project1.title': 'ProyectoDAX Blog',
-            'portfolio.project1.desc': 'Modern blog developed with HTML, CSS and SCSS',
-            'portfolio.project1.placeholder': 'ProyectoDAX Blog',
-            
-            // Coming Soon
-            'portfolio.coming-soon.badge': 'Coming Soon',
-            'portfolio.coming-soon.message': 'In development',
-            'portfolio.coming-soon.ecommerce.title': 'Modern Online Store',
-            'portfolio.coming-soon.ecommerce.desc': 'We are working on an amazing online store with the latest technologies',
-            'portfolio.coming-soon.ecommerce.placeholder': 'E-commerce',
-            'portfolio.project2.title': 'Dentisan - Dental Clinic',
-            'portfolio.project2.desc': 'Demo landing page for dental clinic with modern and professional design',
-            'portfolio.project2.placeholder': 'Dentisan',
-            'portfolio.project3.title': 'Club El Nacional Rugby',
-            'portfolio.project3.desc': 'Institutional website of the historic rugby club founded in 1919 in Bahía Blanca',
-            'portfolio.project3.placeholder': 'El Nacional Rugby',
-            
-            // Detailed descriptions for modal
-            'portfolio.project1.description': 'Modern and functional blog developed with HTML, CSS and SCSS. Responsive design with a clean and professional interface, optimized for user experience.',
-            'portfolio.project2.description': 'Demo landing page for dental clinic. Fully functional page with fictional information, designed as a customizable template/layout for any real dental clinic. Includes sections for services, medical team, testimonials and contact.',
-            'portfolio.project3.description': 'Complete institutional website for Club El Nacional, historic rugby club founded in 1919 in Bahía Blanca, Argentina. Includes information about Copa Patagonia, club history, photo gallery, teams, technical staff and contact section. Modern and functional design that reflects the tradition and prestige of the club.',
-            
-            // Project modal
-            'modal.loading': 'Loading image...',
-            'modal.visit': 'Visit Project',
+        // Sección del Equipo
+        'team.title': 'Conoce a Nuestro Equipo',
+        'team.subtitle': 'Los creadores detrás de VGWebStudio',
+        'team.founder1.name': 'Valentin Otero',
+        'team.founder1.role': 'Co-fundador & Desarrollador Frontend',
+        'team.founder1.description': 'Apasionado por crear experiencias web únicas y funcionales. Especialista en tecnologías frontend modernas con experiencia en el desarrollo de soluciones digitales innovadoras.',
+        'team.founder2.name': 'Gonzalo Rivero',
+        'team.founder2.role': 'Co-fundador & Diseñador UX/UI',
+        'team.founder2.description': 'Experto en diseño de experiencias digitales intuitivas y atractivas. Con un enfoque centrado en el usuario, transforma ideas complejas en interfaces simples y elegantes que conectan con las emociones de los usuarios.',
+        'team.cv.download': 'Ver CV',
 
-            // Contact
-            'contact.title': 'Ready for your next project?',
-            'contact.subtitle': 'Contact us and let\'s make your digital vision come true',
-            'contact.heading': 'Let\'s talk about your project',
-            'contact.text': 'We are here to listen to your ideas and turn them into an exceptional digital presence. It doesn\'t matter if you have a clear concept or just an initial idea, we will work with you to develop the perfect solution.',
-            'contact.email.label': 'Email',
-            'contact.phone.label': 'Phone',
-            'contact.form.name': 'Full name',
-            'contact.form.email': 'Email address',
-            'contact.form.phone': 'Phone / WhatsApp (optional)',
-            'contact.form.subject': 'Subject',
-            'contact.form.message': 'Message',
-            'contact.form.submit': 'Send Message',
+        // Modal de selección de idioma para CV
+        'cv.modal.title': 'Seleccionar Idioma',
+        'cv.modal.description': 'Elige en qué idioma deseas ver el CV:',
+        'cv.modal.spanish': 'Ver en Español',
+        'cv.modal.english': 'Ver en Inglés',
+        'cv.modal.cancel': 'Cancelar',
+        'cv.modal.english.unavailable': 'CV en inglés no disponible aún',
+        'cv.modal.spanish.unavailable': 'CV en español no disponible aún'
+    },
+    en: {
+        // Navigation
+        'nav.home': 'Home',
+        'nav.about': 'About',
+        'nav.team': 'Team',
+        'nav.projects': 'Projects',
+        'nav.contact': 'Contact',
 
-            // Footer
-            'footer.tagline': 'Creating exceptional digital experiences since 2025',
-            'footer.services.title': 'Services',
-            'footer.services.web': 'Web Design',
-            'footer.services.dev': 'Frontend Development',
-            'footer.services.ecommerce': 'E-commerce',
-            'footer.services.seo': 'SEO Optimization',
-            'footer.contact.title': 'Contact',
-            'footer.copyright': '© 2025 VGWebStudio. All rights reserved.',
+        // Hero Section
+        'hero.title.part1': 'We create',
+        'hero.title.highlight': 'exceptional digital experiences',
+        'hero.description': 'We are VGWebStudio, a design and web development studio that transforms ideas into professional, modern and functional websites.',
+        'hero.buttons.projects': 'View Projects',
+        'hero.buttons.contact': 'Contact',
 
-            // Form validation
-            'validation.required': 'Please fill out this field',
-            'validation.email': 'Please enter a valid email',
-            'validation.minLength': 'This field must be at least {min} characters long',
-            'validation.maxLength': 'This field cannot be more than {max} characters long',
+        // About Us
+        'about.title': 'About Us',
+        'about.subtitle': 'Get to know who we are and what motivates us',
+        'about.heading': 'VGWebStudio is born from the passion for design and technology',
+        'about.text1': 'We are an emerging studio specialized in the design and development of websites that combine modern aesthetics with exceptional functionality. Our approach focuses on understanding the unique needs of each client to create digital solutions that really make a difference.',
+        'about.text2': 'Although we are new to the market, our team has the experience and creativity necessary to take your digital presence to the next level. We believe that each project is an opportunity to innovate and exceed expectations.',
 
-            // Thank you page
-            'thanks.title': 'Message Sent Successfully!',
-            'thanks.message': 'Thank you for contacting us. We have received your message and will get back to you very soon.',
-            'thanks.whatsapp': 'Your message has been sent directly to our WhatsApp',
-            'thanks.response': 'Response time: less than 24 hours',
-            'thanks.back': 'Back to Home',
-            'thanks.projects': 'View Projects',
-            'thanks.contact.title': 'Need to contact us directly?',
+        // Features
+        'features.design.title': 'Creative Design',
+        'features.design.desc': 'Unique and modern designs that reflect your brand identity',
+        'features.dev.title': 'Technical Development',
+        'features.dev.desc': 'Clean, optimized code following best practices',
+        'features.responsive.title': 'Responsive Design',
+        'features.responsive.desc': 'Websites that adapt perfectly to any device',
+        'features.optimization.title': 'Optimization',
+        'features.optimization.desc': 'Fast loading speed and search engine optimization',
 
-            // Team Section
-            'team.title': 'Meet Our Team',
-            'team.subtitle': 'The creators behind VGWebStudio',
-            'team.founder1.name': 'Valentin Otero',
-            'team.founder1.role': 'Co-founder & Frontend Developer',
-            'team.founder1.description': 'Passionate about creating unique and functional web experiences. Specialist in modern frontend technologies with experience in developing innovative digital solutions.',
-            'team.founder2.name': 'Gonzalo Rivero',
-            'team.founder2.role': 'Co-founder & UX/UI Designer',
-            'team.founder2.description': 'Expert in designing intuitive and attractive digital experiences. With a user-centered approach, transforms complex ideas into simple and elegant interfaces that connect with user emotions.',
-            'team.cv.download': 'View CV',
-            
-            // CV Language Selection Modal
-            'cv.modal.title': 'Select Language',
-            'cv.modal.description': 'Choose the language to view the CV:',
-            'cv.modal.spanish': 'View in Spanish',
-            'cv.modal.english': 'View in English',
-            'cv.modal.cancel': 'Cancel',
-            'cv.modal.english.unavailable': 'English CV not available yet',
-            'cv.modal.spanish.unavailable': 'Spanish CV not available yet'
-        }
-    };
+        // Portfolio
+        'portfolio.title': 'Our Projects',
+        'portfolio.subtitle': 'Some of the work we have done',
+        'portfolio.filter.all': 'All',
+        'portfolio.filter.web': 'Websites',
+        'portfolio.filter.ecommerce': 'E-commerce',
+        'portfolio.filter.landing': 'Landing Pages',
+        'portfolio.project1.title': 'ProyectoDAX Blog',
+        'portfolio.project1.desc': 'Modern blog developed with HTML, CSS and SCSS',
+        'portfolio.project1.placeholder': 'ProyectoDAX Blog',
+        'portfolio.project2.title': 'Dentisan - Dental Clinic',
+        'portfolio.project2.desc': 'Demo landing page for dental clinic with modern and professional design',
+        'portfolio.project2.placeholder': 'Dentisan',
+        'portfolio.project3.title': 'Club El Nacional Rugby',
+        'portfolio.project3.desc': 'Institutional website of the historic rugby club founded in 1919 in Bahía Blanca',
+        'portfolio.project3.placeholder': 'El Nacional Rugby',
+        'portfolio.project4.title': 'Budget Tracker',
+        'portfolio.project4.desc': 'Web app to manage your income and expenses easily',
+        'portfolio.project4.placeholder': 'Budget Tracker',
+
+
+
+        // Coming Soon
+        'portfolio.coming-soon.badge': 'Coming Soon',
+        'portfolio.coming-soon.message': 'In development',
+        'portfolio.coming-soon.ecommerce.title': 'Modern Online Store',
+        'portfolio.coming-soon.ecommerce.desc': 'We are working on an amazing online store with the latest technologies',
+        'portfolio.coming-soon.ecommerce.placeholder': 'E-commerce',
+
+
+        // Detailed descriptions for modal
+        'portfolio.project1.description': 'Modern and functional blog developed with HTML, CSS and SCSS. Responsive design with a clean and professional interface, optimized for user experience.',
+        'portfolio.project2.description': 'Demo landing page for dental clinic. Fully functional page with fictional information, designed as a customizable template/layout for any real dental clinic. Includes sections for services, medical team, testimonials and contact.',
+        'portfolio.project3.description': 'Complete institutional website for Club El Nacional, historic rugby club founded in 1919 in Bahía Blanca, Argentina. Includes information about Copa Patagonia, club history, photo gallery, teams, technical staff and contact section. Modern and functional design that reflects the tradition and prestige of the club.',
+        'portfolio.project4.description': 'A modern web application for managing your income and expenses simply and efficiently. Includes support for multiple currencies, multi-language interface, and interactive charts to visualize your budget in real time. Designed with a user-friendly interface so you can take control of your finances with ease.',
+
+
+        // Project modal
+        'modal.loading': 'Loading image...',
+        'modal.visit': 'Visit Project',
+
+        // Contact
+        'contact.title': 'Ready for your next project?',
+        'contact.subtitle': 'Contact us and let\'s make your digital vision come true',
+        'contact.heading': 'Let\'s talk about your project',
+        'contact.text': 'We are here to listen to your ideas and turn them into an exceptional digital presence. It doesn\'t matter if you have a clear concept or just an initial idea, we will work with you to develop the perfect solution.',
+        'contact.email.label': 'Email',
+        'contact.phone.label': 'Phone',
+        'contact.form.name': 'Full name',
+        'contact.form.email': 'Email address',
+        'contact.form.phone': 'Phone / WhatsApp (optional)',
+        'contact.form.subject': 'Subject',
+        'contact.form.message': 'Message',
+        'contact.form.submit': 'Send Message',
+
+        // Footer
+        'footer.tagline': 'Creating exceptional digital experiences since 2025',
+        'footer.services.title': 'Services',
+        'footer.services.web': 'Web Design',
+        'footer.services.dev': 'Frontend Development',
+        'footer.services.ecommerce': 'E-commerce',
+        'footer.services.seo': 'SEO Optimization',
+        'footer.contact.title': 'Contact',
+        'footer.copyright': '© 2025 VGWebStudio. All rights reserved.',
+
+        // Form validation
+        'validation.required': 'Please fill out this field',
+        'validation.email': 'Please enter a valid email',
+        'validation.minLength': 'This field must be at least {min} characters long',
+        'validation.maxLength': 'This field cannot be more than {max} characters long',
+
+        // Thank you page
+        'thanks.title': 'Message Sent Successfully!',
+        'thanks.message': 'Thank you for contacting us. We have received your message and will get back to you very soon.',
+        'thanks.whatsapp': 'Your message has been sent directly to our WhatsApp',
+        'thanks.response': 'Response time: less than 24 hours',
+        'thanks.back': 'Back to Home',
+        'thanks.projects': 'View Projects',
+        'thanks.contact.title': 'Need to contact us directly?',
+
+        // Team Section
+        'team.title': 'Meet Our Team',
+        'team.subtitle': 'The creators behind VGWebStudio',
+        'team.founder1.name': 'Valentin Otero',
+        'team.founder1.role': 'Co-founder & Frontend Developer',
+        'team.founder1.description': 'Passionate about creating unique and functional web experiences. Specialist in modern frontend technologies with experience in developing innovative digital solutions.',
+        'team.founder2.name': 'Gonzalo Rivero',
+        'team.founder2.role': 'Co-founder & UX/UI Designer',
+        'team.founder2.description': 'Expert in designing intuitive and attractive digital experiences. With a user-centered approach, transforms complex ideas into simple and elegant interfaces that connect with user emotions.',
+        'team.cv.download': 'View CV',
+
+        // CV Language Selection Modal
+        'cv.modal.title': 'Select Language',
+        'cv.modal.description': 'Choose the language to view the CV:',
+        'cv.modal.spanish': 'View in Spanish',
+        'cv.modal.english': 'View in English',
+        'cv.modal.cancel': 'Cancel',
+        'cv.modal.english.unavailable': 'English CV not available yet',
+        'cv.modal.spanish.unavailable': 'Spanish CV not available yet'
+    }
+};
 
 // ============================================
 // INICIALIZACIÓN CUANDO EL DOM ESTÁ LISTO
 // ============================================
 document.addEventListener('DOMContentLoaded', function () {
-    
+
     // ============================================
     // NAVEGACIÓN MÓVIL
     // ============================================
@@ -352,7 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     // SISTEMA DE IDIOMAS
     // ============================================
-    
+
     // Variable para el idioma actual - SIEMPRE ESPAÑOL POR DEFECTO
     let currentLanguage = localStorage.getItem('language') || 'es';
 
@@ -392,16 +405,16 @@ document.addEventListener('DOMContentLoaded', function () {
     // Función para actualizar el botón de idioma
     function updateLanguageButton(language) {
         if (!langToggle) return;
-        
+
         // Actualizar el atributo data-lang para mover el slider
         langToggle.setAttribute('data-lang', language);
-        
+
         // Actualizar solo el texto móvil
         const mobileText = langToggle.querySelector('.mobile-only');
         if (mobileText) {
             mobileText.textContent = language === 'es' ? 'ES' : 'EN';
         }
-        
+
         // Actualizar título del botón
         if (language === 'es') {
             langToggle.title = 'Cambiar a inglés';
@@ -413,7 +426,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Función para cambiar idioma
     function switchLanguage() {
         if (!langToggle) return;
-        
+
         // Añadir animación al botón
         langToggle.classList.add('lang-switching');
 
@@ -424,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Actualizar textos y botón
             updateTexts(currentLanguage);
             updateLanguageButton(currentLanguage);
-            
+
             // Actualizar modales si están abiertos
             updateModalLanguage(); // Modal de proyectos
             updateCVModalIfOpen(); // Modal de CV
@@ -437,7 +450,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Guardar en localStorage
             localStorage.setItem('language', currentLanguage);
 
-    
+
         }, 200);
 
         // Quitar animación después de que termine
@@ -463,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Ejecutar inicialización
     initializeLanguage();
-    
+
     // ==============================================
     // CONFIGURACIÓN: IDIOMA PREDETERMINADO ESPAÑOL
     // ==============================================
@@ -482,45 +495,45 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     function initializeCVDownload() {
         const cvButtons = document.querySelectorAll('.btn-cv:not(.btn-cv-disabled)');
-        
+
         cvButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 // Obtener el tipo de persona desde el atributo data-person
                 const personType = button.getAttribute('data-person');
-                
+
                 // Mostrar modal de selección de idioma
                 showCVLanguageModal(personType, button);
             });
         });
-        
+
         // Manejar botones deshabilitados con mensaje más amigable
         const disabledButtons = document.querySelectorAll('.btn-cv-disabled');
         disabledButtons.forEach(button => {
-            button.addEventListener('click', function(e) {
+            button.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 // Mensaje más profesional según el idioma
-                const message = currentLanguage === 'es' 
+                const message = currentLanguage === 'es'
                     ? 'CV no disponible aún. ¡Próximamente!'
                     : 'CV not available yet. Coming soon!';
-                    
+
                 // Crear notificación temporal en lugar de alert
                 showTempNotification(message, 'info');
                 return false;
             });
         });
     }
-    
+
     // Función para mostrar notificaciones temporales
     function showTempNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `temp-notification temp-notification--${type}`;
-        
+
         // Seleccionar icono según el tipo
         let icon;
-        switch(type) {
+        switch (type) {
             case 'success':
                 icon = 'fas fa-check-circle';
                 break;
@@ -532,15 +545,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 icon = 'fas fa-info-circle';
                 break;
         }
-        
+
         notification.innerHTML = `
             <i class="${icon}"></i>
             <span>${message}</span>
         `;
-        
+
         // Estilos inline para la notificación
         let backgroundColor;
-        switch(type) {
+        switch (type) {
             case 'success':
                 backgroundColor = '#10b981';
                 break;
@@ -552,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 backgroundColor = '#3b82f6';
                 break;
         }
-        
+
         notification.style.cssText = `
             position: fixed;
             top: 100px;
@@ -570,14 +583,14 @@ document.addEventListener('DOMContentLoaded', function () {
             transform: translateX(100%);
             transition: transform 0.3s ease;
         `;
-        
+
         document.body.appendChild(notification);
-        
+
         // Animar entrada
         setTimeout(() => {
             notification.style.transform = 'translateX(0)';
         }, 100);
-        
+
         // Remover después de 3 segundos
         setTimeout(() => {
             notification.style.transform = 'translateX(100%)';
@@ -590,7 +603,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     // MODAL DE SELECCIÓN DE IDIOMA PARA CV
     // ============================================
-    
+
     // Configuración de archivos CV
     const cvFiles = {
         valentin: {
@@ -602,7 +615,7 @@ document.addEventListener('DOMContentLoaded', function () {
             en: 'docs/cv/Currículum Vitae CV Gonzalo Rivero (ingles).pdf' // ✅ Versión en inglés disponible
         }
     };
-    
+
     // Función para mostrar el modal de selección de idioma
     function showCVLanguageModal(personType, button) {
         // Crear modal si no existe O recrearlo para actualizar traducciones
@@ -611,28 +624,28 @@ document.addEventListener('DOMContentLoaded', function () {
             // Remover modal existente para recrearlo con traducciones actualizadas
             modal.remove();
         }
-        
+
         // Crear nuevo modal con traducciones actuales
         modal = createCVLanguageModal();
-        
+
         // Almacenar información del botón y persona
         modal.dataset.personType = personType;
         modal.dataset.buttonRef = button.id || 'cv-button';
-        
+
         // Mostrar modal con animación suave
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
-        
+
         // Agregar evento para cerrar al hacer clic fuera del modal
-        modal.addEventListener('click', function(e) {
+        modal.addEventListener('click', function (e) {
             if (e.target === modal) {
                 hideCVLanguageModal();
             }
         });
-        
+
         // Forzar reflow para que la animación funcione
         modal.offsetHeight;
-        
+
         // Activar animación de entrada
         requestAnimationFrame(() => {
             modal.style.opacity = '1';
@@ -642,7 +655,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    
+
     // Función para crear el modal de selección de idioma (con traducciones)
     function createCVLanguageModal() {
         const modal = document.createElement('div');
@@ -663,7 +676,7 @@ document.addEventListener('DOMContentLoaded', function () {
             opacity: 0;
             transition: opacity 0.3s ease;
         `;
-        
+
         modal.innerHTML = `
             <div class="cv-modal-content" style="
                 background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
@@ -823,7 +836,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 </button>
             </div>
         `;
-        
+
         // Agregar estilos de hover y animaciones (solo una vez)
         if (!document.getElementById('cv-modal-dynamic-styles')) {
             const style = document.createElement('style');
@@ -904,28 +917,28 @@ document.addEventListener('DOMContentLoaded', function () {
             `;
             document.head.appendChild(style);
         }
-        
+
         document.body.appendChild(modal);
         return modal;
     }
-    
+
     // Función para actualizar textos del modal según el idioma actual
     function updateCVModalTexts(modal) {
         if (!modal) return;
-        
+
         const title = modal.querySelector('.cv-modal-title');
         const description = modal.querySelector('.cv-modal-description');
         const spanishBtnText = modal.querySelector('.cv-btn-spanish-text');
         const englishBtnText = modal.querySelector('.cv-btn-english-text');
         const cancelBtn = modal.querySelector('.cv-btn-cancel');
-        
+
         if (title) title.textContent = getTranslation('cv.modal.title');
         if (description) description.textContent = getTranslation('cv.modal.description');
         if (spanishBtnText) spanishBtnText.textContent = getTranslation('cv.modal.spanish');
         if (englishBtnText) englishBtnText.textContent = getTranslation('cv.modal.english');
         if (cancelBtn) cancelBtn.textContent = getTranslation('cv.modal.cancel');
     }
-    
+
     // Función para actualizar el modal de CV si está abierto cuando cambia el idioma
     function updateCVModalIfOpen() {
         const modal = document.getElementById('cvLanguageModal');
@@ -933,33 +946,33 @@ document.addEventListener('DOMContentLoaded', function () {
             // El modal está abierto, recrearlo con las nuevas traducciones
             const personType = modal.dataset.personType;
             const buttonRef = modal.dataset.buttonRef;
-            
+
             // Remover modal actual
             modal.remove();
-            
+
             // Crear nuevo modal con traducciones actualizadas
             const newModal = createCVLanguageModal();
             newModal.dataset.personType = personType;
             newModal.dataset.buttonRef = buttonRef;
-            
+
             // Mostrar el nuevo modal inmediatamente
             newModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
     }
-    
+
     // Función para ocultar el modal
     function hideCVLanguageModal() {
         const modal = document.getElementById('cvLanguageModal');
         if (modal && modal.style.display === 'flex') {
             const content = modal.querySelector('.cv-modal-content');
-            
+
             // Iniciar animación de salida
             modal.style.opacity = '0';
             if (content) {
                 content.style.transform = 'scale(0.8)';
             }
-            
+
             // Ocultar modal después de la animación
             setTimeout(() => {
                 modal.style.display = 'none';
@@ -967,85 +980,85 @@ document.addEventListener('DOMContentLoaded', function () {
             }, 300); // Tiempo de la animación
         }
     }
-    
+
     // Función para descargar CV en el idioma seleccionado
     function downloadCVInLanguage(language) {
         const modal = document.getElementById('cvLanguageModal');
         const personType = modal.dataset.personType;
-        
+
         // Verificar si existe el archivo para la persona y idioma
         const cvFile = cvFiles[personType] && cvFiles[personType][language];
-        
+
         if (!cvFile) {
-            const message = language === 'es' 
+            const message = language === 'es'
                 ? getTranslation('cv.modal.spanish.unavailable')
                 : getTranslation('cv.modal.english.unavailable');
             showTempNotification(message, 'info');
             hideCVLanguageModal();
             return;
         }
-        
+
         // Proceder con la descarga directamente
         // La verificación de archivos se hará en el momento de descarga
-        
+
         // Ocultar modal
         hideCVLanguageModal();
-        
+
         // Mostrar efecto de descarga
         const button = document.querySelector(`[data-person="${personType}"]`);
         if (button) {
             const originalText = button.innerHTML;
             const downloadingText = currentLanguage === 'es' ? 'Descargando...' : 'Downloading...';
-            
+
             button.innerHTML = `<i class="fas fa-spinner fa-spin"></i> ${downloadingText}`;
             button.style.opacity = '0.7';
-            
-                    // Abrir CV en nueva pestaña
-        setTimeout(() => {
-            try {
-                // Abrir el CV en una nueva pestaña
-                const newWindow = window.open(cvFile, '_blank', 'noopener,noreferrer');
-                
-                // Restaurar botón
-                button.innerHTML = originalText;
-                button.style.opacity = '1';
-                
-                // Verificar si se pudo abrir la ventana (algunos navegadores bloquean pop-ups)
-                if (!newWindow || newWindow.closed) {
-                    // Si no se puede abrir nueva ventana, mostrar mensaje informativo
-                    const blockedMessage = currentLanguage === 'es' 
-                        ? 'Por favor, permite ventanas emergentes para ver el CV en nueva pestaña'
-                        : 'Please allow pop-ups to view CV in new tab';
-                    showTempNotification(blockedMessage, 'info');
-                } else {
-                    // Mostrar notificación de éxito
-                    const successMessage = currentLanguage === 'es' 
-                        ? '¡CV abierto en nueva pestaña!'
-                        : 'CV opened in new tab!';
-                    showTempNotification(successMessage, 'success');
+
+            // Abrir CV en nueva pestaña
+            setTimeout(() => {
+                try {
+                    // Abrir el CV en una nueva pestaña
+                    const newWindow = window.open(cvFile, '_blank', 'noopener,noreferrer');
+
+                    // Restaurar botón
+                    button.innerHTML = originalText;
+                    button.style.opacity = '1';
+
+                    // Verificar si se pudo abrir la ventana (algunos navegadores bloquean pop-ups)
+                    if (!newWindow || newWindow.closed) {
+                        // Si no se puede abrir nueva ventana, mostrar mensaje informativo
+                        const blockedMessage = currentLanguage === 'es'
+                            ? 'Por favor, permite ventanas emergentes para ver el CV en nueva pestaña'
+                            : 'Please allow pop-ups to view CV in new tab';
+                        showTempNotification(blockedMessage, 'info');
+                    } else {
+                        // Mostrar notificación de éxito
+                        const successMessage = currentLanguage === 'es'
+                            ? '¡CV abierto en nueva pestaña!'
+                            : 'CV opened in new tab!';
+                        showTempNotification(successMessage, 'success');
+                    }
+
+                } catch (error) {
+                    // Manejar errores
+                    button.innerHTML = originalText;
+                    button.style.opacity = '1';
+
+                    const errorMessage = currentLanguage === 'es'
+                        ? 'Error al abrir el CV. Intenta de nuevo.'
+                        : 'Error opening CV. Please try again.';
+                    showTempNotification(errorMessage, 'error');
                 }
-                
-            } catch (error) {
-                // Manejar errores
-                button.innerHTML = originalText;
-                button.style.opacity = '1';
-                
-                const errorMessage = currentLanguage === 'es' 
-                    ? 'Error al abrir el CV. Intenta de nuevo.'
-                    : 'Error opening CV. Please try again.';
-                showTempNotification(errorMessage, 'error');
-            }
-        }, 800); // Reducido el tiempo de espera
+            }, 800); // Reducido el tiempo de espera
         }
     }
-    
+
     // Hacer funciones globalmente accesibles
     window.showCVLanguageModal = showCVLanguageModal;
     window.hideCVLanguageModal = hideCVLanguageModal;
     window.downloadCVInLanguage = downloadCVInLanguage;
 
     // Manejar cierre del modal con ESC
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             const modal = document.getElementById('cvLanguageModal');
             if (modal && modal.style.display === 'flex') {
@@ -1065,20 +1078,20 @@ document.addEventListener('DOMContentLoaded', function () {
 
         portfolioItems.forEach((item, index) => {
             const overlay = item.querySelector('.portfolio-overlay');
-            
+
             if (overlay) {
                 // Agregar evento touch para mostrar overlay en móvil
-                item.addEventListener('touchstart', function(e) {
+                item.addEventListener('touchstart', function (e) {
                     // Remover active de todas las otras cards
                     portfolioItems.forEach(otherItem => {
                         if (otherItem !== item) {
                             otherItem.classList.remove('mobile-active');
                         }
                     });
-                    
+
                     // Toggle active en la card actual
                     item.classList.toggle('mobile-active');
-                    
+
                     // Prevenir scroll accidental
                     if (item.classList.contains('mobile-active')) {
                         e.preventDefault();
@@ -1086,7 +1099,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 });
 
                 // También agregar evento click como fallback
-                item.addEventListener('click', function(e) {
+                item.addEventListener('click', function (e) {
                     // Solo activar si no hay overlay visible
                     if (!item.classList.contains('mobile-active')) {
                         // Remover active de todas las otras cards
@@ -1095,7 +1108,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 otherItem.classList.remove('mobile-active');
                             }
                         });
-                        
+
                         item.classList.add('mobile-active');
                         e.preventDefault();
                     }
@@ -1104,7 +1117,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         // Cerrar overlays al tocar fuera
-        document.addEventListener('touchstart', function(e) {
+        document.addEventListener('touchstart', function (e) {
             const isPortfolioItem = e.target.closest('.portfolio-item');
             if (!isPortfolioItem) {
                 portfolioItems.forEach(item => {
@@ -1137,7 +1150,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     // ANIMACIONES CONTROLADAS POR SCROLL (INTERSECTION OBSERVER)
     // ============================================
-    
+
     // Configurar Intersection Observer para animaciones
     const observerOptions = {
         threshold: 0.15, // Activar cuando el 15% del elemento sea visible
@@ -1149,7 +1162,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (entry.isIntersecting) {
                 // Agregar clase de animación al elemento
                 entry.target.classList.add('animate-in');
-                
+
                 // Dejar de observar este elemento para evitar re-animaciones
                 animateObserver.unobserve(entry.target);
             }
@@ -1169,13 +1182,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Observar elementos que deben animarse al entrar al viewport
     const animatedElements = document.querySelectorAll('.portfolio-item, .feature, .contact-method, .team-member, .hero-title, .hero-description, .hero-buttons, .section-header');
-    
+
     animatedElements.forEach(element => {
         // Solo procesar animaciones si el usuario las permite
         if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
             // Elementos del hero: animar inmediatamente con delay
-            if (element.classList.contains('hero-title') || 
-                element.classList.contains('hero-description') || 
+            if (element.classList.contains('hero-title') ||
+                element.classList.contains('hero-description') ||
                 element.classList.contains('hero-buttons')) {
                 // Animar elementos del hero inmediatamente al cargar la página
                 setTimeout(() => {
@@ -1196,7 +1209,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    
+
 
     // ============================================
     // EFECTO DE ESCRITURA AUTOMÁTICA (TYPEWRITER)
@@ -1230,7 +1243,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function buildHeroTitleHTML(language) {
         const part1 = translations[language]['hero.title.part1'];
         const highlight = translations[language]['hero.title.highlight'];
-        
+
         return `<span data-i18n="hero.title.part1">${part1}</span> <span class="highlight" data-i18n="hero.title.highlight">${highlight}</span>`;
     }
 
@@ -1476,7 +1489,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const callmebotField = document.getElementById('callmebotMessage');
                 const finalMessage = callmebotField ? callmebotField.value : '';
 
-    
+
 
                 // Configuración para múltiples números de WhatsApp
                 // ⚠️ IMPORTANTE: Para agregar un segundo número real:
@@ -1487,62 +1500,62 @@ document.addEventListener('DOMContentLoaded', function () {
                     { phone: '5492916454112', apikey: '9876927', name: 'Principal' },
                     { phone: '5492916430305', apikey: '2296460', name: 'Secundario' }
                 ];
-                
+
                 // URL encode del mensaje para evitar problemas con caracteres especiales
                 const encodedMessage = encodeURIComponent(finalMessage);
 
 
-                
+
                 // Función para enviar a un número específico
                 const sendToWhatsApp = async (numberConfig, delay = 0) => {
                     return new Promise((resolve) => {
                         setTimeout(() => {
                             const callMeBotUrl = `https://api.callmebot.com/whatsapp.php?phone=${numberConfig.phone}&apikey=${numberConfig.apikey}&text=${encodedMessage}`;
-                            
+
                             try {
                                 // Método 1: Intentar con fetch normal primero
                                 fetch(callMeBotUrl, {
                                     method: 'GET'
                                 })
-                                .then(response => {
-                                    if (response.ok) {
-                                        resolve({ success: true, number: numberConfig.name, method: 'fetch' });
-                                    } else {
-                                        // Intentar con método fallback
+                                    .then(response => {
+                                        if (response.ok) {
+                                            resolve({ success: true, number: numberConfig.name, method: 'fetch' });
+                                        } else {
+                                            // Intentar con método fallback
+                                            return useFallbackMethod();
+                                        }
+                                    })
+                                    .catch((fetchError) => {
                                         return useFallbackMethod();
-                                    }
-                                })
-                                .catch((fetchError) => {
-                                    return useFallbackMethod();
-                                });
-                                
+                                    });
+
                                 // Función de fallback usando imagen
                                 function useFallbackMethod() {
                                     try {
                                         const img = new Image();
-                                        
+
                                         img.onload = () => {
                                             resolve({ success: true, number: numberConfig.name, method: 'image' });
                                         };
-                                        
+
                                         img.onerror = (imgError) => {
                                             // Aún así consideramos como exitoso porque CallMeBot puede enviar el mensaje
                                             // aunque la respuesta de imagen falle
                                             resolve({ success: true, number: numberConfig.name, method: 'image-error' });
                                         };
-                                        
+
                                         // Agregar timeout a la imagen para evitar cuelgues
                                         setTimeout(() => {
                                             resolve({ success: true, number: numberConfig.name, method: 'timeout' });
                                         }, 10000); // 10 segundos timeout
-                                        
+
                                         img.src = callMeBotUrl;
-                                        
+
                                     } catch (fallbackError) {
                                         resolve({ success: false, number: numberConfig.name, error: fallbackError.message });
                                     }
                                 }
-                                
+
                             } catch (error) {
                                 resolve({ success: false, number: numberConfig.name, error: error.message });
                             }
@@ -1551,17 +1564,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 };
 
                 // Enviar a todos los números - ahora sin delays ya que es completamente invisible
-                const sendPromises = whatsappNumbers.map((numberConfig, index) => 
+                const sendPromises = whatsappNumbers.map((numberConfig, index) =>
                     sendToWhatsApp(numberConfig, index * 100) // 100ms de delay mínimo para evitar saturar
                 );
 
                 // Esperar a que todos los envíos se completen
                 const results = await Promise.all(sendPromises);
-                
+
                 // Mostrar resumen detallado de envíos
                 const successful = results.filter(r => r.success);
                 const failed = results.filter(r => !r.success);
-                
+
                 // Si al menos uno fue exitoso, considerar como éxito
                 if (successful.length === 0) {
                     throw new Error('No se pudo enviar a ningún número de WhatsApp');
@@ -1579,13 +1592,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 submitButton.disabled = false;
                 submitButton.style.opacity = '1';
                 submitButton.style.cursor = 'pointer';
-                
+
                 // Resetear flag
                 formSubmissionInProgress = false;
 
                 // Mostrar mensaje de error
-                alert(currentLanguage === 'es' 
-                    ? 'Error al enviar el mensaje. Por favor, intenta de nuevo.' 
+                alert(currentLanguage === 'es'
+                    ? 'Error al enviar el mensaje. Por favor, intenta de nuevo.'
                     : 'Error sending message. Please try again.'
                 );
             }
@@ -1638,7 +1651,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
                 // Construir mensaje línea por línea usando array
                 const messageParts = [];
-                
+
                 if (currentLanguage === 'es') {
                     messageParts.push('🌟 Nuevo contacto desde VGWebStudio');
                     messageParts.push(`⏰ Enviado: ${fecha} a las ${hora}`);
@@ -1800,7 +1813,31 @@ const projectsData = {
                 'Modern responsive design'
             ]
         }
+    },
+    controlpresupuesto: {
+        titleKey: 'portfolio.project4.title', // podés crear esta clave en tu archivo de traducciones
+        descriptionKey: 'portfolio.project4.description', // igual que arriba, para tenerlo multilenguaje
+        image: 'img/vistaprevia/index(control-presupuesto).jpg', // la ruta de tu screenshot
+        url: 'https://control-presupuesto-seven.vercel.app/',
+        technologies: ['React', 'JavaScript', 'CSS'],
+        features: {
+            es: [
+                'Gestión de ingresos y egresos',
+                'Soporte para múltiples monedas',
+                'Soporte multiidioma',
+                'Gráficos interactivos',
+                'Interfaz moderna y fácil de usar'
+            ],
+            en: [
+                'Income and expense management',
+                'Multi-currency support',
+                'Multi-language support',
+                'Interactive charts',
+                'Modern and user-friendly interface'
+            ]
+        }
     }
+
     // Aquí se pueden agregar más proyectos en el futuro
 };
 
@@ -1821,18 +1858,18 @@ function preloadImage(imageSrc) {
         preloadingImages.add(imageSrc);
 
         const img = new Image();
-        
+
         img.onload = () => {
             imageCache.set(imageSrc, img);
             preloadingImages.delete(imageSrc);
             resolve(img);
         };
-        
+
         img.onerror = () => {
             preloadingImages.delete(imageSrc);
             reject(new Error(`Failed to load image: ${imageSrc}`));
         };
-        
+
         img.src = imageSrc;
     });
 }
@@ -1846,16 +1883,16 @@ function loadImageWithSpinner(imageSrc, targetImg, loadingSpinner) {
     if (targetImg) {
         targetImg.style.display = 'none';
     }
-    
+
     // Crear nueva imagen para probar carga
     const testImg = new Image();
-    
-    testImg.onload = function() {
+
+    testImg.onload = function () {
         if (targetImg) {
             targetImg.src = imageSrc;
             targetImg.alt = `Vista previa de proyecto`;
         }
-        
+
         // Ocultar spinner y mostrar imagen
         if (loadingSpinner) {
             loadingSpinner.style.display = 'none';
@@ -1864,14 +1901,14 @@ function loadImageWithSpinner(imageSrc, targetImg, loadingSpinner) {
             targetImg.style.display = 'block';
         }
     };
-    
-    testImg.onerror = function() {
+
+    testImg.onerror = function () {
         // Mostrar imagen placeholder
         if (targetImg) {
             targetImg.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400"%3E%3Crect width="600" height="400" fill="%23f3f4f6"/%3E%3Ctext x="300" y="200" text-anchor="middle" fill="%23666" font-family="Arial" font-size="18"%3EImagen no disponible%3C/text%3E%3C/svg%3E';
             targetImg.alt = 'Vista previa no disponible';
         }
-        
+
         if (loadingSpinner) {
             loadingSpinner.style.display = 'none';
         }
@@ -1879,7 +1916,7 @@ function loadImageWithSpinner(imageSrc, targetImg, loadingSpinner) {
             targetImg.style.display = 'block';
         }
     };
-    
+
     // Iniciar carga
     testImg.src = imageSrc;
 }
@@ -1887,10 +1924,10 @@ function loadImageWithSpinner(imageSrc, targetImg, loadingSpinner) {
 // Función auxiliar para obtener traducciones
 function getTranslation(key) {
     // Obtener idioma actual de forma más robusta
-    const language = (typeof currentLanguage !== 'undefined' ? currentLanguage : null) || 
-                     localStorage.getItem('language') || 
-                     'es';
-    
+    const language = (typeof currentLanguage !== 'undefined' ? currentLanguage : null) ||
+        localStorage.getItem('language') ||
+        'es';
+
     const translationData = translations[language] || translations['es'];
     return translationData[key] || key;
 }
@@ -1910,13 +1947,13 @@ function openProjectPreview(projectKey) {
     const modalProjectTech = document.getElementById('modalProjectTech');
     const modalProjectLink = document.getElementById('modalProjectLink');
     const loadingSpinner = document.getElementById('imageLoadingSpinner');
-    
+
 
 
     // Llenar el modal con los datos del proyecto usando traducciones
     modalTitle.textContent = getTranslation(project.titleKey);
     modalProjectDescription.textContent = getTranslation(project.descriptionKey);
-    
+
     // Configurar enlace del proyecto
     if (modalProjectLink && project.url) {
         modalProjectLink.href = project.url;
@@ -1951,7 +1988,7 @@ function openProjectPreview(projectKey) {
     setTimeout(() => {
         modal.classList.add('active');
     }, 10);
-    
+
     // Guardar referencia del proyecto actual para actualizaciones de idioma
     modal.currentProjectKey = projectKey;
 }
@@ -1964,7 +2001,7 @@ function updateModalLanguage() {
         if (project) {
             const modalTitle = document.getElementById('modalTitle');
             const modalProjectDescription = document.getElementById('modalProjectDescription');
-            
+
             if (modalTitle) {
                 modalTitle.textContent = getTranslation(project.titleKey);
             }
@@ -1972,11 +2009,11 @@ function updateModalLanguage() {
                 modalProjectDescription.textContent = getTranslation(project.descriptionKey);
             }
         }
-        
+
         // Actualizar también los textos estáticos del modal
         const loadingText = modal.querySelector('[data-i18n="modal.loading"]');
         const visitButton = modal.querySelector('[data-i18n="modal.visit"]');
-        
+
         if (loadingText) {
             loadingText.textContent = getTranslation('modal.loading');
         }
@@ -1987,15 +2024,15 @@ function updateModalLanguage() {
 }
 
 // Preloading inteligente al hacer hover
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const previewButtons = document.querySelectorAll('.preview-btn');
-    
+
     previewButtons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
+        button.addEventListener('mouseenter', function () {
             // Obtener el proyecto del onclick
             const onclickAttr = this.getAttribute('onclick');
             const projectKey = onclickAttr.match(/openProjectPreview\('(.+?)'\)/)?.[1];
-            
+
             if (projectKey && projectsData[projectKey] && projectsData[projectKey].image) {
                 // Precargar imagen en hover para carga instantánea
                 preloadImage(projectsData[projectKey].image).catch(err => {
@@ -2009,13 +2046,13 @@ document.addEventListener('DOMContentLoaded', function() {
 // Función para cerrar la vista previa
 function closeProjectPreview() {
     const modal = document.getElementById('projectPreviewModal');
-    
+
     // Remover clase de animación
     modal.classList.remove('active');
-    
+
     // Limpiar referencia del proyecto
     modal.currentProjectKey = null;
-    
+
     // Ocultar modal después de la animación
     setTimeout(() => {
         modal.style.display = 'none';
@@ -2024,7 +2061,7 @@ function closeProjectPreview() {
 }
 
 // Cerrar modal al hacer click fuera del contenido
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const modal = document.getElementById('projectPreviewModal');
     if (e.target === modal) {
         closeProjectPreview();
@@ -2032,7 +2069,7 @@ document.addEventListener('click', function(e) {
 });
 
 // Cerrar modal con la tecla Escape
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
         const modal = document.getElementById('projectPreviewModal');
         if (modal && modal.style.display === 'flex') {
