@@ -4,7 +4,7 @@ Portfolio profesional moderno para VGWebStudio - Estudio de diseño y desarrollo
 
 ## Sitio en Vivo
 
-**URL Principal**: [https://vgwebstudio2025.github.io/Portfolio/](https://vgwebstudio2025.github.io/Portfolio/)
+**URL Principal**: [**URL Principal**: [https://vgwebstudio2025.github.io/Portfolio/]([https://vgwebstudio2025.github.io/Portfolio/](https://vgwebstudioportfolio.netlify.app/))/)
 
 ---
 
