@@ -64,6 +64,9 @@ const translations = {
         'portfolio.coming-soon.ecommerce.title': 'Tienda Online Moderna',
         'portfolio.coming-soon.ecommerce.desc': 'Estamos trabajando en una increíble tienda online con las últimas tecnologías',
         'portfolio.coming-soon.ecommerce.placeholder': 'E-commerce',
+        'portfolio.coming-soon.ricars.title': 'RICars Automotores',
+        'portfolio.coming-soon.ricars.desc': 'Sitio web profesional para concesionario de automóviles con catálogo y gestión de inventario',
+        'portfolio.coming-soon.ricars.placeholder': 'RICars Automotores',
 
 
         // Descripciones detalladas para el modal
@@ -195,6 +198,9 @@ const translations = {
         'portfolio.coming-soon.ecommerce.title': 'Modern Online Store',
         'portfolio.coming-soon.ecommerce.desc': 'We are working on an amazing online store with the latest technologies',
         'portfolio.coming-soon.ecommerce.placeholder': 'E-commerce',
+        'portfolio.coming-soon.ricars.title': 'RICars Automotores',
+        'portfolio.coming-soon.ricars.desc': 'Professional website for car dealership with catalog and inventory management',
+        'portfolio.coming-soon.ricars.placeholder': 'RICars Automotores',
 
 
         // Detailed descriptions for modal
